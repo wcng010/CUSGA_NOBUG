@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2af0bdddce96c448c91d1d64321921, type: 3}
+  m_Name: jia_character
+  m_EditorClassIdentifier: 
+  ObjectNames: "\u67B6"
+  ObjectUI_Bag: {fileID: 21300000, guid: 140e72ebe0ea32345a076017299109d0, type: 3}
+  ObjectUI_Scenes: {fileID: 21300000, guid: 140e72ebe0ea32345a076017299109d0, type: 3}
+  Brush_composition: "\u6A2A\u6298\u94A9\u6487\u7AD6\u6A2A\u6298\u6A2A\u6A2A\u7AD6\u6487\u637A"
+  ObjectNum: 0
+  Decomposition:
+  - "\u6A2A\u6298\u94A9"
+  - "\u6487"
+  - "\u7AD6"
+  - "\u6A2A\u6298"
+  - "\u6A2A"
+  - "\u6A2A"
+  - "\u7AD6"
+  - "\u6487"
+  - "\u637A"
+  CanUse: 0
