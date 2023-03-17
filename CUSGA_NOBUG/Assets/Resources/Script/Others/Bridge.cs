@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Rce_File.Inner_C_Script.BagSystem.Manager;
 using UnityEngine;
 
 public class Bridge : Ohters<Bridge>
@@ -7,7 +8,7 @@ public class Bridge : Ohters<Bridge>
     public override void Start()
     {
         base.Start();
-        BagManager.Instance.useObject += useBridge;
+        BagManager.Instance.UseObject += useBridge;
     }
 
     void Update()

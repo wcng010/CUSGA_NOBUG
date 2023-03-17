@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Rce_File.Inner_C_Script.BagSystem.Manager;
 using UnityEngine;
 
 public class Ohters<T> : MonoBehaviour where T : class
@@ -36,7 +37,7 @@ public class Ohters<T> : MonoBehaviour where T : class
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                dataList = BagManager.Instance.DataListClass.ObjectList;
+                dataList = BagManager.Instance.dataListClass.ObjectList;
                 for (int i = 0; i < needStrings.Length; i++)
                 {
                     for (int j = 0; j < dataList.Count; j++)

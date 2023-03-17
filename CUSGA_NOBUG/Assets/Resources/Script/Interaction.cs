@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Rce_File.Inner_C_Script.BagSystem.Manager;
 using UnityEngine;
 
 public class Interaction : MonoBehaviour
@@ -39,7 +40,7 @@ public class Interaction : MonoBehaviour
         {
             if (sprite.enabled && Input.GetKeyDown(KeyCode.F))
             {
-                dataList = BagManager.Instance.DataListClass.ObjectList;
+                dataList = BagManager.Instance.dataListClass.ObjectList;
                 for (int i = 0; i < dataList.Count; i++)
                 {
                     if (dataList[i] != null && dataList[i].ObjectNames == ObjName.ToString())

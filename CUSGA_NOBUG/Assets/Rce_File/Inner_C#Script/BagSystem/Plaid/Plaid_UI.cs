@@ -3,41 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
 using Pixeye.Unity;
+using Rce_File.Inner_C_Script.BagSystem.Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class Plaid_UI : MonoBehaviour
+public class  Plaid_UI : Base_UI<BrushData>
 {
     
-    [NonSerialized]
-    public int plaid_ID;
-    [NonSerialized]
-    public string brushName_item;
-    [NonSerialized]
-    public bool IsActive;
-    [Foldout("NeedDrag",true)]
-    public Image brush_plaid;
-    public GameObject iteminPlaid;
-    public Text brushNum;
     
-    public void InitPlaid(BrushData brushData)
+    public void InitPlaid(BrushData brushData,int Num)
     {
-        if (plaid_ID > BagManager.Instance.boundary_exchange)
-        {
-            this.GetComponent<Image>().color = new Color(255, 0, 202, 255);
-        }
-        //this.GetComponent<RectTransform>().localScale = new Vector3(2, 2, 1);
-        if (brushData == null||brushData._brushNum<=0)
+        ID = Num;
+        if (brushData == null||brushData._brushNum<=0)//笔画为空或数量为0，笔画框标记失活
         {
             IsActive = false;
             iteminPlaid.SetActive(false);
             return;
         }
         IsActive = true;
-        brushName_item = brushData._brushName;
-        brush_plaid.sprite = brushData._brushSprite;
-        if(plaid_ID<=BagManager.Instance.boundary_workbag)
-        brushNum.text = brushData._brushNum.ToString();
+        Name_item = brushData._brushName;
+        plaid.sprite = brushData._brushSprite;
+        if(ID<=BagManager.Instance.boundaryWorkbag)
+        NumText.text = brushData._brushNum.ToString();
     }
-    
 }
+

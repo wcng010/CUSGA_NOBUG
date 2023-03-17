@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Rce_File.Inner_C_Script.BagSystem.Manager;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class Door : Ohters<Door>
     public override void Start()
     {
         base.Start();
-        BagManager.Instance.useObject += useDoor;
+        BagManager.Instance.UseObject += useDoor;
     }
 
     void Update()

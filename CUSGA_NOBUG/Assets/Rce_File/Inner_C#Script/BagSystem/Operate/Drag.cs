@@ -1,296 +1,307 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using Rce_File.Inner_C_Script.BagSystem.Manager;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Object = UnityEngine.Object;
 
-public class Drag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler,IPointerClickHandler
+namespace Rce_File.Inner_C_Script.BagSystem.Operate
 {
-    public enum DragModel
+    public sealed class Drag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler,IPointerClickHandler
     {
-        BrushModel,
-        ObjectModel
-    }
-    
-    public DragModel dragModel;//拖动模式
-    private Transform originalParent;//起始父Transform
-    private int ClickItemID;//鼠标点击链表序号
-    private int currentItemID;//OnBegin链表序号
-    public ListData listClass;//DataClass链表
-    private string ImageName;
-    private string plaidName;
-    private GameObject endGameObject;
-    public Transform endObject;
-    private int plaidID;
-    private int objectID;
-
-    /// <summary>
-    /// 将合成台物品放回背包
-    /// </summary>
-    /// <param name="eventData"></param>
-    public virtual void OnPointerClick(PointerEventData eventData)
-    {
-        if (dragModel == DragModel.BrushModel)
+        public enum DragModel
         {
+            BrushModel,
+            ObjectModel
+        }
+    
+        public DragModel dragModel;//拖动模式
+        private Transform _originalParent;//起始父Transform
+        private int _clickItemID;//鼠标点击链表序号
+        private int _currentItemID;//OnBegin链表序号
+        public ListData listClass;//DataClass链表
+        private string _imageName;
+        private string _plaidName;
+        private GameObject _endGameObject;
+        public Transform endObject;
+        private int _plaidID;
+        private int _objectID;
 
-            ClickItemID = transform.parent.GetComponent<Plaid_UI>().plaid_ID;
-            if (ClickItemID <= BagManager.Instance.boundary_workbag)
-                return;
-            //数量为1情况
-            if (listClass.BrushList[ClickItemID]._brushNum >= 1&&!BagManager.Instance.CorrectionFor_12B(listClass.BrushList[ClickItemID]._brushName))
+        /// <summary>
+        /// 将合成台物品放回背包
+        /// </summary>
+        /// <param name="eventData"></param>
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (dragModel == DragModel.BrushModel)
             {
-                for(int i=0;i<=BagManager.Instance.boundary_workbag;i++)
-                    if (listClass.BrushList[i] == null)
+
+                _clickItemID = transform.parent.GetComponent<Plaid_UI>().ID;
+                if (_clickItemID <= BagManager.Instance.boundaryWorkbag)
+                    return;
+                //数量为1情况
+                if (listClass.BrushList[_clickItemID]._brushNum >= 1&&!BagManager.Instance.CorrectionFor_12B(listClass.BrushList[_clickItemID]._brushName))
+                {
+                    for(int i=0;i<=BagManager.Instance.boundaryWorkbag;i++)
+                        if (listClass.BrushList[i] == null)
+                        {
+                            listClass.BrushList[i] = listClass.BrushList[_clickItemID];
+                            listClass.BrushList[_clickItemID] = null;
+                            BagManager.Instance.RefreshBrush();
+                            return;
+                        }
+                }
+                listClass.BrushList[_clickItemID]._brushNum++;
+                listClass.BrushList[_clickItemID] = null;
+                BagManager.Instance.RefreshBrush();
+            }
+        
+        
+        
+            else if (dragModel == DragModel.ObjectModel)
+            {
+                _clickItemID = transform.parent.GetComponent<Object_UI>().ID;
+                if (_clickItemID < BagManager.Instance.boundaryInventory)
+                    return;
+                if (_clickItemID > BagManager.Instance.boundaryInventory && !BagManager.Instance.plaidGrid.activeSelf &&
+                    listClass.ObjectList[_clickItemID].CanUse != 1)
+                    return;
+                if (_clickItemID > BagManager.Instance.boundaryInventory && !BagManager.Instance.plaidGrid.activeSelf&&listClass.ObjectList[_clickItemID].CanUse==1)
+                {
+                    BagManager.Instance.UseObject.Invoke();
+                    if (BagManager.Instance.UsedCount == 0)
                     {
-                        listClass.BrushList[i] = listClass.BrushList[ClickItemID];
-                        listClass.BrushList[ClickItemID] = null;
-                        BagManager.Instance.RefreshBrush();
+                        BagManager.Instance.UsedCount = 0;
                         return;
                     }
-            }
-            listClass.BrushList[ClickItemID]._brushNum++;
-            listClass.BrushList[ClickItemID] = null;
-            BagManager.Instance.RefreshBrush();
-        }
-        
-        
-        
-        else if (dragModel == DragModel.ObjectModel)
-        {
-            ClickItemID = transform.parent.GetComponent<Object_UI>().Object_ID;
-            if (ClickItemID < BagManager.Instance.boundary_Inventory)
-                return;
-            if (ClickItemID > BagManager.Instance.boundary_Inventory && !BagManager.Instance.plaidGrid.activeSelf &&
-                listClass.ObjectList[ClickItemID].CanUse != 1)
-                return;
-            if (ClickItemID > BagManager.Instance.boundary_Inventory && !BagManager.Instance.plaidGrid.activeSelf&&listClass.ObjectList[ClickItemID].CanUse==1)
-            {
-                print("ssssssss");
-                BagManager.Instance.useObject.Invoke();
-                if (BagManager.Instance.UsedCount == 0)
-                {
                     BagManager.Instance.UsedCount = 0;
+                    //使用道具函数
+                    if (listClass.ObjectList[_clickItemID].ObjectNum >= 1&&!BagManager.Instance.CorrectionFor_12O(listClass.ObjectList[_clickItemID].ObjectNames))
+                    {
+                        for(int i=0;i<BagManager.Instance.boundaryWorkbag;i++)
+                            if (listClass.ObjectList[i] == null)
+                            {
+                                listClass.ObjectList[i] = listClass.ObjectList[_clickItemID];
+                                listClass.ObjectList[_clickItemID].ObjectNum -= 1;
+                                listClass.ObjectList[_clickItemID] = null;
+                                BagManager.Instance.RefreshObject();
+                                return;
+                            }
+                    
+                    }
+                    listClass.ObjectList[_clickItemID] = null;
+                    BagManager.Instance.RefreshObject();
                     return;
                 }
-                BagManager.Instance.UsedCount = 0;
-                //使用道具函数
-                if (listClass.ObjectList[ClickItemID].ObjectNum >= 1&&!BagManager.Instance.CorrectionFor_12O(listClass.ObjectList[ClickItemID].ObjectNames))
+            
+                if (listClass.ObjectList[_clickItemID].ObjectNum >= 1&&!BagManager.Instance.CorrectionFor_12O(listClass.ObjectList[_clickItemID].ObjectNames))
                 {
-                    for(int i=0;i<BagManager.Instance.boundary_workbag;i++)
+                    for(int i=0;i<BagManager.Instance.boundaryWorkbag;i++)
                         if (listClass.ObjectList[i] == null)
                         {
-                            listClass.ObjectList[i] = listClass.ObjectList[ClickItemID];
-                            listClass.ObjectList[ClickItemID].ObjectNum -= 1;
-                            listClass.ObjectList[ClickItemID] = null;
+                            listClass.ObjectList[i] = listClass.ObjectList[_clickItemID];
+                            listClass.ObjectList[_clickItemID] = null;
                             BagManager.Instance.RefreshObject();
                             return;
                         }
-                    
                 }
-                listClass.ObjectList[ClickItemID] = null;
+                listClass.ObjectList[_clickItemID].ObjectNum++;
+                listClass.ObjectList[_clickItemID] = null;
                 BagManager.Instance.RefreshObject();
-                return;
             }
-            
-            if (listClass.ObjectList[ClickItemID].ObjectNum >= 1&&!BagManager.Instance.CorrectionFor_12O(listClass.ObjectList[ClickItemID].ObjectNames))
+        }
+
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            _originalParent = transform.parent;
+            if (dragModel == DragModel.BrushModel)
             {
-                for(int i=0;i<BagManager.Instance.boundary_workbag;i++)
-                    if (listClass.ObjectList[i] == null)
+                _currentItemID = _originalParent.GetComponent<Plaid_UI>().ID;
+                if (_currentItemID > BagManager.Instance.boundaryWorkbag)
+                    return;
+                _imageName = "brush_Image";
+                _plaidName = "plaid_Brush(Clone)";
+            }
+            else if (dragModel == DragModel.ObjectModel)
+            {
+                _currentItemID = _originalParent.GetComponent<Object_UI>().ID;
+                if (_currentItemID >= BagManager.Instance.boundaryInventory)
+                    return;
+                _imageName = "object_Image";
+                _plaidName = "plaid_Object(Clone)";
+            }
+
+            Transform transformTemp;
+            (transformTemp = transform).SetParent(endObject);
+            transformTemp.position = eventData.position;
+            this.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (_currentItemID > BagManager.Instance.boundaryWorkbag&&dragModel==DragModel.BrushModel)
+                return;
+            else if(_currentItemID>=BagManager.Instance.boundaryInventory&&dragModel==DragModel.ObjectModel)
+                return;
+            transform.position = eventData.position;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            if (_currentItemID > BagManager.Instance.boundaryWorkbag&&dragModel==DragModel.BrushModel)
+                return;
+            else if(_currentItemID>=BagManager.Instance.boundaryInventory&&dragModel==DragModel.ObjectModel)
+                return;
+            _endGameObject = eventData.pointerCurrentRaycast.gameObject;
+            if (_endGameObject != null)
+            {
+                if (_endGameObject.name == _imageName)//格子不为空
+                {
+                    if (dragModel == DragModel.BrushModel&& _endGameObject.GetComponentInParent<Plaid_UI>().ID >
+                        BagManager.Instance.boundaryWorkbag)//笔画拖到合成台
                     {
-                        listClass.ObjectList[i] = listClass.ObjectList[ClickItemID];
-                        listClass.ObjectList[ClickItemID] = null;
-                        BagManager.Instance.RefreshObject();
+                        Transform transformTemp;
+                        (transformTemp = transform).SetParent(_originalParent);
+                        transformTemp.position = _originalParent.position;
+                        GetComponent<CanvasGroup>().blocksRaycasts = true;
                         return;
                     }
-            }
-            listClass.ObjectList[ClickItemID].ObjectNum++;
-            listClass.ObjectList[ClickItemID] = null;
-            BagManager.Instance.RefreshObject();
-        }
-    }
-
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        originalParent = transform.parent;
-        if (dragModel == DragModel.BrushModel)
-        {
-            currentItemID = originalParent.GetComponent<Plaid_UI>().plaid_ID;
-            if (currentItemID > BagManager.Instance.boundary_workbag)
-                return;
-            ImageName = "brush_Image";
-            plaidName = "plaid_Brush(Clone)";
-        }
-        else if (dragModel == DragModel.ObjectModel)
-        {
-            currentItemID = originalParent.GetComponent<Object_UI>().Object_ID;
-            if (currentItemID >= BagManager.Instance.boundary_Inventory)
-                return;
-            ImageName = "object_Image";
-            plaidName = "plaid_Object(Clone)";
-        }
-        transform.SetParent(endObject);
-        transform.position = eventData.position;
-        this.GetComponent<CanvasGroup>().blocksRaycasts = false;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        if (currentItemID > BagManager.Instance.boundary_workbag&&dragModel==DragModel.BrushModel)
-            return;
-        else if(currentItemID>=BagManager.Instance.boundary_Inventory&&dragModel==DragModel.ObjectModel)
-            return;
-        transform.position = eventData.position;
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        if (currentItemID > BagManager.Instance.boundary_workbag&&dragModel==DragModel.BrushModel)
-            return;
-        else if(currentItemID>=BagManager.Instance.boundary_Inventory&&dragModel==DragModel.ObjectModel)
-            return;
-        endGameObject = eventData.pointerCurrentRaycast.gameObject;
-        if (endGameObject != null)
-        {
-            if (endGameObject.name == ImageName)//格子不为空
-            {
-                if (dragModel == DragModel.BrushModel&& endGameObject.GetComponentInParent<Plaid_UI>().plaid_ID >
-                    BagManager.Instance.boundary_workbag)//笔画拖到合成台
-                {
-                    transform.SetParent(originalParent);
-                    transform.position = originalParent.position;
-                    GetComponent<CanvasGroup>().blocksRaycasts = true;
-                    return;
-                }
                 
-                if (dragModel == DragModel.ObjectModel&&endGameObject.GetComponentInParent<Object_UI>().Object_ID >=
-                    BagManager.Instance.boundary_Inventory)//字拖到分解台
-                {
-                    transform.SetParent(originalParent);
-                    transform.position = originalParent.position;
-                    GetComponent<CanvasGroup>().blocksRaycasts = true;
-                    return;
-                }
-                
-                transform.SetParent(endGameObject.transform.parent.parent);
-                transform.position = endGameObject.transform.parent.parent.position;
-                if (dragModel == DragModel.BrushModel)//交换笔画
-                {
-                    var temp = listClass.BrushList[currentItemID];
-                    listClass.BrushList[currentItemID] = listClass.BrushList[endGameObject.GetComponentInParent<Plaid_UI>().plaid_ID];
-                    listClass.BrushList[endGameObject.GetComponentInParent<Plaid_UI>().plaid_ID] = temp;
-                    
-                    endGameObject.transform.parent.position = originalParent.position;
-                    endGameObject.transform.parent.SetParent(originalParent);
-                    GetComponent<CanvasGroup>().blocksRaycasts = true;
-                    BagManager.Instance.RefreshBrush();
-                }
-                
-                else if (dragModel == DragModel.ObjectModel)//交换物品
-                {
-                    var temp = listClass.ObjectList[currentItemID];
-                    listClass.ObjectList[currentItemID] 
-                        = listClass.ObjectList[endGameObject.GetComponentInParent<Object_UI>().Object_ID];
-                    
-                    listClass.ObjectList[endGameObject.GetComponentInParent<Object_UI>().Object_ID] = temp;
-                    endGameObject.transform.parent.position = originalParent.position;
-                    endGameObject.transform.parent.SetParent(originalParent);
-                    GetComponent<CanvasGroup>().blocksRaycasts = true;
-                    BagManager.Instance.RefreshObject();
-                }
-                return;
-            }
-            
-            else if (eventData.pointerCurrentRaycast.gameObject.name == plaidName)//格子为空
-            {
-                transform.SetParent(endGameObject.transform);
-                transform.position = endGameObject.transform.position;
-                if (dragModel == DragModel.BrushModel)//笔画拖到空格子里，笔画拖到合成台格子。
-                {
-                    plaidID = endGameObject.GetComponent<Plaid_UI>().plaid_ID;
-                    if (listClass.BrushList[plaidID] == null)
+                    if (dragModel == DragModel.ObjectModel&&_endGameObject.GetComponentInParent<Object_UI>().ID >=
+                        BagManager.Instance.boundaryInventory)//字拖到分解台
                     {
-                        listClass.BrushList[plaidID] = listClass.BrushList[currentItemID];
-                        if (plaidID != currentItemID && plaidID <= BagManager.Instance.boundary_workbag)
-                        {
-                            listClass.BrushList[currentItemID] = null;
-                        }
-                        else if (plaidID != currentItemID && plaidID > BagManager.Instance.boundary_workbag)
-                        {
-                            if (plaidID > BagManager.Instance.boundary_exchange)
-                            {
-                                BagManager.Instance.ChangeCorrection();
-                            }
-                            if (listClass.BrushList[currentItemID]._brushNum >= 2)
-                                listClass.BrushList[currentItemID]._brushNum--;
-                            else 
-                                listClass.BrushList[currentItemID] = null;
-                        }
-                        
+                        Transform transformTemp;
+                        (transformTemp = transform).SetParent(_originalParent);
+                        transformTemp.position = _originalParent.position;
+                        GetComponent<CanvasGroup>().blocksRaycasts = true;
+                        return;
+                    }
+
+                    Transform transformTemp1;
+                    var parent = _endGameObject.transform.parent;
+                    var parentTemp1 = parent.parent;
+                    (transformTemp1 = transform).SetParent(parentTemp1);
+                    transformTemp1.position = parentTemp1.position;
+                    if (dragModel == DragModel.BrushModel)//交换笔画
+                    {
+                        var temp = listClass.BrushList[_currentItemID];
+                        listClass.BrushList[_currentItemID] = listClass.BrushList[_endGameObject.GetComponentInParent<Plaid_UI>().ID];
+                        listClass.BrushList[_endGameObject.GetComponentInParent<Plaid_UI>().ID] = temp;
+
+                        var parentTemp = _endGameObject.transform.parent;
+                        parentTemp.position = _originalParent.position;
+                        parentTemp.SetParent(_originalParent);
                         GetComponent<CanvasGroup>().blocksRaycasts = true;
                         BagManager.Instance.RefreshBrush();
-                        return;
                     }
-                    else 
+                
+                    else if (dragModel == DragModel.ObjectModel)//交换物品
                     {
-                        (listClass.BrushList[currentItemID], listClass.BrushList[plaidID]) = (listClass.BrushList[plaidID], listClass.BrushList[currentItemID]);
+                        var temp = listClass.ObjectList[_currentItemID];
+                        listClass.ObjectList[_currentItemID] 
+                            = listClass.ObjectList[_endGameObject.GetComponentInParent<Object_UI>().ID];
+                    
+                        listClass.ObjectList[_endGameObject.GetComponentInParent<Object_UI>().ID] = temp;
+                        var parentTemp2 = _endGameObject.transform.parent;
+                        parentTemp2.position = _originalParent.position;
+                        parentTemp2.SetParent(_originalParent);
+                        GetComponent<CanvasGroup>().blocksRaycasts = true;
+                        BagManager.Instance.RefreshObject();
+                    }
+                    return;
+                }
+            
+                else if (eventData.pointerCurrentRaycast.gameObject.name == _plaidName)//格子为空
+                {
+                    Transform transformTemp;
+                    (transformTemp = transform).SetParent(_endGameObject.transform);
+                    transformTemp.position = _endGameObject.transform.position;
+                    if (dragModel == DragModel.BrushModel)//笔画拖到空格子里，笔画拖到合成台格子。
+                    {
+                        _plaidID = _endGameObject.GetComponent<Plaid_UI>().ID;
+                        if (listClass.BrushList[_plaidID] == null)
+                        {
+                            listClass.BrushList[_plaidID] = listClass.BrushList[_currentItemID];
+                            if (_plaidID != _currentItemID && _plaidID <= BagManager.Instance.boundaryWorkbag)
+                            {
+                                listClass.BrushList[_currentItemID] = null;
+                            }
+                            else if (_plaidID != _currentItemID && _plaidID > BagManager.Instance.boundaryWorkbag)
+                            {
+                                if (_plaidID > BagManager.Instance.boundaryExchange)
+                                {
+                                    BagManager.Instance.ChangeCorrection();
+                                }
+                                if (listClass.BrushList[_currentItemID]._brushNum >= 2)
+                                    listClass.BrushList[_currentItemID]._brushNum--;
+                                else 
+                                    listClass.BrushList[_currentItemID] = null;
+                            }
+                        
                             GetComponent<CanvasGroup>().blocksRaycasts = true;
                             BagManager.Instance.RefreshBrush();
                             return;
+                        }
+                        else 
+                        {
+                            (listClass.BrushList[_currentItemID], listClass.BrushList[_plaidID]) = (listClass.BrushList[_plaidID], listClass.BrushList[_currentItemID]);
+                            GetComponent<CanvasGroup>().blocksRaycasts = true;
+                            BagManager.Instance.RefreshBrush();
+                            return;
+                        }
                     }
-                }
                 
-                else if (dragModel == DragModel.ObjectModel)
-                {
-                    objectID = endGameObject.GetComponent<Object_UI>().Object_ID;
-                    if (listClass.ObjectList[objectID] == null)
+                    else if (dragModel == DragModel.ObjectModel)
                     {
-                            listClass.ObjectList[objectID] = listClass.ObjectList[currentItemID];
-                        if (objectID != currentItemID && objectID < BagManager.Instance.boundary_Inventory)
+                        _objectID = _endGameObject.GetComponent<Object_UI>().ID;
+                        if (listClass.ObjectList[_objectID] == null)
                         {
-                            listClass.ObjectList[currentItemID] = null;
-                        }
-                        else if (objectID != currentItemID && objectID >= BagManager.Instance.boundary_Inventory)
-                        {
-                            if (objectID > BagManager.Instance.boundary_Inventory)
+                            listClass.ObjectList[_objectID] = listClass.ObjectList[_currentItemID];
+                            if (_objectID != _currentItemID && _objectID < BagManager.Instance.boundaryInventory)
                             {
-                                BagManager.Instance.DeleteSameObject(objectID,BagManager.Instance.boundary_Inventory+1,listClass.ObjectList.Count);
+                                listClass.ObjectList[_currentItemID] = null;
                             }
-                            if (listClass.ObjectList[currentItemID].ObjectNum >= 2)
-                                listClass.ObjectList[currentItemID].ObjectNum--;
-                            else
-                                listClass.ObjectList[currentItemID] = null;
+                            else if (_objectID != _currentItemID && _objectID >= BagManager.Instance.boundaryInventory)
+                            {
+                                if (_objectID > BagManager.Instance.boundaryInventory)
+                                {
+                                    BagManager.Instance.DeleteSameObject(_objectID,BagManager.Instance.boundaryInventory+1,listClass.ObjectList.Count);
+                                }
+                                if (listClass.ObjectList[_currentItemID].ObjectNum >= 2)
+                                    listClass.ObjectList[_currentItemID].ObjectNum--;
+                                else
+                                    listClass.ObjectList[_currentItemID] = null;
+                            }
+                            GetComponent<CanvasGroup>().blocksRaycasts = true;
+                            BagManager.Instance.RefreshObject();
                         }
-                        GetComponent<CanvasGroup>().blocksRaycasts = true;
-                        BagManager.Instance.RefreshObject();
-                    }
-                    else 
-                    {
-                        (listClass.ObjectList[currentItemID], listClass.ObjectList[objectID]) = (listClass.ObjectList[objectID], listClass.ObjectList[currentItemID]);
-                        GetComponent<CanvasGroup>().blocksRaycasts = true;
-                        BagManager.Instance.RefreshObject();
+                        else 
+                        {
+                            (listClass.ObjectList[_currentItemID], listClass.ObjectList[_objectID]) = (listClass.ObjectList[_objectID], listClass.ObjectList[_currentItemID]);
+                            GetComponent<CanvasGroup>().blocksRaycasts = true;
+                            BagManager.Instance.RefreshObject();
                         
+                        }
                     }
+                    return;
                 }
-                return;
             }
+
+            Transform transformTemp2;
+            (transformTemp2 = transform).SetParent(_originalParent);
+            transformTemp2.position = _originalParent.position;
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
-        transform.SetParent(originalParent);
-        transform.position = originalParent.position;
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
-    }
     
-    //处理sb的Canvas的方法，我也不知道为什么能行
-    public void OnEnable()
-    {
-        originalParent = transform.parent;
-        endObject = BagManager.Instance.EndTransform;
-        transform.SetParent(endObject);
-        transform.SetParent(originalParent);
-        transform.position = originalParent.position;
-        GetComponent<CanvasGroup>().blocksRaycasts = false;
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
+        //处理sb的Canvas的方法，我也不知道为什么能行
+        public void OnEnable()
+        {
+            _originalParent = transform.parent;
+            endObject = BagManager.Instance.endTransform;
+            transform.SetParent(endObject);
+            Transform transformTemp;
+            (transformTemp= transform).SetParent(_originalParent);
+            transformTemp.position = _originalParent.position;
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
     }
 }

@@ -73,7 +73,6 @@ public class GaussianBlur : PostEffectsBase
 	
 	IEnumerator gaussianIEnumerator()
 	{
-		
 		GaussionTimeline.Play();
 		yield return null;
 	}

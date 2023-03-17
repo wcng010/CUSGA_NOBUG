@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Rce_File.Inner_C_Script.BagSystem.Manager;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,7 +19,7 @@ public class Envelop_Update : MonoBehaviour
     IEnumerator  UpdateEnvelop()
     {
         _sceneName = SceneManager.GetActiveScene().name;
-        foreach (var level in BagManager.Instance.DataListClass.EnvelopList)
+        foreach (var level in BagManager.Instance.dataListClass.EnvelopList)
         {
             if (level &&  String.Compare(level.LevelName, _sceneName, StringComparison.Ordinal)==0)
             {
