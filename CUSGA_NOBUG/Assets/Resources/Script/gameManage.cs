@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class gameManage : MonoBehaviour
 {
@@ -9,32 +10,58 @@ public class gameManage : MonoBehaviour
     public static gameManage Instance => instance;
 
     public GameObject chatFrame;
-    [Header("¶Ô»°Êý¾ÝÎÄ±¾")]
+    [Header("å¯¹è¯æ•°æ®æ–‡æœ¬")]
     public TextAsset[] textFile;
-    [Header("ÆäËûÈËÍ·Ïñ")]
+    [Header("å…¶ä»–äººå¤´åƒ")]
     public Sprite[] otherFace;
+    [Header("èƒŒæ™¯å›¾ç‰‡")]
+    public GameObject[] background;
+
+    public GameObject End;
 
     [HideInInspector]
     public int index = 0;
     [HideInInspector]
     public bool changeBG;
 
+    bool status = false;
+
     private void Awake()
     {
         instance = this;
     }
 
-     private void Update()
-    {
+     void Update()
+    {     
         if (index >= textFile.Length)
-            SceneManager.LoadScene("Level1");
+        {
+            End.SetActive(true);
+            return;
+        }
+
+        if(GaussianBlur.Instance.GaussionTimeline.state == PlayState.Playing && !status)
+            status = true;
+
+        if(GaussianBlur.Instance.GaussionTimeline.state == PlayState.Paused && status)
+        {
+            status = false;
+            showChatFrame();
+        }
+
+        if(GaussianBlur.Instance.iterations > 3.5f)
+        {
+            Change_BK();
+        }
     }
 
-    //public void Change_BK()
-    //{
-    //    background[index-1].SetActive(false);
-    //    background[index].SetActive(true);
-    //}
+    public void Change_BK()
+    {
+        if (!background[index].activeInHierarchy)
+        {
+            background[index - 1].SetActive(false);
+            background[index].SetActive(true);
+        }        
+    }
 
     public void showChatFrame()
     {

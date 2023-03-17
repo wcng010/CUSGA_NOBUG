@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Gramdma : Ohters<Gramdma>
 {
-    private Animator anim;
+    [Header("起来的状态图")]
+    public Sprite sprite;
 
+    private SpriteRenderer sprRen;
     public override void Start()
     {
         base.Start();
-        anim = GetComponent<Animator>();
+        sprRen = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        //anim != null && anim.GetBool("stand") &&
         if ( inter.index == 1 && !inter.chatFrame.activeInHierarchy)
         {
             inter.index++;
@@ -29,7 +30,7 @@ public class Gramdma : Ohters<Gramdma>
     {
         base.FindneedObject();
 
-        if (anim != null && succeed >= needStrings.Length)
-            anim.SetBool("stand", true);
+        if (sprRen != null && succeed >= needStrings.Length)
+            sprRen.sprite = sprite;
     }
 }
