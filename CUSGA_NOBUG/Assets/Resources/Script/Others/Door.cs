@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Door : Ohters<Door>
 {
+    public SpriteRenderer sprRen;
+
+    public Sprite sprite;
     public override void Start()
     {
         base.Start();
@@ -17,6 +20,7 @@ public class Door : Ohters<Door>
         inter.InteractionChat();
         if (inter.index == 1 && Input.GetKeyDown(KeyCode.F))
         {
+            sprRen.sprite = sprite;
             ShowObject();
         }
     }

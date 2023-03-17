@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class TrafficLight : Ohters<TrafficLight>
 {
-    public GameObject stopCar;
+    public GameObject[] stopCar;
+
+    public Sprite sprite;
+
+    private SpriteRenderer sprRen;
+
+    public override void Start()
+    {
+        base.Start();
+        sprRen = GetComponent<SpriteRenderer>();
+    }
 
     void Update()
     {
@@ -14,10 +24,14 @@ public class TrafficLight : Ohters<TrafficLight>
 
         if(inter.index == 1 && Input.GetKeyDown(KeyCode.F))
         {
-            stopCar.layer = LayerMask.NameToLayer("Car");
-            stopCar.GetComponent<Collider2D>().isTrigger = true;
+            sprRen.sprite = sprite;
+            stopCar[0].layer = LayerMask.NameToLayer("Car");
+            stopCar[0].GetComponent<Collider2D>().isTrigger = true;
 
-            //Ω· ¯
+            stopCar[1].layer = LayerMask.NameToLayer("Car");
+            stopCar[1].GetComponent<Collider2D>().isTrigger = true;
+
+            //ÁªìÊùü
         }
     }
 }

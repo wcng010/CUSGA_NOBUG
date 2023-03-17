@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -11,11 +10,11 @@ public class DialogSystem : MonoBehaviour
     private static DialogSystem instance;
     public static DialogSystem Instance => instance;
 
-    [Header("UI���")]
-    public TextMeshProUGUI textLabel;
+    [Header("UI界面")]
+    public Text textLabel;
     public Image faceImage;
 
-    [Header("����ʾ���ʱ��")]
+    [Header("聊天内容出现间隔时间")]
     public float textSpeed = 0.1f;
 
     private int index;
@@ -23,7 +22,7 @@ public class DialogSystem : MonoBehaviour
 
     [HideInInspector]
     public Sprite otherFace;
-    [Header("���ͷ��")]
+    [Header("玩家头像")]
     public Sprite playerFace;
 
     private List<string> textList = new List<string>();
@@ -42,12 +41,13 @@ public class DialogSystem : MonoBehaviour
     {
         Face();
         Co = StartCoroutine(SetTextUI());
-        gaussianBlur+=GameObject.FindWithTag("MainCamera").GetComponent<GaussianBlur>().gaussianFunction;
+
+        if (SceneManager.GetActiveScene().name == "Prelude")
+            gaussianBlur +=GameObject.FindWithTag("MainCamera").GetComponent<GaussianBlur>().gaussianFunction;
     }
 
     void Update()
     {
-        //�Ի�û�����
         if((Input.GetKeyDown(KeyCode.F) || DownF) && index != textList.Count)
         {
             DownF = false;
@@ -63,7 +63,7 @@ public class DialogSystem : MonoBehaviour
                 textFinish = true;
             }
         }
-        if(index == textList.Count) //�Ի�����
+        if(index == textList.Count) //聊天结束
         {
             if (SceneManager.GetActiveScene().name == "Prelude")
             {
@@ -80,22 +80,22 @@ public class DialogSystem : MonoBehaviour
 
     public void GetTextFromFile(TextAsset file)
     {
-        //�����
+        //清空聊天内容
         textList.Clear();
         index = 0;
 
-        //�����и�
+        //分割聊天内容
         string[] lineData = file.text.Split('\n');
 
         foreach (string line in lineData)
         {
-            //��ȡ�ļ�
+            //加入聊天列表中
             textList.Add(line);
         }
     }
 
     /// <summary>
-    /// ��ȡͷ��
+    /// 选择面
     /// </summary>
     void Face()
     {

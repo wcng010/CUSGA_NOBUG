@@ -11,6 +11,7 @@ public class Ohters<T> : MonoBehaviour where T : class
 
     protected Collider2D coll;
     protected SpriteRenderer spr;
+    [HideInInspector]
     public Interaction inter;
 
     protected int succeed;
@@ -31,7 +32,6 @@ public class Ohters<T> : MonoBehaviour where T : class
     }
     public virtual void FindneedObject()
     {
-        //����Ҫ���� ����û�гɹ��� �����û�г���
         if (inter.sprite.enabled && !close && !inter.chatFrame.activeInHierarchy)
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -57,7 +57,6 @@ public class Ohters<T> : MonoBehaviour where T : class
 
             if (succeed >= needStrings.Length)
             {
-                //�ҵ�ȫ�����ܼ���
                 for (int i = 0; i < needStrings.Length; i++)
                 {
                     for (int j = 0; j < dataList.Count; j++)

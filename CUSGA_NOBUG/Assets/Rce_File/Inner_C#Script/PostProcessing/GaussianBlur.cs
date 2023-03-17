@@ -6,13 +6,19 @@ using UnityEngine.Playables;
 
 public class GaussianBlur : PostEffectsBase 
 {
+	private static GaussianBlur instance;
+	public static GaussianBlur Instance => instance;
 
 	public Shader gaussianBlurShader;
 	private Material gaussianBlurMaterial = null;
 	public PlayableDirector GaussionTimeline;
-	
-	
-	public Material material {  
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public Material material {  
 		get {
 			gaussianBlurMaterial = CheckShaderAndCreateMaterial(gaussianBlurShader, gaussianBlurMaterial);
 			return gaussianBlurMaterial;
