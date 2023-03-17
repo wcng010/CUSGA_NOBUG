@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChangeBK : MonoBehaviour
 {
     public void show()
     {
-        gameManage.Instance.showChatFrame();
+        if (SceneManager.GetActiveScene().name == "Prelude")
+            gameManage.Instance.showChatFrame();
+    }
+
+   public void loadScene()
+    {
+        SceneManager.LoadScene("Level1");
     }
 }

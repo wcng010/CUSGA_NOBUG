@@ -8,13 +8,13 @@ public class Interaction : MonoBehaviour
     [HideInInspector]
     public SpriteRenderer sprite;
     public GameObject chatFrame;
-    [Header("ͷ��")]
+    [Header("该物品头像")]
     public Sprite thisFace;
-    [Header("��ȡ����")]
+    [Header("获取的物品名字")]
     public string ObjName;
     public bool IsObj;
 
-    [Header("�Ի������ı�")]
+    [Header("聊天内容")]
     public TextAsset[] textFile;
 
     [HideInInspector]
@@ -58,10 +58,9 @@ public class Interaction : MonoBehaviour
 
     public void InteractionChat()
     {
-        //�����ｻ��
+        //存在聊天系统
         if (sprite != null && !IsObj)
         {
-            //û�м��������£�ͬʱ��ҽӴ���R
             if (sprite.enabled && Input.GetKeyDown(KeyCode.F) && !chatFrame.activeInHierarchy)
             {
                 if (index >= textFile.Length)
@@ -69,8 +68,8 @@ public class Interaction : MonoBehaviour
 
                 DialogSystem.Instance.otherFace = thisFace;
 
-                DialogSystem.Instance.GetTextFromFile(textFile[index]);//��ȡ�ļ�����
-                chatFrame.SetActive(true);//��ʾ�Ի���
+                DialogSystem.Instance.GetTextFromFile(textFile[index]);
+                chatFrame.SetActive(true);
             }
         }
     }
