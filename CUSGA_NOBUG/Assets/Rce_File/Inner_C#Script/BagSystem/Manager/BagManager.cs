@@ -168,7 +168,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                 if (item  && string.Compare(item.Brush_composition,_checkString,StringComparison.Ordinal)==0)
                 {
                     item.ObjectNum++;
-                    CorrectionFor_01B(boundaryWorkbag+1,boundaryExchange+1);
+                    CorrectionFor_01B(boundaryWorkbag+1,boundaryExchange+1,boundaryExchange+1,boundaryExchange+4);
                     RefreshBrush();
                     _checkStrings = new string[20];
                     return;
@@ -230,8 +230,30 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                 brushList[boundaryExchange + 2].GetComponent<Plaid_UI>().IsActive  &&
                 brushList[boundaryExchange + 3].GetComponent<Plaid_UI>().IsActive )
             {
+                //当交换台的笔画的数为1，但合成台仍有笔画时
+                /*int Num1;
                 dataListClass.BrushList[boundaryExchange+3]._brushNum++;
-                CorrectionFor_01B(boundaryExchange+1,boundaryExchange+3);
+                if (dataListClass.BrushList[boundaryExchange + 1]._brushNum == 1
+                    &&(Num1=FindSameBrush(boundaryWorkbag + 1, boundaryExchange + 1,
+                        dataListClass.BrushList[boundaryExchange + 1]._brushName))!=0)
+                {
+                    CorrectionFor_01B(boundaryExchange+2,boundaryExchange+3);
+                    dataListClass.BrushList[boundaryExchange + 1]=null;
+                    RefreshBrush();
+                    return;
+                }
+
+                int Num2;
+                if (dataListClass.BrushList[boundaryExchange + 2]._brushNum == 1
+                    && (Num2 = FindSameBrush(boundaryWorkbag + 1, boundaryExchange + 1,
+                        dataListClass.BrushList[boundaryExchange + 1]._brushName)) != 0)
+                {
+                    CorrectionFor_01B(boundaryExchange+1,boundaryExchange+3,boundaryExchange+2);
+                    dataListClass.BrushList[boundaryExchange + 2] = null;
+                    RefreshBrush();
+                    return;
+                }*/
+                CorrectionFor_01B(boundaryExchange+1,boundaryExchange+3,boundaryWorkbag+1,boundaryExchange+1);
                 RefreshBrush();
             }
             else
@@ -239,17 +261,46 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                 Debug.Log("兑换失败");
             }
         }
-    
+
+        private int FindSameBrush(int firstIndex,int endIndex,string findName)
+        {
+            for (int i=firstIndex;i<endIndex;i++)
+            {
+                if (dataListClass.BrushList[i]&&
+                    string.Compare(dataListClass.BrushList[i]._brushName,findName,StringComparison.Ordinal)==0)
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
+
+
         /// <summary>
         /// 数量0，1的处理
+        /// 遍历firstIndex到endIndex数组
+        /// 当数组中有元素满足：笔画数为1，背包中无此画，firstIndex2到endIndex2也无此笔画，将该元素移到背包数组中，且数量--
+        /// 否则，将此元素设为null。
         /// </summary>
         /// <param name="firstIndex"></param>
         /// <param name="endIndex"></param>
-        private void CorrectionFor_01B(int firstIndex,int endIndex)
+        /// <param name="firstIndex2"></param>
+        /// <param name="endIndex2"></param>
+        /// <param name="avoidIndex"></param>
+        private void CorrectionFor_01B(int firstIndex,int endIndex,int firstIndex2,int endIndex2,int avoidIndex=10000)
         {
-            for (int i = firstIndex; i < endIndex&&brushList[i].GetComponent<Plaid_UI>().IsActive; i++)
+            
+            for (int i = firstIndex; i < endIndex&&brushList[i].GetComponent<Plaid_UI>().IsActive&&i!=avoidIndex; i++)//背包中没有该笔画，且当前笔画数为1，但另一个地方有这个笔画
             {
-                if (dataListClass.BrushList[i]._brushNum == 1&&!CorrectionFor_12B(dataListClass.BrushList[i]._brushName))
+                if (dataListClass.BrushList[i]._brushNum == 1 //当前笔画数为1
+                    && !CorrectionFor_12B(dataListClass.BrushList[i]._brushName)//背包中没有笔画
+                    && FindSameBrush(firstIndex2, endIndex2, dataListClass.BrushList[i]._brushName) != 0)//firstIndex2到endIndex2中没有笔画
+                {
+                    dataListClass.BrushList[i] = null;
+                    continue;
+                }
+
+                if (dataListClass.BrushList[i]._brushNum == 1&&!CorrectionFor_12B(dataListClass.BrushList[i]._brushName))//背包中没有该笔画，且当前笔画数为1.将这个笔画空格与背包笔画空格移位。
                 {
                     for (int j = 0; j <= boundaryWorkbag; j++)
                     {
@@ -291,7 +342,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         {
             for (int i = 0; i <= boundaryWorkbag; i++)
             {
-                if (dataListClass.BrushList[i]!=null&&tempName == dataListClass.BrushList[i]._brushName)
+                if (dataListClass.BrushList[i]&&tempName == dataListClass.BrushList[i]._brushName)
                 {
                     return true;
                 }
@@ -549,7 +600,18 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
 
             return false;
         }
-    
+
+        public void ToBrushTarget()
+        {
+            syntheticGrid.GetComponent<Image>().raycastTarget = true;
+            decomposeGrid.GetComponent<Image>().raycastTarget = false;
+        }
+        public void ToObjectTarget()
+        {
+            syntheticGrid.GetComponent<Image>().raycastTarget = false;
+            decomposeGrid.GetComponent<Image>().raycastTarget = true;
+        }
+
 
         private void Start()
         {   RefreshBrush();
