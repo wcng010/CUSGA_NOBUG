@@ -57,13 +57,14 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
         
             else if (dragModel == DragModel.ObjectModel)
             {
-                _clickItemID = transform.parent.GetComponent<Object_UI>().ID;
-                if (_clickItemID < BagManager.Instance.boundaryInventory)
+                Debug.Log(BagManager.Instance.plaidGrid.activeInHierarchy);
+                _clickItemID = transform.parent.GetComponent<Object_UI>().ID;//获得当前点击的格子编号
+                if (_clickItemID < BagManager.Instance.boundaryInventory)//背包内
                     return;
-                if (_clickItemID > BagManager.Instance.boundaryInventory && !BagManager.Instance.plaidGrid.activeSelf &&
-                    listClass.ObjectList[_clickItemID].CanUse != 1)
+                if (_clickItemID > BagManager.Instance.boundaryInventory && !BagManager.Instance.plaidGrid.activeInHierarchy &&
+                    listClass.ObjectList[_clickItemID].CanUse != 1)//物品栏但不可用
                     return;
-                if (_clickItemID > BagManager.Instance.boundaryInventory && !BagManager.Instance.plaidGrid.activeSelf&&listClass.ObjectList[_clickItemID].CanUse==1)
+                if (_clickItemID > BagManager.Instance.boundaryInventory && !BagManager.Instance.plaidGrid.activeInHierarchy&&listClass.ObjectList[_clickItemID].CanUse==1)//物品栏
                 {
                     BagManager.Instance.UseObject.Invoke();
                     if (BagManager.Instance.UsedCount == 0)
