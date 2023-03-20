@@ -20,8 +20,7 @@ public class Door : Ohters<Door>
         FindneedObject();
         inter.InteractionChat();
         if (inter.index == 1 && Input.GetKeyDown(KeyCode.F))
-        {
-            sprRen.sprite = sprite;
+        {            
             ShowObject();
         }
     }
@@ -35,4 +34,9 @@ public class Door : Ohters<Door>
         }
     }
 
+    public override void ShowObject()
+    {
+        sprRen.sprite = sprite;
+        base.ShowObject();
+    }
 }
