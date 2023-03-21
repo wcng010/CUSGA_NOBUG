@@ -30,8 +30,6 @@ Shader "Unity Shaders/MyShader/PlayerShadow"
                 {
                     v2f o;
                     o.vertex = UnityObjectToClipPos(v.vertex);
-                    o.vertex.x+=0.1;
-                    o.vertex.y-=0.1;
                     o.uv = v.uv;
                     o.uv.y = 1 - o.uv.y;
                     return o;
