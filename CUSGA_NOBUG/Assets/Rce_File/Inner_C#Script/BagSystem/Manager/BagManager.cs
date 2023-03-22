@@ -253,6 +253,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                     RefreshBrush();
                     return;
                 }*/
+                dataListClass.BrushList[boundaryExchange+3]._brushNum++;
                 CorrectionFor_01B(boundaryExchange+1,boundaryExchange+3,boundaryWorkbag+1,boundaryExchange+1);
                 RefreshBrush();
             }
