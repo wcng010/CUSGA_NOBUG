@@ -16,7 +16,7 @@ MonoBehaviour:
   ObjectUI_Bag: {fileID: 21300000, guid: 2238d34d2c3aff04c8660d1b4e7be440, type: 3}
   ObjectUI_Scenes: {fileID: 21300000, guid: 4ab5975c2869cc649a34ed96c7b22fd6, type: 3}
   Brush_composition: "\u6A2A\u7AD6\u6487\u70B9\u6487\u6A2A\u6487\u637A\u6487\u7AD6"
-  ObjectNum: 1
+  ObjectNum: 2
   Decomposition:
   - "\u6A2A"
   - "\u7AD6"
