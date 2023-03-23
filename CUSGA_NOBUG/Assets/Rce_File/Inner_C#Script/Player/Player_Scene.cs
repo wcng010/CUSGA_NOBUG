@@ -1,47 +1,52 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Pixeye.Unity;
 using Rce_File.Inner_C_Script.Player;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Player_Scene : MonoBehaviour
 {
-    public float playerSpeed;
     private Rigidbody2D _playerRigid;
     private PlayerBase _player;
-    private Animator _playerAnimator;
-    private SpriteRenderer _playerRenderer;
-    public List<Sprite> SpriteList = new List<Sprite>(); 
+    [Foldout("PlayerTimeline",true)]
+    public PlayableDirector PlayerFront;
+    public PlayableDirector PlayerBack;
+    public PlayableDirector PlayerRight;
+    public PlayableDirector PlayerLeft;
+    [Header("玩家速度")]
+    public float playerSpeed;
     protected virtual void OnEnable()
     {
-        _playerRigid = GetComponent<Rigidbody2D>();
-        _playerAnimator = GetComponent<Animator>();
-        _playerRenderer = GetComponent<SpriteRenderer>();
+        ComponentGet();
     }
     
     protected virtual void Start()
     {
-        _player = new PlayerBase();
-        _player.Init_Rigid(_playerRigid);
-        _player.Init_Speed(playerSpeed);
-        _player.Init_Animator(_playerAnimator);
+            PlayerInit();
     }
     
     protected void Update()
     {
         _player.PlayerMove();
     }
-    public virtual void SpriteToForward()
+
+
+
+    private void ComponentGet()
     {
-        _playerRenderer.sprite = SpriteList[0];
-    }
-    public virtual void SpriteToBack()
-    {
-        _playerRenderer.sprite = SpriteList[3];
+        _playerRigid = GetComponent<Rigidbody2D>();
     }
 
-    public virtual void SpriteToRight()
+    private void PlayerInit()
     {
-        _playerRenderer.sprite = SpriteList[2];
+        _player = new PlayerBase();
+        _player.Init_Rigid(_playerRigid);
+        _player.Init_Speed(playerSpeed);
+        _player.Init_PlayerFront(PlayerFront);
+        _player.Init_PlayerBack(PlayerBack);
+        _player.Init_PlayerRight(PlayerRight);
+        _player.Init_PlayerLeft(PlayerLeft);
     }
 }
