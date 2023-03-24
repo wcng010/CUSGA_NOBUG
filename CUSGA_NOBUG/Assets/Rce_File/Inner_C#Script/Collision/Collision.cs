@@ -7,7 +7,6 @@ using UnityEngine;
 public class Collision : MonoBehaviour
 {
    private SpriteRenderer Sprite;
-
    protected void OnEnable()
    {
       Sprite = this.GetComponent<SpriteRenderer>();

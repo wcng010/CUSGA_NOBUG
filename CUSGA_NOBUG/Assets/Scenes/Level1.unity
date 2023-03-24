@@ -157,10 +157,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e6a0748f22d1644a7e27b52e77456c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShadowSpriteRenderer: {fileID: 562901720}
   PlayerFront: {fileID: 706443539}
   PlayerBack: {fileID: 1809427877}
   PlayerRight: {fileID: 884573877}
   PlayerLeft: {fileID: 1426604143}
+  playerSprites:
+  - {fileID: 21300000, guid: a53132f33017c5a47abb5f79e62083ca, type: 3}
+  - {fileID: 21300000, guid: bb1652f8b1f653d488a36173faa6d4a3, type: 3}
+  - {fileID: 21300000, guid: 699b11727b7cc9b40bc932544313c09f, type: 3}
+  - {fileID: 21300000, guid: fac3f3b46814d4944aee0851444be76e, type: 3}
   playerSpeed: 6
 --- !u!50 &12264696
 Rigidbody2D:
@@ -3740,7 +3746,7 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -8585664126331290968, guid: 91a3693052d75b148b55ee7f66672615, type: 2}
+  - key: {fileID: 8179953413189349878, guid: 91a3693052d75b148b55ee7f66672615, type: 2}
     value: {fileID: 12264704}
   m_ExposedReferences:
     m_References: []
