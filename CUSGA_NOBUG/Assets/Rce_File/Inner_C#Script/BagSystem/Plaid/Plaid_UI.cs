@@ -7,10 +7,8 @@ using Rce_File.Inner_C_Script.BagSystem.Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class  Plaid_UI : Base_UI<BrushData>
+public class  Plaid_UI : Base_UI
 {
-    
-    
     public void InitPlaid(BrushData brushData,int Num)
     {
         ID = Num;

@@ -6,7 +6,7 @@ using Pixeye.Unity;
 using TMPro;
 using UnityEngine.UI;
 using Object = System.Object;
-public class Base_UI<T> : MonoBehaviour
+public class Base_UI : MonoBehaviour
 {
     [NonSerialized]
     public int ID;

@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Data",menuName = "ObjectData")]
-public class ObjectData : ScriptableObject
+public class ObjectData : BaseData
 {
     public string ObjectNames;
     public Sprite ObjectUI_Bag;
