@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine.UI;
 using Object = System.Object;
 
-public class Object_UI : Base_UI<ObjectData>
+public class Object_UI : Base_UI
 {
     
     [NonSerialized] 

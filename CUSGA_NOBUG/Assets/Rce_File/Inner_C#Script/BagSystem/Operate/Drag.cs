@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Rce_File.Inner_C_Script.BagSystem.Operate
 {
-    public sealed class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+    public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
     {
         public enum DragModel
         {
@@ -29,7 +29,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
         /// 将合成台物品放回背包
         /// </summary>
         /// <param name="eventData"></param>
-        public void OnPointerClick(PointerEventData eventData)
+        public virtual void OnPointerClick(PointerEventData eventData)
         {
             if (dragModel == DragModel.BrushModel)
             {
@@ -124,7 +124,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
         }
 
 
-        public void OnBeginDrag(PointerEventData eventData)
+        public virtual void OnBeginDrag(PointerEventData eventData)
         {
             
             _originalParent = transform.parent;
@@ -172,7 +172,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
             this.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
 
-        public void OnDrag(PointerEventData eventData)
+        public virtual void OnDrag(PointerEventData eventData)
         {
             //除Brush背包外格子不能拖
             if (_currentItemID > BagManager.Instance.boundaryWorkbag && dragModel == DragModel.BrushModel)
@@ -184,7 +184,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
             transform.position = eventData.position;
         }
 
-        public void OnEndDrag(PointerEventData eventData)
+        public virtual void OnEndDrag(PointerEventData eventData)
         {
             
             //除Brush背包外格子不能拖
