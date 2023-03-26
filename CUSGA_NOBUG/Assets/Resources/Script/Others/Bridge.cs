@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Bridge : Ohters<Bridge>
 {
+    private float aphlaValue;
     public override void Start()
     {
         base.Start();
@@ -16,7 +17,7 @@ public class Bridge : Ohters<Bridge>
         FindneedObject();
 
         inter.InteractionChat();
-
+        
         if(inter.index == 1 && Input.GetKeyDown(KeyCode.F))
         {
             ShowObject();
