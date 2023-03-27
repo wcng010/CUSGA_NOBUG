@@ -10,4 +10,5 @@ public class TimelineManager :BaseManager<TimelineManager>
 { 
    public PlayableDirector bridgeTimeline; 
    public PlayableDirector doorTimeline;
+   
 }
