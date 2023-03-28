@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Rce_File.Inner_C_Script.BagSystem.Manager;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Door : Ohters<Door>
 {
@@ -12,31 +14,32 @@ public class Door : Ohters<Door>
     public override void Start()
     {
         base.Start();
-        BagManager.Instance.UseObject += useDoor;
+        BagManager.Instance.UseObject += useObject;
     }
 
     void Update()
     {
-        FindneedObject();
+        //FindneedObject();
         inter.InteractionChat();
-        if (inter.index == 1 && Input.GetKeyDown(KeyCode.F))
-        {            
-            ShowObject();
-        }
+        //if (inter.index == 1 && Input.GetKeyDown(KeyCode.F))
+        //{            
+        //    ShowObject();
+        //}
     }
-
-    private void useDoor()
-    {
-        if (inter.sprite.enabled)
-        {
-            ShowObject();
-            BagManager.Instance.UsedCount++;
-        }
-    }
-
     public override void ShowObject()
     {
         sprRen.sprite = sprite;
         base.ShowObject();
+    }
+
+    protected override void useObject(string objectBag, string objectName)
+    {
+        if (string.Compare(objectName, this.gameObject.name, StringComparison.Ordinal) != 0
+            || TimelineManager.Instance.doorTimeline.state != PlayState.Playing ||
+            string.Compare(objectBag, "门", StringComparison.Ordinal) != 0)
+            return;
+        TimelineManager.Instance.doorTimeline.Stop();
+        sprRen.sprite = sprite;
+        base.useObject(objectBag,objectName);
     }
 }

@@ -10,8 +10,9 @@ public class Ohters<T> : MonoBehaviour where T : class
 
     public string[] needStrings;
 
-    protected Collider2D coll;
-    protected SpriteRenderer spr;
+    private Collider2D coll;
+    [HideInInspector]
+    public SpriteRenderer spr;
     [HideInInspector]
     public Interaction inter;
 
@@ -28,7 +29,10 @@ public class Ohters<T> : MonoBehaviour where T : class
     {
         succeed = 0;
         inter = GetComponentInChildren<Interaction>();
-        coll = GetComponent<Collider2D>();
+        if(transform.parent != null)
+            coll = transform.parent.GetComponent<Collider2D>();
+        else
+            coll = GetComponent<Collider2D>();
         spr = GetComponent<SpriteRenderer>();
     }
     public virtual void FindneedObject()

@@ -39,9 +39,10 @@ public class CarPos : MonoBehaviour
             switch (dir)
             {
                 case carDir.type1:
-                    
+                    Instantiate(car, transform.position, transform.rotation);
                     break;
                 case carDir.type2:
+                    Instantiate(car, transform.position, transform.rotation);
                     break;
                 case carDir.type3:
                     Instantiate(car, transform.position, transform.rotation);
