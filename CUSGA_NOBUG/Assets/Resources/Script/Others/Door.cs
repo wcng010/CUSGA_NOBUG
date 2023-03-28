@@ -19,10 +19,10 @@ public class Door : Ohters<Door>
     {
         FindneedObject();
         inter.InteractionChat();
-        if (inter.index == 1 && Input.GetKeyDown(KeyCode.F))
-        {            
-            ShowObject();
-        }
+        //if (inter.index == 1 && Input.GetKeyDown(KeyCode.F))
+        //{            
+        //    ShowObject();
+        //}
     }
 
     private void useDoor()

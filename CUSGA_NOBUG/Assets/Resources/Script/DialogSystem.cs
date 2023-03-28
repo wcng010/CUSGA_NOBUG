@@ -71,7 +71,7 @@ public class DialogSystem : MonoBehaviour
                 gameManage.Instance.index++;
                 gaussianBlur.Invoke();
             }
-                
+
             this.gameObject.SetActive(false);
 
             return;

@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gaussianBlurShader: {fileID: 4800000, guid: e74837176df50dc469adab6d2128d933, type: 3}
   GaussionTimeline: {fileID: 161501343}
-  iterations: 0
+  iterations: 1
   blurSpread: 0
   downSample: 1
 --- !u!95 &2118765775
