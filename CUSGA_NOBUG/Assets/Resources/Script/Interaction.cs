@@ -98,7 +98,4 @@ public class Interaction : MonoBehaviour
             sprite.enabled = false;
         }
     }
-    
-    
-    
 }

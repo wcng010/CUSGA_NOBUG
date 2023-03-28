@@ -1,6 +1,5 @@
 using System;
 using Rce_File.Inner_C_Script.BagSystem.Manager;
-using UnityEditor.U2D.Path;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -210,19 +209,13 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
                //射线检测，通过判断拖到的位置，判断是否可使用道具
                if (Camera.main != null)
                {
-                   
-                   Vector3 screenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                   //Vector3 screenPos2D = new Vector3(screenPos3D.x, screenPos3D.y, -Camera.main.transform.position.z);
-                   //Vector2 screenPos = Camera.main.ScreenToWorldPoint(screenPos2D);
-                   /*Vector2 playerPos = BagManager.Instance.PlayerTrans.position;
-                   float distance = (screenPos - playerPos).magnitude;
-                   RaycastHit2D hit = Physics2D.Raycast(playerPos,screenPos, distance,(1<<9));
-                   Debug.DrawLine(playerPos,screenPos,Color.red,distance);*/
-                   Collider2D coll = Physics2D.OverlapCircle(screenPos, 2f, (1 << 9));
-                   if (coll)
+                   Vector3 screenPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
+                       Input.mousePosition.y,
+                       Input.mousePosition.z - transform.position.z));
+                   RaycastHit2D hit = Physics2D.Raycast(screenPos, Vector2.zero, 100);
+                   if (hit)
                    {
-                       //Debug.Log(coll.name);
-                       BagManager.Instance.UseObject.Invoke(listClass.ObjectList[_currentItemID].ObjectNames,coll.name);
+                       BagManager.Instance.UseObject.Invoke();
                        if (BagManager.Instance.UsedCount == 0)//没有接触到物品
                        {
                            BagManager.Instance.UsedCount = 0;
@@ -264,7 +257,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
                 if (dragModel == DragModel.ObjectModel&&_currentItemID>BagManager.Instance.boundaryInventory)
                 {
                     BagManager.Instance.objectList[_currentItemID].GetComponent<Object_UI>().plaid.sprite = listClass.ObjectList[_currentItemID].ObjectUI_Bag;
-                    this.transform.localScale = new Vector3(0.6f, 0.6f, 0);
+                    this.transform.localScale = new(0.6f, 0.6f, 0);
                 }
                 
                 //格子不为空
@@ -437,6 +430,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
                     return;
                 }
             }
+            Debug.Log(1);
             Transform transformTemp2;
             (transformTemp2 = transform).SetParent(_originalParent);
             transformTemp2.position = _originalParent.position;

@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Rce_File.Inner_C_Script.BagSystem.Manager;
 using UnityEngine;
-using UnityEngine.Playables;
 
 public class Ohters<T> : MonoBehaviour where T : class
 {
@@ -91,14 +89,5 @@ public class Ohters<T> : MonoBehaviour where T : class
         coll.isTrigger = true;
         spr.enabled = true;
         inter.index++;
-    }
-    
-    protected virtual void useObject(string objectBag, string objectName)
-    {
-        coll.isTrigger = true;
-        spr.color = new Color(255, 255, 255, 1f);
-        transform.localScale = new Vector3(1, 1, 1);
-        inter.index++;
-        BagManager.Instance.UsedCount++;
     }
 }

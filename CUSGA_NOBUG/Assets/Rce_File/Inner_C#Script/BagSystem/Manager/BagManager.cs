@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Rce_File.Inner_C_Script.BagSystem.Manager
 {
-    public delegate void UseObject(string objectBag ,string objectName);
+    public delegate void UseObject();
     public class BagManager : BaseManager<BagManager>
     {
         [Header("信息Data数组")]
@@ -66,9 +66,6 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         public UseObject UseObject;
         [NonSerialized]
         public int UsedCount=0;
-
-        public Transform PlayerTrans;
-        
         public void RefreshBrush()
         {
             BagClear();
