@@ -61,7 +61,7 @@ public class Player_Scene : MonoBehaviour
     {
         float rightwithLeft = Input.GetAxis("Horizontal");
         float upwithDown = Input.GetAxis("Vertical");
-        if (Input.GetKeyUp(KeyCode.S)&&upwithDown<-0.4)
+        if (Input.GetKeyUp(KeyCode.S))
         {
             SetSprite(playerSprites[0]);
         }

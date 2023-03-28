@@ -164,7 +164,7 @@ PlayableDirector:
   m_GameObject: {fileID: 161501341}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 947408b77a3c32d419f561a303f57fa6, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: efd2df2115daf8a4fbeb062277a6523c, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -172,6 +172,18 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -5549825780666348824, guid: 947408b77a3c32d419f561a303f57fa6, type: 2}
     value: {fileID: 2118765775}
+  - key: {fileID: 8179953413189349878, guid: 91a3693052d75b148b55ee7f66672615, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 2414802343434374018, guid: de2a0a5e7268eb4469e028396ce0cde6, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6582938872069119828, guid: c876390e984e9144793b93b0e1e623ae, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 4747122989663237126, guid: 61b62de138c2c49438e4363fff2797a8, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -5549825780666348824, guid: efd2df2115daf8a4fbeb062277a6523c, type: 2}
+    value: {fileID: 2118765775}
+  - key: {fileID: 1965142053750300166, guid: ef613da62d28c46479b00a1099360c31, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &404545946
@@ -1177,7 +1189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gaussianBlurShader: {fileID: 4800000, guid: e74837176df50dc469adab6d2128d933, type: 3}
   GaussionTimeline: {fileID: 161501343}
-  iterations: 1
+  iterations: 0
   blurSpread: 0
   downSample: 1
 --- !u!95 &2118765775

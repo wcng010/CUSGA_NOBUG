@@ -9,7 +9,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Object
 {
     public sealed class ObjectDrag : BaseDrag<ObjectData>
     {
-        private void OnEnable()
+        public override void OnEnable()
         {
             base.OnEnable();
             _datasList = listClass.ObjectList;
@@ -113,7 +113,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Object
                     RaycastHit2D hit = Physics2D.Raycast(screenPos, Vector2.zero, 100);
                     if (hit)
                     {
-                        BagManager.Instance.UseObject.Invoke();
+                        BagManager.Instance.UseObject.Invoke(listClass.ObjectList[EndItemID].ObjectNames,hit.collider.name);
                         if (BagManager.Instance.UsedCount == 0)//没有接触到物品
                         {
                             BagManager.Instance.UsedCount = 0;

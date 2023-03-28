@@ -4,7 +4,7 @@ using Rce_File.Inner_C_Script.BagSystem.Manager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BaseDrag<T> : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler where T :BaseData 
+public class BaseDrag<R> : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler where R :BaseData 
 {
     protected Transform OriginalParent; //起始父Transform
     protected int FirstItemID; //OnBegin链表序号
@@ -15,7 +15,7 @@ public class BaseDrag<T> : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDr
     public Transform endObject;
     public ListData listClass; //DataClass链表
     
-    protected List<T> _datasList;
+    protected List<R> _datasList;
     
     public virtual void OnEnable()
     {
