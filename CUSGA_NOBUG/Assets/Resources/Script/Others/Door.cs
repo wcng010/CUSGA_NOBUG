@@ -19,12 +19,12 @@ public class Door : Ohters<Door>
 
     void Update()
     {
-        FindneedObject();
+        //FindneedObject();
         inter.InteractionChat();
-        if (inter.index == 1 && Input.GetKeyDown(KeyCode.F))
-        {            
-            ShowObject();
-        }
+        //if (inter.index == 1 && Input.GetKeyDown(KeyCode.F))
+        //{            
+        //    ShowObject();
+        //}
     }
     public override void ShowObject()
     {
@@ -39,6 +39,7 @@ public class Door : Ohters<Door>
             string.Compare(objectBag, "门", StringComparison.Ordinal) != 0)
             return;
         TimelineManager.Instance.doorTimeline.Stop();
+        sprRen.sprite = sprite;
         base.useObject(objectBag,objectName);
     }
 }

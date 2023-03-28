@@ -13,6 +13,6 @@ public class ChangeBK : MonoBehaviour
 
    public void loadScene()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
