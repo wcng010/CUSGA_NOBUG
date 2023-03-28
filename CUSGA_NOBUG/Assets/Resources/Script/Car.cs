@@ -17,7 +17,7 @@ public class Car : MonoBehaviour
 
     void Update()
     {
-        if (Physics2D.OverlapBox(transform.position + transform.up * 4.5f,new Vector2(col.size.x,2.5f),0,1<<LayerMask.NameToLayer("Car")) == null)
+        if (Physics2D.OverlapBox(transform.position + transform.up * 4.5f,new Vector2(col.size.x,2f),0,1<<LayerMask.NameToLayer("Car")) == null)
        transform.Translate(Vector3.up * speed * Time.deltaTime);
 
         if(Vector2.Distance(startPos,transform.position) > Dis)

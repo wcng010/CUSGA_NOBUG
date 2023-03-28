@@ -5,6 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public delegate void GaussianBlurEvent();
+
+public enum ObjType
+{
+    bridge,
+    door,
+    other,
+}
+
 public class DialogSystem : MonoBehaviour
 {
     private static DialogSystem instance;
@@ -30,6 +38,9 @@ public class DialogSystem : MonoBehaviour
     bool DownF = false;
 
     public GaussianBlurEvent gaussianBlur;
+
+    [HideInInspector]
+    public ObjType objT = ObjType.other;
     
     private void Awake()
     {
@@ -72,6 +83,23 @@ public class DialogSystem : MonoBehaviour
                 gaussianBlur.Invoke();
             }
 
+            switch (objT)
+            {
+                case ObjType.bridge:
+                    Bridge.Instance.spr.enabled = true;
+                    TimelineManager.Instance.bridgeTimeline.Play();
+                    break;
+                case ObjType.door:
+                    Door.Instance.spr.enabled = true;
+                    TimelineManager.Instance.doorTimeline.Play();
+                    break;
+                case ObjType.other:
+                    break;
+                default:
+                    break;
+            }
+
+            objT = ObjType.other;
             this.gameObject.SetActive(false);
 
             return;

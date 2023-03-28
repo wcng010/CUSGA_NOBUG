@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using Rce_File.Inner_C_Script.BagSystem.Manager;
 using UnityEngine;
 
+
+public enum ObjType_Inter
+{
+    bridge,
+    door,
+    other,
+}
+
 public class Interaction : MonoBehaviour
 {
     [HideInInspector]
@@ -21,7 +29,9 @@ public class Interaction : MonoBehaviour
     public int index = 0;
 
     private List<ObjectData> dataList;
-    
+
+    public ObjType_Inter type_Inter = ObjType_Inter.other;
+
     void Start()
     {
         index = 0;
@@ -67,6 +77,21 @@ public class Interaction : MonoBehaviour
                     return;
 
                 DialogSystem.Instance.otherFace = thisFace;
+
+                switch (type_Inter)
+                {
+                    case ObjType_Inter.bridge:
+                        DialogSystem.Instance.objT = ObjType.bridge;
+                        break;
+                    case ObjType_Inter.door:
+                        DialogSystem.Instance.objT = ObjType.door;
+                        break;
+                    case ObjType_Inter.other:
+                        DialogSystem.Instance.objT = ObjType.other;
+                        break;
+                    default:
+                        break;
+                }
 
                 DialogSystem.Instance.GetTextFromFile(textFile[index]);
                 chatFrame.SetActive(true);
