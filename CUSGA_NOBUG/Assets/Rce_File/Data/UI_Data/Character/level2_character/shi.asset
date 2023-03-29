@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2af0bdddce96c448c91d1d64321921, type: 3}
+  m_Name: shi
+  m_EditorClassIdentifier: 
+  ObjectNames: "\u77F3"
+  ObjectUI_Bag: {fileID: 0}
+  ObjectUI_Scenes: {fileID: 0}
+  Brush_composition: "\u6A2A\u6487\u7AD6\u6A2A\u6298\u6A2A"
+  ObjectNum: 0
+  Decomposition:
+  - "\u6A2A"
+  - "\u6487"
+  - "\u7AD6"
+  - "\u6A2A\u6298"
+  - "\u6A2A"
+  CanUse: 0

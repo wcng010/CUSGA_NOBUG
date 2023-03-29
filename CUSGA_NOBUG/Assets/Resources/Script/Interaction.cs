@@ -50,7 +50,7 @@ public class Interaction : MonoBehaviour
         {
             if (sprite.enabled && Input.GetKeyDown(KeyCode.F))
             {
-                dataList = BagManager.Instance.dataListClass.ObjectList;
+                dataList = BagManager.Instance.dataListClass.objectList;
                 for (int i = 0; i < dataList.Count; i++)
                 {
                     if (dataList[i] != null && dataList[i].ObjectNames == ObjName.ToString())

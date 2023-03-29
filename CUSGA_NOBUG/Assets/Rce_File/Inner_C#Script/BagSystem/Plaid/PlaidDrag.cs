@@ -11,7 +11,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Plaid
         public override void OnEnable()
         {
             base.OnEnable();
-            _datasList = listClass.BrushList;
+            _datasList = listClass.brushList;
         }
         
         

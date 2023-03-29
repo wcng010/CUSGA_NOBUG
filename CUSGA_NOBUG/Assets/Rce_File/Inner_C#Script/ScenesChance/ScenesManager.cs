@@ -12,7 +12,15 @@ public class ScenesManager :BaseManager<ScenesManager>
     
     private void Update()
     {
- 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if(SceneManager.GetActiveScene().name=="Level1")
+            SceneManager.LoadSceneAsync("Level2");
+            else
+            {
+                SceneManager.LoadSceneAsync("Level3");
+            }
+        }
     }
     
 
