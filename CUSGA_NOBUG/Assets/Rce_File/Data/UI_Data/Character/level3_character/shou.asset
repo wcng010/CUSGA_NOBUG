@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: shou
   m_EditorClassIdentifier: 
   ObjectNames: "\u6536"
-  ObjectUI_Bag: {fileID: 0}
+  ObjectUI_Bag: {fileID: 21300000, guid: 5a56863cb60e74444b4b2f003d033cfc, type: 3}
   ObjectUI_Scenes: {fileID: 0}
   Brush_composition: "\u7AD6\u63D0\u7AD6\u6487\u6A2A\u6487\u637A"
   ObjectNum: 0

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Pixeye.Unity;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -61,7 +60,11 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         [Header("交换台格子颜色")] 
         public Color exchangeColor;
         [Header("开始时需要添加的笔画")] 
-        public string[]beginBrushs;
+        public string[] beginBrushs1;
+
+        public string[] beginBrushs2;
+
+        public string[] beginBrushs3;
          [Header("防遮罩坐标")] 
         public Transform endTransform;
     
@@ -70,7 +73,9 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         [NonSerialized]
         public int UsedCount=0;
 
-        public Transform PlayerTrans;
+        private int _sceneNum;
+
+        public Transform playerTrans;
 
         #region RefreshFunction
         public void RefreshBrush()
@@ -410,8 +415,9 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         }
 
         //开局删除所有笔画和物品
-        private void EnterScenes()
+        private void EnterScenes(int levelNum)
         {
+            Debug.Log(1);
             foreach (var brush in dataListClass.brushList)
             {
                 if (brush != null)
@@ -422,12 +428,18 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                 if (item != null)
                     item.ObjectNum = 0;
             }
-            AddBrushOnBegin();
+
+            switch (levelNum)
+            {
+                case 1:AddBrushOnBegin(beginBrushs1); break;
+                case 2:AddBrushOnBegin(beginBrushs2); break;
+                case 3:AddBrushOnBegin(beginBrushs3); break;
+            }
             EnterScenesAndClearBrush();
             EnterScenesAndClearObject();
         }
 
-        private void AddBrushOnBegin()
+        private void AddBrushOnBegin(string[] beginBrushs)
         {
             foreach (var t in beginBrushs)
             foreach (var t1 in dataListClass.brushList)
@@ -644,25 +656,18 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         /// <param name="nextScene"></param>
         private void ChangeScene(Scene currentScene,Scene nextScene)
         {
+            _sceneNum++;
+            Debug.Log(_sceneNum);
             ClearObjectData(dataListClass.objectList);
-            string _scenesName = SceneManager.GetActiveScene().name;
-            switch (_scenesName)
+            string scenesName = SceneManager.GetActiveScene().name;
+            switch (scenesName)
             {
-                case"Level1" : LoadObjectData(dataListClass.objectListBuffer1);break;
-                case"Level2" : LoadObjectData(dataListClass.objectListBuffer2);break;
-                case"Level3" : LoadObjectData(dataListClass.objectListBuffer3);break;
+                case"Level1" : LoadObjectData(dataListClass.objectListBuffer1);EnterScenes(1);break;
+                case"Level2" : LoadObjectData(dataListClass.objectListBuffer2);EnterScenes(2);break;
+                case"Level3" : LoadObjectData(dataListClass.objectListBuffer3);EnterScenes(3);break;
                 default:Debug.LogError("Error");
                     break;
             }
-            EnterScenes();
-        }
-        
-
-
-        private void Start()
-        {
-            RefreshBrush();
-            RefreshObject();
             RefreshObject();
         }
 

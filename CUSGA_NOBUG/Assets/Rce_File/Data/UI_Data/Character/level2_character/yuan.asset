@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: yuan
   m_EditorClassIdentifier: 
   ObjectNames: "\u9E22"
-  ObjectUI_Bag: {fileID: 0}
+  ObjectUI_Bag: {fileID: 21300000, guid: 34281449ecdc8b44f80888aba8d09083, type: 3}
   ObjectUI_Scenes: {fileID: 0}
   Brush_composition: "\u659C\u94A9\u70B9\u6487\u6A2A\u6298\u94A9\u70B9\u7AD6\u6298\u6298\u94A9\u6A2A"
-  ObjectNum: 0
+  ObjectNum: 2
   Decomposition:
   - "\u6A2A"
   - "\u659C\u94A9"

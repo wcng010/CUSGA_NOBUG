@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ri
   m_EditorClassIdentifier: 
   ObjectNames: "\u65E5"
-  ObjectUI_Bag: {fileID: 0}
+  ObjectUI_Bag: {fileID: 21300000, guid: 736aa5f17d6d37e4ba37378cbff3267e, type: 3}
   ObjectUI_Scenes: {fileID: 0}
   Brush_composition: "\u7AD6\u6A2A\u6298\u6A2A\u6A2A"
   ObjectNum: 0

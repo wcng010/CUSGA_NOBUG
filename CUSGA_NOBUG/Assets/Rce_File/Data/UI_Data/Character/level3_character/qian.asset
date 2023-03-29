@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: qian
   m_EditorClassIdentifier: 
   ObjectNames: "\u94B1"
-  ObjectUI_Bag: {fileID: 0}
+  ObjectUI_Bag: {fileID: 21300000, guid: e77fbd72dd8c9db40bf22674e45e992a, type: 3}
   ObjectUI_Scenes: {fileID: 0}
   Brush_composition: 
   ObjectNum: 0

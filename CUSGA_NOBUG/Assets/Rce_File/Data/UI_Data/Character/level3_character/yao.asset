@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: yao
   m_EditorClassIdentifier: 
   ObjectNames: "\u836F"
-  ObjectUI_Bag: {fileID: 0}
+  ObjectUI_Bag: {fileID: 21300000, guid: 931fcdf14c7a664478a46f57d08c0098, type: 3}
   ObjectUI_Scenes: {fileID: 0}
   Brush_composition: 
   ObjectNum: 0

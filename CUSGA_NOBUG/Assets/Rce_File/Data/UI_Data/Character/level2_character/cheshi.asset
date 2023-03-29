@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: cheshi
   m_EditorClassIdentifier: 
   ObjectNames: "\u5319"
-  ObjectUI_Bag: {fileID: 0}
+  ObjectUI_Bag: {fileID: 21300000, guid: a4da350a9001cea41a6dc044223a9c61, type: 3}
   ObjectUI_Scenes: {fileID: 0}
   Brush_composition: "\u7AD6\u6A2A\u6298\u6A2A\u6A2A\u7AD6\u6A2A\u6487\u637A\u6487\u7AD6\u5F2F\u94A9"
-  ObjectNum: 0
+  ObjectNum: 1
   Decomposition:
   - "\u7AD6"
   - "\u6A2A\u6298"

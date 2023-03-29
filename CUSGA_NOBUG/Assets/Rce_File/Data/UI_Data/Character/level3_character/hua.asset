@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: hua
   m_EditorClassIdentifier: 
   ObjectNames: "\u82B1"
-  ObjectUI_Bag: {fileID: 0}
+  ObjectUI_Bag: {fileID: 21300000, guid: 4c23b0840fe0da541a27440aaccbfe71, type: 3}
   ObjectUI_Scenes: {fileID: 0}
   Brush_composition: "\u6A2A\u7AD6\u7AD6\u6487\u7AD6\u6487\u7AD6\u5F2F\u94A9"
   ObjectNum: 0
