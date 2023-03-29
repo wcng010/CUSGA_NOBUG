@@ -19,7 +19,7 @@ public class Envelop_Update : MonoBehaviour
     IEnumerator  UpdateEnvelop()
     {
         _sceneName = SceneManager.GetActiveScene().name;
-        foreach (var level in BagManager.Instance.dataListClass.EnvelopList)
+        foreach (var level in BagManager.Instance.dataListClass.envelopList)
         {
             if (level &&  String.Compare(level.LevelName, _sceneName, StringComparison.Ordinal)==0)
             {

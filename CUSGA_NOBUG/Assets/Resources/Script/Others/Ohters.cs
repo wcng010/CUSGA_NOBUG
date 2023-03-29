@@ -43,7 +43,7 @@ public class Ohters<T> : MonoBehaviour where T : class
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                dataList = BagManager.Instance.dataListClass.ObjectList;
+                dataList = BagManager.Instance.dataListClass.objectList;
                 for (int i = 0; i < needStrings.Length; i++)
                 {
                     for (int j = 0; j < dataList.Count; j++)

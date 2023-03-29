@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Pixeye.Unity;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 namespace Rce_File.Inner_C_Script.BagSystem.Manager
 {
@@ -68,15 +71,16 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         public int UsedCount=0;
 
         public Transform PlayerTrans;
-        
+
+        #region RefreshFunction
         public void RefreshBrush()
         {
             BagClear();
             brushList.Clear();
-            for (int i = 0; i<dataListClass.BrushList.Count; i++)
+            for (int i = 0; i<dataListClass.brushList.Count; i++)
             {
                 brushList.Add(Instantiate(plaid));
-                brushList[i].GetComponent<Plaid_UI>().InitPlaid(dataListClass.BrushList[i],i);
+                brushList[i].GetComponent<Plaid_UI>().InitPlaid(dataListClass.brushList[i],i);
                 if (i <= boundaryWorkbag)
                 {
                     brushList[i].transform.SetParent(plaidGrid.transform);
@@ -98,11 +102,10 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         {
             BagClear();
             objectList.Clear();
-            for (int i = 0; i<dataListClass.ObjectList.Count; i++)
+            for (int i = 0; i<dataListClass.objectList.Count; i++)
             {
-            
                 objectList.Add(Instantiate(plaidObject));
-                objectList[i].GetComponent<Object_UI>().InitObject(dataListClass.ObjectList[i],i);
+                objectList[i].GetComponent<Object_UI>().InitObject(dataListClass.objectList[i],i);
                 if(i<boundaryInventory)
                 {
                     objectList[i].transform.SetParent(plaidGrid.transform);
@@ -118,40 +121,10 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                 }
             }
         }
-
-        private void BagClear()
-        {
-            for (int i = 0; i < syntheticGrid.childCount; i++)
-            {
-                Destroy(syntheticGrid.GetChild(i).gameObject);
-            }
-            for (int i = 0; i < decomposeGrid.childCount; i++)
-            {
-                Destroy(decomposeGrid.GetChild(i).gameObject);
-            }
-
-            for (int i = 0; i < plaidGrid.transform.childCount; i++) //遍历所有格子
-            {
-                Destroy(plaidGrid.transform.GetChild(i).gameObject);
-            }
+        #endregion
         
-            for (int i = 0; i < exchangeGrid.childCount; i++) //遍历所有格子
-            {
-                Destroy(exchangeGrid.GetChild(i).gameObject);
-            }
 
-            for (int i = 0; i < inventoryGrid.childCount; i++)
-            {
-                Destroy(inventoryGrid.GetChild(i).gameObject);
-            }
-        }
-
-        /* public void ExitClear()
-    {
-        BagClear();
-        brushList.Clear();
-        ObjectList.Clear();
-    }*/
+        #region BagFunction
         /// <summary>
         /// 合成函数
         /// 遍历所有data道具，使得匹配道具数量加1.
@@ -166,7 +139,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
             }
 
             _checkString = String.Concat(_checkStrings);//将检测数组组合成一个String变量，对应加数的字
-            foreach (var item in dataListClass.ObjectList)//遍历字数组，对应字Num++
+            foreach (var item in dataListClass.objectList)//遍历字数组，对应字Num++
             {
                 if (item  && string.Compare(item.Brush_composition,_checkString,StringComparison.Ordinal)==0)
                 {
@@ -188,10 +161,10 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
             if (objectList[boundaryInventory].GetComponent<Object_UI>().IsActive)
             {
                 var index = 0;
-                for (; index < dataListClass.ObjectList[boundaryInventory].Decomposition.Length; index++)
+                for (; index < dataListClass.objectList[boundaryInventory].Decomposition.Length; index++)
                 {
-                    var t1 = dataListClass.ObjectList[boundaryInventory].Decomposition[index];
-                    foreach (var t in dataListClass.BrushList)
+                    var t1 = dataListClass.objectList[boundaryInventory].Decomposition[index];
+                    foreach (var t in dataListClass.brushList)
                     {
                         if (t != null &&
                             string.Compare(t1,
@@ -203,19 +176,19 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                     }
                 }
 
-                if (dataListClass.ObjectList[boundaryInventory].ObjectNum == 1&&!CorrectionFor_12O(dataListClass.ObjectList[boundaryInventory].ObjectNames))
+                if (dataListClass.objectList[boundaryInventory].ObjectNum == 1&&!CorrectionFor_12O(dataListClass.objectList[boundaryInventory].ObjectNames))
                 {
                     for (int i = 0; i <boundaryWorkbag ; i++)
                     {
-                        if (dataListClass.ObjectList[i] == null)
+                        if (dataListClass.objectList[i] == null)
                         {
-                            dataListClass.ObjectList[i] = dataListClass.ObjectList[boundaryInventory];
-                            dataListClass.ObjectList[i].ObjectNum--;
+                            dataListClass.objectList[i] = dataListClass.objectList[boundaryInventory];
+                            dataListClass.objectList[i].ObjectNum--;
                             break;
                         }
                     }
                 }
-                dataListClass.ObjectList[boundaryInventory] = null;
+                dataListClass.objectList[boundaryInventory] = null;
                 RefreshObject();
             }
             else//分解失败
@@ -256,7 +229,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                     RefreshBrush();
                     return;
                 }*/
-                dataListClass.BrushList[boundaryExchange+3]._brushNum++;
+                dataListClass.brushList[boundaryExchange+3]._brushNum++;
                 CorrectionFor_01B(boundaryExchange+1,boundaryExchange+3,boundaryWorkbag+1,boundaryExchange+1);
                 RefreshBrush();
             }
@@ -265,21 +238,10 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                 Debug.Log("兑换失败");
             }
         }
+        #endregion
+        
 
-        private int FindSameBrush(int firstIndex,int endIndex,string findName)
-        {
-            for (int i=firstIndex;i<endIndex;i++)
-            {
-                if (dataListClass.BrushList[i]&&
-                    string.Compare(dataListClass.BrushList[i]._brushName,findName,StringComparison.Ordinal)==0)
-                {
-                    return i;
-                }
-            }
-            return 0;
-        }
-
-
+        #region CorrectionFunction
         /// <summary>
         /// 数量0，1的处理
         /// 遍历firstIndex到endIndex数组
@@ -296,27 +258,27 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
             
             for (int i = firstIndex; i < endIndex&&brushList[i].GetComponent<Plaid_UI>().IsActive&&i!=avoidIndex; i++)//背包中没有该笔画，且当前笔画数为1，但另一个地方有这个笔画
             {
-                if (dataListClass.BrushList[i]._brushNum == 1 //当前笔画数为1
-                    && !CorrectionFor_12B(dataListClass.BrushList[i]._brushName)//背包中没有笔画
-                    && FindSameBrush(firstIndex2, endIndex2, dataListClass.BrushList[i]._brushName) != 0)//firstIndex2到endIndex2中没有笔画
+                if (dataListClass.brushList[i]._brushNum == 1 //当前笔画数为1
+                    && !CorrectionFor_12B(dataListClass.brushList[i]._brushName)//背包中没有笔画
+                    && FindSameBrush(firstIndex2, endIndex2, dataListClass.brushList[i]._brushName) != 0)//firstIndex2到endIndex2中没有笔画
                 {
-                    dataListClass.BrushList[i] = null;
+                    dataListClass.brushList[i] = null;
                     continue;
                 }
 
-                if (dataListClass.BrushList[i]._brushNum == 1&&!CorrectionFor_12B(dataListClass.BrushList[i]._brushName))//背包中没有该笔画，且当前笔画数为1.将这个笔画空格与背包笔画空格移位。
+                if (dataListClass.brushList[i]._brushNum == 1&&!CorrectionFor_12B(dataListClass.brushList[i]._brushName))//背包中没有该笔画，且当前笔画数为1.将这个笔画空格与背包笔画空格移位。
                 {
                     for (int j = 0; j <= boundaryWorkbag; j++)
                     {
-                        if (dataListClass.BrushList[j] == null)
+                        if (dataListClass.brushList[j] == null)
                         {
-                            dataListClass.BrushList[j] = dataListClass.BrushList[i];
+                            dataListClass.brushList[j] = dataListClass.brushList[i];
                             break;
                         }
                     }
-                    dataListClass.BrushList[i]._brushNum--;
+                    dataListClass.brushList[i]._brushNum--;
                 }
-                dataListClass.BrushList[i] = null;
+                dataListClass.brushList[i] = null;
             }
             //RefreshBrush();
         }
@@ -346,7 +308,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         {
             for (int i = 0; i <= boundaryWorkbag; i++)
             {
-                if (dataListClass.BrushList[i]&&tempName == dataListClass.BrushList[i]._brushName)
+                if (dataListClass.brushList[i]&&tempName == dataListClass.brushList[i]._brushName)
                 {
                     return true;
                 }
@@ -359,7 +321,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         {
             for (int i = 0; i < boundaryInventory; i++)
             {
-                if (dataListClass.ObjectList[i] != null && tempName == dataListClass.ObjectList[i].ObjectNames)
+                if (dataListClass.objectList[i] != null && tempName == dataListClass.objectList[i].ObjectNames)
                 {
                     return true;
                 }
@@ -367,52 +329,95 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
 
             return false;
         }
+        
+        public void ChangeCorrection()
+        {
+            if (dataListClass.brushList[boundaryExchange+1]&&
+                dataListClass.brushList[boundaryExchange+3]&&
+                (dataListClass.brushList[boundaryExchange + 1]._brushName ==
+                 dataListClass.brushList[boundaryExchange + 3]._brushName))
+            {
+                dataListClass.brushList[boundaryExchange + 3]._brushNum++;
+                dataListClass.brushList[boundaryExchange + 3] = null;
+            }
 
+            if (dataListClass.brushList[boundaryExchange + 2]  &&
+                dataListClass.brushList[boundaryExchange + 3]  &&
+                (dataListClass.brushList[boundaryExchange + 2]._brushName ==
+                 dataListClass.brushList[boundaryExchange + 3]._brushName))
+            {
+                dataListClass.brushList[boundaryExchange + 3]._brushNum++;
+                dataListClass.brushList[boundaryExchange + 3] = null;
+            }
+        }
+
+        #endregion
+
+        private void BagClear()
+        {
+            for (int i = 0; i < syntheticGrid.childCount; i++)
+            {
+                Destroy(syntheticGrid.GetChild(i).gameObject);
+            }
+            for (int i = 0; i < decomposeGrid.childCount; i++)
+            {
+                Destroy(decomposeGrid.GetChild(i).gameObject);
+            }
+
+            for (int i = 0; i < plaidGrid.transform.childCount; i++) //遍历所有格子
+            {
+                Destroy(plaidGrid.transform.GetChild(i).gameObject);
+            }
+        
+            for (int i = 0; i < exchangeGrid.childCount; i++) //遍历所有格子
+            {
+                Destroy(exchangeGrid.GetChild(i).gameObject);
+            }
+
+            for (int i = 0; i < inventoryGrid.childCount; i++)
+            {
+                Destroy(inventoryGrid.GetChild(i).gameObject);
+            }
+        }
+        
+        
+        
+        private int FindSameBrush(int firstIndex,int endIndex,string findName)
+        {
+            for (int i=firstIndex;i<endIndex;i++)
+            {
+                if (dataListClass.brushList[i]&&
+                    string.Compare(dataListClass.brushList[i]._brushName,findName,StringComparison.Ordinal)==0)
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
+        
         //删除从FirstIndex到EndIndex与MyID相同的元素
         public void DeleteSameObject(int myID,int firstIndex,int endIndex)
         {
             for (int i = firstIndex; i < endIndex; i++)
             {
-                if (dataListClass.ObjectList[i] != null &&
-                    dataListClass.ObjectList[i].ObjectNames == dataListClass.ObjectList[myID].ObjectNames&&i!=myID)
+                if (dataListClass.objectList[i] != null &&
+                    dataListClass.objectList[i].ObjectNames == dataListClass.objectList[myID].ObjectNames&&i!=myID)
                 {
-                    dataListClass.ObjectList[i].ObjectNum++;
-                    dataListClass.ObjectList[i] = null;
+                    dataListClass.objectList[i].ObjectNum++;
+                    dataListClass.objectList[i] = null;
                 }
-            }
-        }
-
-        public void ChangeCorrection()
-        {
-            if (dataListClass.BrushList[boundaryExchange+1]&&
-                dataListClass.BrushList[boundaryExchange+3]&&
-                (dataListClass.BrushList[boundaryExchange + 1]._brushName ==
-                 dataListClass.BrushList[boundaryExchange + 3]._brushName))
-            {
-                dataListClass.BrushList[boundaryExchange + 3]._brushNum++;
-                dataListClass.BrushList[boundaryExchange + 3] = null;
-            }
-
-            if (dataListClass.BrushList[boundaryExchange + 2]  &&
-                dataListClass.BrushList[boundaryExchange + 3]  &&
-                (dataListClass.BrushList[boundaryExchange + 2]._brushName ==
-                 dataListClass.BrushList[boundaryExchange + 3]._brushName))
-            {
-                dataListClass.BrushList[boundaryExchange + 3]._brushNum++;
-                dataListClass.BrushList[boundaryExchange + 3] = null;
             }
         }
 
         //开局删除所有笔画和物品
         private void EnterScenes()
         {
-            foreach (var brush in dataListClass.BrushList)
+            foreach (var brush in dataListClass.brushList)
             {
                 if (brush != null)
                     brush._brushNum = 0;
             }
-
-            foreach (var item in dataListClass.ObjectList)
+            foreach (var item in dataListClass.objectList)
             {
                 if (item != null)
                     item.ObjectNum = 0;
@@ -425,7 +430,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         private void AddBrushOnBegin()
         {
             foreach (var t in beginBrushs)
-            foreach (var t1 in dataListClass.BrushList)
+            foreach (var t1 in dataListClass.brushList)
             {
                 if (t == null) return;
                 if (t1 != null &&
@@ -445,7 +450,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         {
             for (int i = 0; i <= boundaryWorkbag; i++)
             {
-                if (!dataListClass.BrushList[i])//找到空格子，向后方找非空格子，将非空格子与空格子换位，若后无非空格子则结束
+                if (!dataListClass.brushList[i])//找到空格子，向后方找非空格子，将非空格子与空格子换位，若后无非空格子则结束
                 {
                     if (!FindOtherBrush(i, boundaryWorkbag+1))
                     {
@@ -456,7 +461,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         
             for (int i = 0; i <= boundaryWorkbag; i++)
             {
-                if (dataListClass.BrushList[i]&&dataListClass.BrushList[i]._brushNum==0)//在上面基础上继续排序，01格子
+                if (dataListClass.brushList[i]&&dataListClass.brushList[i]._brushNum==0)//在上面基础上继续排序，01格子
                 {
                     if (!FindFullBrush(i, boundaryWorkbag+1))
                     {
@@ -471,10 +476,10 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         {
             for (int i = firstIndex+1; i < endIndex; i++)
             {
-                if (dataListClass.BrushList[i])
+                if (dataListClass.brushList[i])
                 {
-                    dataListClass.BrushList[firstIndex] = dataListClass.BrushList[i];
-                    dataListClass.BrushList[i] = null;
+                    dataListClass.brushList[firstIndex] = dataListClass.brushList[i];
+                    dataListClass.brushList[i] = null;
                     return true;
                 }
             }
@@ -484,62 +489,51 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         {
             for (int i = firstIndex+1; i < endIndex; i++)
             {
-                if (dataListClass.BrushList[i]&&dataListClass.BrushList[i]._brushNum>0)
+                if (dataListClass.brushList[i]&&dataListClass.brushList[i]._brushNum>0)
                 {
-                    (dataListClass.BrushList[firstIndex], dataListClass.BrushList[i]) = (dataListClass.BrushList[i], dataListClass.BrushList[firstIndex]);
+                    (dataListClass.brushList[firstIndex], dataListClass.brushList[i]) = (dataListClass.brushList[i], dataListClass.brushList[firstIndex]);
                     return true;
                 }
             }
             return false;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public void DeleteSameBrush()
         {
             for (int i = 0; i <= boundaryWorkbag; i++)
             {
-                if(!dataListClass.BrushList[i])
+                if(!dataListClass.brushList[i])
                     continue;
                 for (int j = 0; j <= boundaryWorkbag; j++)
                 {
-                    if (!dataListClass.BrushList[j])
+                    if (!dataListClass.brushList[j])
                         continue;
-                    if (dataListClass.BrushList[i]&&dataListClass.BrushList[j]&&
-                        String.Compare(dataListClass.BrushList[i]._brushName, dataListClass.BrushList[j]._brushName, StringComparison.Ordinal) == 0
+                    if (dataListClass.brushList[i]&&dataListClass.brushList[j]&&
+                        String.Compare(dataListClass.brushList[i]._brushName, dataListClass.brushList[j]._brushName, StringComparison.Ordinal) == 0
                         &&i!=j)
                     {
-                        dataListClass.BrushList[j] = null;
+                        dataListClass.brushList[j] = null;
                     }
                 }
             }
         }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         private void EnterScenesAndClearObject()
         {
-            for (int i = 0; i <dataListClass.ObjectList.Count ; i++)
+            for (int i = 0; i <dataListClass.objectList.Count ; i++)
             {
-                if (!dataListClass.ObjectList[i])
+                if (!dataListClass.objectList[i])
                 {
-                    if (!FindOtherObject(i, dataListClass.ObjectList.Count-1))
+                    if (!FindOtherObject(i, dataListClass.objectList.Count-1))
                     {
                         break;
                     }
                 }
             }
         
-            for (int i = 0; i <dataListClass.ObjectList.Count; i++)
+            for (int i = 0; i <dataListClass.objectList.Count; i++)
             {
-                if (dataListClass.ObjectList[i]&&dataListClass.ObjectList[i].ObjectNum==0)
+                if (dataListClass.objectList[i]&&dataListClass.objectList[i].ObjectNum==0)
                 {
-                    if (!FindFullObject(i, dataListClass.ObjectList.Count-1))
+                    if (!FindFullObject(i, dataListClass.objectList.Count-1))
                     {
                         break;
                     }
@@ -554,7 +548,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         {
             for (int i = 0; i <=boundaryInventory ; i++)
             {
-                if (dataListClass.ObjectList[i] == null)
+                if (dataListClass.objectList[i] == null)
                 {
                     if (!FindOtherObject(i, boundaryInventory))
                     {
@@ -565,7 +559,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         
             for (int i = 0; i <=boundaryInventory; i++)
             {
-                if (dataListClass.ObjectList[i]!=null&&dataListClass.ObjectList[i].ObjectNum==0)
+                if (dataListClass.objectList[i]!=null&&dataListClass.objectList[i].ObjectNum==0)
                 {
                     if (!FindFullObject(i, boundaryInventory))
                     {
@@ -575,16 +569,15 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
             }
 
         }
-    
-
+        
         private bool FindOtherObject(int firstIndex,int endIndex)
         {
             for (int i = firstIndex+1; i <=endIndex; i++)
             {
-                if (dataListClass.ObjectList[i] != null)
+                if (dataListClass.objectList[i] != null)
                 {
-                    dataListClass.ObjectList[firstIndex] = dataListClass.ObjectList[i];
-                    dataListClass.ObjectList[i] = null;
+                    dataListClass.objectList[firstIndex] = dataListClass.objectList[i];
+                    dataListClass.objectList[i] = null;
                     return true;
                 }
             }
@@ -595,9 +588,9 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         {
             for (int i = firstIndex+1; i <=endIndex; i++)
             {
-                if (dataListClass.ObjectList[i]!=null&&dataListClass.ObjectList[i].ObjectNum>0)
+                if (dataListClass.objectList[i]!=null&&dataListClass.objectList[i].ObjectNum>0)
                 {
-                    (dataListClass.ObjectList[firstIndex], dataListClass.ObjectList[i]) = (dataListClass.ObjectList[i], dataListClass.ObjectList[firstIndex]);
+                    (dataListClass.objectList[firstIndex], dataListClass.objectList[i]) = (dataListClass.objectList[i], dataListClass.objectList[firstIndex]);
                     return true;
                 }
             }
@@ -616,12 +609,66 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
             decomposeGrid.GetComponent<Image>().raycastTarget = true;
         }
 
+        
+        private void LoadObjectData(List<ObjectData> objectListBuffer)
+        {
+            for (int i = 0; i < objectListBuffer.Count; i++)
+            {
+                if (objectListBuffer[i])
+                {
+                    dataListClass.objectList[i] = objectListBuffer[i];
+                }
+                else
+                {
+                    Debug.LogError("Error");
+                }
+            }
+        }
+
+        private void ClearObjectData(List<ObjectData> objectDataList)
+        {
+            for (int i = 0; i < objectDataList.Count; i++)
+            {
+                if (!objectDataList[i])
+                {
+                    objectDataList[i] = null;
+                }
+            }
+
+        }
+        
+        /// <summary>
+        /// 转场景时调用，换上新的字，初始化笔画。
+        /// </summary>
+        /// <param name="currentScene"></param>
+        /// <param name="nextScene"></param>
+        private void ChangeScene(Scene currentScene,Scene nextScene)
+        {
+            ClearObjectData(dataListClass.objectList);
+            string _scenesName = SceneManager.GetActiveScene().name;
+            switch (_scenesName)
+            {
+                case"Level1" : LoadObjectData(dataListClass.objectListBuffer1);break;
+                case"Level2" : LoadObjectData(dataListClass.objectListBuffer2);break;
+                case"Level3" : LoadObjectData(dataListClass.objectListBuffer3);break;
+                default:Debug.LogError("Error");
+                    break;
+            }
+            EnterScenes();
+        }
+        
+
 
         private void Start()
-        {   RefreshBrush();
+        {
+            RefreshBrush();
             RefreshObject();
-            EnterScenes();
             RefreshObject();
+        }
+
+        private void OnEnable()
+        {
+            SceneManager.activeSceneChanged += ChangeScene;
         }
     }
 }
