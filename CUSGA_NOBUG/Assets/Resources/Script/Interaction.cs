@@ -32,16 +32,26 @@ public class Interaction : MonoBehaviour
 
     public ObjType_Inter type_Inter = ObjType_Inter.other;
 
+   // private Transform player;
+   // private bool getObjbool;
     void Start()
     {
         index = 0;
         sprite = GetComponent<SpriteRenderer>();
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
 
     private void Update()
     {
         InteractionObj();
+
+        //if (getObjbool)
+        //{
+        //    StartCoroutine(GetObj());
+        //    getObjbool = false;
+        //}
+            
     }
 
     void InteractionObj()
@@ -65,6 +75,13 @@ public class Interaction : MonoBehaviour
             }
         }
     }
+
+    //IEnumerator GetObj()
+    //{
+    //    transform.parent.localScale -= Vector3.one;
+    //    yield return null;
+    //}
+    
 
     public void InteractionChat()
     {
