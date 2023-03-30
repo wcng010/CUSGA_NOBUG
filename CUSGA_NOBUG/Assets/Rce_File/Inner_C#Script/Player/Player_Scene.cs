@@ -12,12 +12,12 @@ public class Player_Scene : MonoBehaviour
     private Rigidbody2D _playerRigid;
     private PlayerBase _player;
     private SpriteRenderer _playerSpriteRenderer;
-    public SpriteRenderer ShadowSpriteRenderer;
-    [Foldout("PlayerTimeline",true)]
-    public PlayableDirector PlayerFront;
-    public PlayableDirector PlayerBack;
-    public PlayableDirector PlayerRight;
-    public PlayableDirector PlayerLeft;
+     public SpriteRenderer shadowSpriteRenderer;
+     [Foldout("PlayerTimeline",true)]
+    public PlayableDirector playerFront;
+    public PlayableDirector playerBack;
+    public PlayableDirector playerRight;
+    public PlayableDirector playerLeft;
     [FormerlySerializedAs("PlayerSprites")] [Header("角色贴图")]
     public Sprite[] playerSprites = new Sprite[4];
     [Header("玩家速度")]
@@ -25,6 +25,7 @@ public class Player_Scene : MonoBehaviour
     protected virtual void OnEnable()
     {
         ComponentGet();
+        DontDestroyOnLoad(this);
     }
     
     protected virtual void Start()
@@ -36,7 +37,7 @@ public class Player_Scene : MonoBehaviour
     {
         _player.PlayerMove();
         SwitchStates();
-        ShadowSpriteRenderer.sprite = _playerSpriteRenderer.sprite;
+        shadowSpriteRenderer.sprite = _playerSpriteRenderer.sprite;
     }
     
     private void ComponentGet()
@@ -50,10 +51,10 @@ public class Player_Scene : MonoBehaviour
         _player = new PlayerBase();
         _player.Init_Rigid(_playerRigid);
         _player.Init_Speed(playerSpeed);
-        _player.Init_PlayerFront(PlayerFront);
-        _player.Init_PlayerBack(PlayerBack);
-        _player.Init_PlayerRight(PlayerRight);
-        _player.Init_PlayerLeft(PlayerLeft);
+        _player.Init_PlayerFront(playerFront);
+        _player.Init_PlayerBack(playerBack);
+        _player.Init_PlayerRight(playerRight);
+        _player.Init_PlayerLeft(playerLeft);
         _player.Init_SpriteRenderer(_playerSpriteRenderer);
     }
 
