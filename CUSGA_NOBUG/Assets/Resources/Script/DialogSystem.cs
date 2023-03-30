@@ -21,6 +21,7 @@ public class DialogSystem : MonoBehaviour
     [Header("UI界面")]
     public Text textLabel;
     public Image faceImage;
+    public Text textName;
 
     [Header("聊天内容出现间隔时间")]
     public float textSpeed = 0.1f;
@@ -30,8 +31,12 @@ public class DialogSystem : MonoBehaviour
 
     [HideInInspector]
     public Sprite otherFace;
+    [HideInInspector]
+    public string otherName;
     [Header("玩家头像")]
     public Sprite playerFace;
+    [Header("玩家姓名")]
+    public string playerName;
 
     private List<string> textList = new List<string>();
     Coroutine Co;
@@ -131,10 +136,12 @@ public class DialogSystem : MonoBehaviour
         {
             case "A":
                 faceImage.sprite = otherFace;
+                textName.text = otherName;
                 index++;
                 break;
             case "B":
                 faceImage.sprite = playerFace;
+                textName.text = playerName;
                 index++;
                 break;
             default:
