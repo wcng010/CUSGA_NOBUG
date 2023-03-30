@@ -15,7 +15,7 @@ D:/CUSGA_Branch/CUSGA_temp
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-1325
+2923
 Successfully changed project path to: D:/CUSGA_Branch/CUSGA_temp
 D:/CUSGA_Branch/CUSGA_temp
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -48,7 +48,7 @@ D:/CUSGA_Branch/CUSGA_temp
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
 AS: AutoStreaming module initializing.
-Refreshing native plugins compatible for Editor in 109.61 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 108.24 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.6f1c1 (07401303b748)
 [Subsystems] Discovering subsystems at path D:/GameDevelopmentTools/Unity/Unity 2021.3.6f1c1/Editor/Data/Resources/UnitySubsystems
@@ -64,89 +64,89 @@ Initialize mono
 Mono path[0] = 'D:/GameDevelopmentTools/Unity/Unity 2021.3.6f1c1/Editor/Data/Managed'
 Mono path[1] = 'D:/GameDevelopmentTools/Unity/Unity 2021.3.6f1c1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/GameDevelopmentTools/Unity/Unity 2021.3.6f1c1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56816
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56776
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/GameDevelopmentTools/Unity/Unity 2021.3.6f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002607 seconds.
+Registered in 0.002739 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 102.35 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 114.12 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.574 seconds
+- Completed reload, in  0.625 seconds
 Domain Reload Profiling:
-	ReloadAssembly (575ms)
-		BeginReloadAssembly (87ms)
+	ReloadAssembly (625ms)
+		BeginReloadAssembly (88ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (388ms)
-			LoadAssemblies (80ms)
+		EndReloadAssembly (432ms)
+			LoadAssemblies (83ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (75ms)
+			SetupTypeCache (95ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (22ms)
-			SetupLoadedEditorAssemblies (244ms)
+			SetupLoadedEditorAssemblies (258ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
+				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (102ms)
+				RefreshPlugins (114ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (96ms)
-				ProcessInitializeOnLoadMethodAttributes (39ms)
+				ProcessInitializeOnLoadAttributes (99ms)
+				ProcessInitializeOnLoadMethodAttributes (38ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.018706 seconds.
+Registered in 0.015878 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image D:\CUSGA_Branch\CUSGA_temp\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image D:\CUSGA_Branch\CUSGA_temp\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 103.42 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 111.09 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.333 seconds
+- Completed reload, in  1.324 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1333ms)
-		BeginReloadAssembly (125ms)
+	ReloadAssembly (1325ms)
+		BeginReloadAssembly (124ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (1087ms)
+			CreateAndSetChildDomain (18ms)
+		EndReloadAssembly (1064ms)
 			LoadAssemblies (132ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (278ms)
+			SetupTypeCache (243ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (61ms)
-			SetupLoadedEditorAssemblies (580ms)
+			RebuildScriptCaches (64ms)
+			SetupLoadedEditorAssemblies (585ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (104ms)
-				BeforeProcessingInitializeOnLoad (116ms)
-				ProcessInitializeOnLoadAttributes (249ms)
-				ProcessInitializeOnLoadMethodAttributes (94ms)
-				AfterProcessingInitializeOnLoad (14ms)
+				RefreshPlugins (111ms)
+				BeforeProcessingInitializeOnLoad (115ms)
+				ProcessInitializeOnLoadAttributes (257ms)
+				ProcessInitializeOnLoadMethodAttributes (83ms)
+				AfterProcessingInitializeOnLoad (15ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 1.07 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 0.87 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 5816 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 68 unused Assets / (2.0 MB). Loaded Objects now: 6258.
-Memory consumption went from 229.9 MB to 227.9 MB.
-Total: 4.576200 ms (FindLiveObjects: 0.638300 ms CreateObjectMapping: 0.249700 ms MarkObjects: 2.704800 ms  DeleteObjects: 0.981800 ms)
+Unloading 66 unused Assets / (1.9 MB). Loaded Objects now: 6284.
+Memory consumption went from 248.9 MB to 247.0 MB.
+Total: 3.649800 ms (FindLiveObjects: 0.438200 ms CreateObjectMapping: 0.318800 ms MarkObjects: 2.536000 ms  DeleteObjects: 0.354900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -159,189 +159,3 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 88146.480508 seconds.
-  path: Assets/Scenes/Prelude.unity
-  artifactKey: Guid(ec380ba0b17c3714fa3b10dfb349b77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Prelude.unity using Guid(ec380ba0b17c3714fa3b10dfb349b77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e341a33dce0b2c0acfcfc844a3df23f') in 0.011126 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 40.086845 seconds.
-  path: Assets/Scenes/Level3.unity
-  artifactKey: Guid(915a6db8c5c6c4149bc4e724bae43d20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level3.unity using Guid(915a6db8c5c6c4149bc4e724bae43d20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1466b526f5ebd529edc537ff7ac3018c') in 0.001609 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.376622 seconds.
-  path: Assets/Scenes/Level4.unity
-  artifactKey: Guid(5b4151a9b0b1c374397c03e448fb7f78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level4.unity using Guid(5b4151a9b0b1c374397c03e448fb7f78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '074fae7e62aea06f0d1b59afd99c1894') in 0.001551 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 24.887062 seconds.
-  path: Assets/Art/level2
-  artifactKey: Guid(19d832d671633ba448ec9a3ef9249cac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2 using Guid(19d832d671633ba448ec9a3ef9249cac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd4a33ca819a63f684872af8f341a7d2') in 0.001981 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.589863 seconds.
-  path: Assets/Art/level2/level2_Character
-  artifactKey: Guid(249d93fc4c0b43e46a2f764b11e70053) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/level2_Character using Guid(249d93fc4c0b43e46a2f764b11e70053) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e32ad4391429fe83bfdc623445c508ee') in 0.002456 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 454.457053 seconds.
-  path: Assets/Scenes/Level2.unity
-  artifactKey: Guid(8425efb4fb15f9541aba33d91deff71a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level2.unity using Guid(8425efb4fb15f9541aba33d91deff71a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '297dc17e56b1627fde16e4ffb4fc7d66') in 0.001703 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 160.098524 seconds.
-  path: Assets/Scenes/Level2.unity
-  artifactKey: Guid(8425efb4fb15f9541aba33d91deff71a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level2.unity using Guid(8425efb4fb15f9541aba33d91deff71a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c49afa51221bccf0beae981a634d2f2') in 0.001529 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 16.495346 seconds.
-  path: Assets/Scenes/Prelude_Profiles
-  artifactKey: Guid(e00268e1c4e204f4ba5b3638daef5cf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Prelude_Profiles using Guid(e00268e1c4e204f4ba5b3638daef5cf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6d12f3de4bb8df9bf24dc3ebafc8598') in 0.009618 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 30.666771 seconds.
-  path: Assets/Scenes/Level2.unity
-  artifactKey: Guid(8425efb4fb15f9541aba33d91deff71a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level2.unity using Guid(8425efb4fb15f9541aba33d91deff71a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60362af5d130fc1faf1f22038a53790f') in 0.001545 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 504.377967 seconds.
-  path: Assets/Art/level1/UI
-  artifactKey: Guid(ed1ec740ff36fed40b693fc77644dbe5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level1/UI using Guid(ed1ec740ff36fed40b693fc77644dbe5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e90f1f4473995ff7aeb84576937e72f4') in 0.001734 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.988818 seconds.
-  path: Assets/Art/level1
-  artifactKey: Guid(e037e2c26937e8a4486a9194eaad4572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level1 using Guid(e037e2c26937e8a4486a9194eaad4572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '916593b13dbd9a977c795ed86f3ce38e') in 0.001782 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.803876 seconds.
-  path: Assets/Art/level2/Texture
-  artifactKey: Guid(0e69be175f33a084692165e800468fba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture using Guid(0e69be175f33a084692165e800468fba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '731fb278ba64d3ab338f9478292f6e6c') in 0.001617 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 88.063899 seconds.
-  path: Assets/Art/level2/Texture/瓦片/草坪.png
-  artifactKey: Guid(1e3a3194474acd5458adb680587df8a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/瓦片/草坪.png using Guid(1e3a3194474acd5458adb680587df8a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1bd894b3147befc15ceeaaaba1e27df') in 0.119048 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 9.219001 seconds.
-  path: Assets/Art/level2/Texture/瓦片/河流.png
-  artifactKey: Guid(5f7de71d1eb667d40be15a9ba3365e97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/瓦片/河流.png using Guid(5f7de71d1eb667d40be15a9ba3365e97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f684deb98b5e37bce3f57863c7752fb9') in 0.055646 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.592415 seconds.
-  path: Assets/Art/level2/Texture/瓦片/河流.png
-  artifactKey: Guid(5f7de71d1eb667d40be15a9ba3365e97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/瓦片/河流.png using Guid(5f7de71d1eb667d40be15a9ba3365e97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '863de9860800deb3084426e7280f3b6b') in 0.076432 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.905003 seconds.
-  path: Assets/Art/level2/Texture/瓦片/河流.png
-  artifactKey: Guid(5f7de71d1eb667d40be15a9ba3365e97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/瓦片/河流.png using Guid(5f7de71d1eb667d40be15a9ba3365e97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75a0fd076c204a3b736872ed31933da1') in 0.072804 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 45.305232 seconds.
-  path: Assets/河流.asset
-  artifactKey: Guid(99475578eda923f4fa0d6632df19cb29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/河流.asset using Guid(99475578eda923f4fa0d6632df19cb29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '603f430e18dab5741a1031a0b5bedfa5') in 0.024014 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2725.784739 seconds.
-  path: Assets/Art/level2/Texture/帐篷.png
-  artifactKey: Guid(c52f9b59d59b65e4d9bbe9c242c7bd8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/帐篷.png using Guid(c52f9b59d59b65e4d9bbe9c242c7bd8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4312fd64e57d9f01da0e6be235f9f157') in 0.089407 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 34.488197 seconds.
-  path: Assets/Art/level2/Texture/石头.png
-  artifactKey: Guid(78dacf0b080b9a145833611e2938f75d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/石头.png using Guid(78dacf0b080b9a145833611e2938f75d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caccd8222ee672af41858137b748315b') in 0.040779 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 8.965849 seconds.
-  path: Assets/Art/level2/Texture/有树叶的树.png
-  artifactKey: Guid(26bbe5c6e846fde4fa5001de2df5ee40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/有树叶的树.png using Guid(26bbe5c6e846fde4fa5001de2df5ee40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99c10849e677c996e0c2da0270661ddd') in 0.042244 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.402199 seconds.
-  path: Assets/Art/level2/Texture/木柴.png
-  artifactKey: Guid(9264b2ae8d90e5a45b8954ecfeeaec13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/木柴.png using Guid(9264b2ae8d90e5a45b8954ecfeeaec13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63150b90379b69e7e37a5ffb1a9a8032') in 0.030375 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.589068 seconds.
-  path: Assets/Art/level2/Texture/风筝.png
-  artifactKey: Guid(529b40393159c2545826e47ccde9debf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/风筝.png using Guid(529b40393159c2545826e47ccde9debf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fea0656ff034ab9cfe739158958fe45b') in 0.030618 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.754471 seconds.
-  path: Assets/Art/level2/Texture/食物.png
-  artifactKey: Guid(86e49e24f4a2bca498445ac904c703c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/食物.png using Guid(86e49e24f4a2bca498445ac904c703c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f393455d25a98300265d621ce9997e6') in 0.026652 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 140.389746 seconds.
-  path: Assets/Art/level2/Texture/光秃秃树.png
-  artifactKey: Guid(2e778194849b5ea4d8e4ffdeef8dad4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/光秃秃树.png using Guid(2e778194849b5ea4d8e4ffdeef8dad4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78addcd5b7041e160327e894e2485c12') in 0.039411 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 124.545263 seconds.
-  path: Assets/Art/level2/Texture/爸爸.png
-  artifactKey: Guid(4fefd956bdbe64f4ab8fb853e202871d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/爸爸.png using Guid(4fefd956bdbe64f4ab8fb853e202871d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8c494b0870da9d7db59e3e4cc724eaf') in 0.029900 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 228.377109 seconds.
-  path: Assets/Art/level2/Texture/鱼竿.png
-  artifactKey: Guid(ea877b1e8661441418c127b9243767bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/鱼竿.png using Guid(ea877b1e8661441418c127b9243767bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'deaae7506e843c1abcaa9e7d2136c26a') in 0.031978 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.421065 seconds.
-  path: Assets/Art/level2/Texture/鱼.png
-  artifactKey: Guid(b6990333cd0ed0743bcafa8ed6404d5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/鱼.png using Guid(b6990333cd0ed0743bcafa8ed6404d5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '569ad8c2312d44055839f00c6040fc09') in 0.021780 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 162.025068 seconds.
-  path: Assets/Art/level2/Texture/水桶.png
-  artifactKey: Guid(c509ebc20b93e0a41a6c5a1a0a54c0a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/水桶.png using Guid(c509ebc20b93e0a41a6c5a1a0a54c0a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fb310e1a6a5578c5ab05c97160b53e1') in 0.026446 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1545.204769 seconds.
-  path: Assets/Art/level2/Texture/车钥匙.png
-  artifactKey: Guid(3bcd86aa45acd514992a0d88086e349b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/车钥匙.png using Guid(3bcd86aa45acd514992a0d88086e349b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e96fbd1ec59331776c7047a0248ea864') in 0.019609 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.538817 seconds.
-  path: Assets/Art/level2/Texture/空桶.png
-  artifactKey: Guid(7765a73a76e0a3c4a9b7118b468c300a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/空桶.png using Guid(7765a73a76e0a3c4a9b7118b468c300a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63cd7be99d36f583d06113f39800e077') in 0.029499 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.120018 seconds.
-  path: Assets/Art/level2/Texture/面包车.png
-  artifactKey: Guid(8a648f61eb001c34b880e478ea01e653) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/level2/Texture/面包车.png using Guid(8a648f61eb001c34b880e478ea01e653) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec0345a2964576bcde262ab9137c427b') in 0.065000 seconds 

@@ -681,7 +681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 385, y: 50.9}
+  m_AnchoredPosition: {x: 385, y: 50.899902}
   m_SizeDelta: {x: 615.13, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5671655447355433571
@@ -1141,6 +1141,19 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 5268066935794594510}
+        m_TargetAssemblyTypeName: Rce_File.Inner_C_Script.BagSystem.Manager.BagManager,
+          Assembly-CSharp
+        m_MethodName: RefreshObject
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1926,6 +1939,7 @@ GameObject:
   - component: {fileID: 5268066935794594507}
   - component: {fileID: 5268066935794594506}
   - component: {fileID: 5268066935794594510}
+  - component: {fileID: 1030484879}
   m_Layer: 5
   m_Name: Bag
   m_TagString: Untagged
@@ -2046,14 +2060,35 @@ MonoBehaviour:
   boundaryExchange: 33
   boundaryInventory: 17
   exchangeColor: {r: 0.7150868, g: 1, b: 0, a: 1}
-  beginBrushs:
+  beginBrushs1:
   - "\u6A2A\u6298\u94A9"
   - "\u6A2A\u6298\u6298\u6487"
   - "\u7AD6\u5F2F\u94A9"
   - "\u7AD6\u63D0"
   - "\u637A"
+  beginBrushs2:
+  - "\u6A2A\u6298\u94A9"
+  - "\u7AD6\u6298\u6298\u94A9"
+  - "\u63D0"
+  - "\u70B9"
+  beginBrushs3:
+  - "\u637A"
   - "\u7AD6\u63D0"
+  - "\u6A2A\u6298\u94A9"
   endTransform: {fileID: 8845735052618700697}
+  playerTrans: {fileID: 0}
+--- !u!114 &1030484879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845735052754113104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4314e791910cb4fa2a10e8649d5c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8845735052944435399
 GameObject:
   m_ObjectHideFlags: 0
