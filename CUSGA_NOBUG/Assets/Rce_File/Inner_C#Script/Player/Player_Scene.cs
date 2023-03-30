@@ -26,6 +26,7 @@ public class Player_Scene : MonoBehaviour
     {
         ComponentGet();
         DontDestroyOnLoad(this);
+        
     }
     
     protected virtual void Start()
