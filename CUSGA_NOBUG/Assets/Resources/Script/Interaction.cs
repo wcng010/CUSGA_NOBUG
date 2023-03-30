@@ -18,7 +18,9 @@ public class Interaction : MonoBehaviour
     public GameObject chatFrame;
     [Header("该物品头像")]
     public Sprite thisFace;
-    [Header("获取的物品名字")]
+    [Header("聊天名字")]
+    public string thisName;
+    [Header("获取的物品字")]
     public string ObjName;
     public bool IsObj;
 
@@ -94,6 +96,7 @@ public class Interaction : MonoBehaviour
                     return;
 
                 DialogSystem.Instance.otherFace = thisFace;
+                DialogSystem.Instance.otherName = thisName;
 
                 switch (type_Inter)
                 {
