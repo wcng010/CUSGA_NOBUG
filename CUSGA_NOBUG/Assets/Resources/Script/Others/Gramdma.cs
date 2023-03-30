@@ -9,7 +9,8 @@ public class Gramdma : Ohters<Gramdma>
 
     private SpriteRenderer sprRen;
 
-    public SpriteRenderer childSpr;
+    public GameObject ShadowSprF;
+    public GameObject ShadowSprC;
     public override void Start()
     {
         base.Start();
@@ -35,7 +36,8 @@ public class Gramdma : Ohters<Gramdma>
         if (sprRen != null && succeed >= needStrings.Length)
         {
             sprRen.sprite = sprite;
-            childSpr.sprite = sprite;
+            ShadowSprF.SetActive(false);
+            ShadowSprC.SetActive(true);
             inter.thisFace = sprite;
         }
             

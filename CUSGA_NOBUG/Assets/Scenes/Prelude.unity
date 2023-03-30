@@ -813,6 +813,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1815803495 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7032729050092487571, guid: 568c3d8966c7d5544942817a3adabc03, type: 3}
+  m_PrefabInstance: {fileID: 1823799138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1823799138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -915,6 +926,14 @@ PrefabInstance:
     - target: {fileID: 4685786053156638663, guid: 568c3d8966c7d5544942817a3adabc03, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685786053156638666, guid: 568c3d8966c7d5544942817a3adabc03, type: 3}
+      propertyPath: textName
+      value: 
+      objectReference: {fileID: 1815803495}
+    - target: {fileID: 4685786053156638666, guid: 568c3d8966c7d5544942817a3adabc03, type: 3}
+      propertyPath: playerName
+      value: "\u5C0F\u660E"
       objectReference: {fileID: 0}
     - target: {fileID: 8627950425710433660, guid: 568c3d8966c7d5544942817a3adabc03, type: 3}
       propertyPath: m_FontData.m_BestFit
@@ -1084,9 +1103,13 @@ MonoBehaviour:
   - {fileID: 4900000, guid: fa248bb1586b54f42a7d6e37b94a34f4, type: 3}
   - {fileID: 4900000, guid: 473b96f9a25f5e8478e5dc849b565bbc, type: 3}
   otherFace:
-  - {fileID: 21300000, guid: 0b413dc48073f684aa4916e7ae4f4139, type: 3}
-  - {fileID: 21300000, guid: d37a4b4249682a64e8992b4df5018e37, type: 3}
-  - {fileID: 21300000, guid: 837612be90954ad4a873d455ab55b3e5, type: 3}
+  - {fileID: 21300000, guid: bb6df1f2c10304e4782d66312928ed3e, type: 3}
+  - {fileID: 21300000, guid: bb6df1f2c10304e4782d66312928ed3e, type: 3}
+  - {fileID: 21300000, guid: b6990333cd0ed0743bcafa8ed6404d5f, type: 3}
+  otherName:
+  - "\u5988\u5988"
+  - "\u5988\u5988"
+  - "\u4F5C\u4E1A\u4ED9\u4EBA"
   background:
   - {fileID: 1846090374}
   - {fileID: 2119303880}

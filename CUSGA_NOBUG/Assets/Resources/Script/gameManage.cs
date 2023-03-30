@@ -14,6 +14,8 @@ public class gameManage : MonoBehaviour
     public TextAsset[] textFile;
     [Header("其他人头像")]
     public Sprite[] otherFace;
+    [Header("其他人名字")]
+    public string[] otherName;
     [Header("背景图片")]
     public GameObject[] background;
 
@@ -67,6 +69,7 @@ public class gameManage : MonoBehaviour
     {
         changeBG = false;
         DialogSystem.Instance.otherFace = otherFace[index];
+        DialogSystem.Instance.otherName = otherName[index];
         DialogSystem.Instance.GetTextFromFile(textFile[index]);
         chatFrame.SetActive(true);
     }
