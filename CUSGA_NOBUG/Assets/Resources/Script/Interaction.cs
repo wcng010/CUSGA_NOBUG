@@ -69,7 +69,11 @@ public class Interaction : MonoBehaviour
                     {
                         dataList[i].ObjectNum++;
                         if (transform.parent != null)
+                        {
                             Destroy(transform.parent.gameObject);
+                            Instantiate(Resources.Load<GameObject>("Prefab/GetObjEff"),transform.position,Quaternion.identity).GetComponent<SpriteRenderer>().sprite = thisFace;
+                        }
+                           
                         break;
                     }
 

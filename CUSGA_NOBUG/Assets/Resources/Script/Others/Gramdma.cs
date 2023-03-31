@@ -11,6 +11,7 @@ public class Gramdma : Ohters<Gramdma>
 
     public GameObject ShadowSprF;
     public GameObject ShadowSprC;
+
     public override void Start()
     {
         base.Start();
@@ -33,8 +34,10 @@ public class Gramdma : Ohters<Gramdma>
     {
         base.FindneedObject();
 
-        if (sprRen != null && succeed >= needStrings.Length)
+        if (sprRen != null && succeed >= needStrings.Length && status)
         {
+            status = false;
+            StartCoroutine(UseObj());
             sprRen.sprite = sprite;
             ShadowSprF.SetActive(false);
             ShadowSprC.SetActive(true);
