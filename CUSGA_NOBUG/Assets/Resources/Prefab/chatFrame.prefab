@@ -251,9 +251,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textLabel: {fileID: 8627950425710433660}
   faceImage: {fileID: 4685786052705734648}
+  textName: {fileID: 7032729050092487571}
   textSpeed: 0.1
   otherFace: {fileID: 0}
+  otherName: 
   playerFace: {fileID: 21300000, guid: a53132f33017c5a47abb5f79e62083ca, type: 3}
+  playerName: "\u5C0F\u660E"
   objT: 2
 --- !u!114 &1823799141
 MonoBehaviour:
@@ -346,8 +349,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 76.76535, y: -7.7797}
-  m_SizeDelta: {x: 620.7319, y: 110.32}
+  m_AnchoredPosition: {x: 76.76535, y: -8.6738}
+  m_SizeDelta: {x: 620.7319, y: 126.6525}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7862780559576328209
 CanvasRenderer:
@@ -379,11 +382,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e0eb4c124380b7e4186e254967b368bf, type: 3}
-    m_FontSize: 35
+    m_FontSize: 33
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
-    m_MaxSize: 42
+    m_MinSize: 3
+    m_MaxSize: 35
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1

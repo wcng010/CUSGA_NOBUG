@@ -12,6 +12,9 @@ public class Ohters<T> : MonoBehaviour where T : class
 
     public string[] needStrings;
 
+    public GameObject[] useGameObj;
+    public Sprite[] useSpriteObj;
+
     private Collider2D coll;
     [HideInInspector]
     public SpriteRenderer spr;
@@ -20,6 +23,7 @@ public class Ohters<T> : MonoBehaviour where T : class
 
     protected int succeed;
     protected bool close = false;
+    protected bool status = true;
     protected List<ObjectData> dataList;
 
     protected virtual void Awake()
@@ -104,5 +108,15 @@ public class Ohters<T> : MonoBehaviour where T : class
         transform.localScale = new Vector3(1, 1, 1);
         inter.index++;
         BagManager.Instance.UsedCount++;
+    }
+
+    public IEnumerator UseObj()
+    {
+        for(int i = 0;i< needStrings.Length;i++)
+        {
+            useGameObj[i].SetActive(true);
+            useGameObj[i].GetComponent<SpriteRenderer>().sprite = useSpriteObj[i];
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }
