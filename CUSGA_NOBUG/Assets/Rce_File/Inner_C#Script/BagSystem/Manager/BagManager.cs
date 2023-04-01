@@ -417,7 +417,6 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         //开局删除所有笔画和物品
         private void EnterScenes(int levelNum)
         {
-            Debug.Log(1);
             foreach (var brush in dataListClass.brushList)
             {
                 if (brush != null)
@@ -657,7 +656,6 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         private void ChangeScene(Scene currentScene,Scene nextScene)
         {
             _sceneNum++;
-            Debug.Log(_sceneNum);
             ClearObjectData(dataListClass.objectList);
             string scenesName = SceneManager.GetActiveScene().name;
             switch (scenesName)

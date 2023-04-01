@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mono.CompilerServices.SymbolWriter;
 using Pixeye.Unity;
+using Rce_File.Inner_C_Script.EventCenter;
 using Rce_File.Inner_C_Script.Player;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -18,24 +20,39 @@ public class Player_Scene : MonoBehaviour
     public PlayableDirector playerBack;
     public PlayableDirector playerRight;
     public PlayableDirector playerLeft;
+    public PlayableDirector levelExit1;
+    public PlayableDirector levelExit2;
+    
     [FormerlySerializedAs("PlayerSprites")] [Header("角色贴图")]
     public Sprite[] playerSprites = new Sprite[4];
     [Header("玩家速度")]
     public float playerSpeed;
+    private Animator _animator;
+    private PlayableGraph _playableGraph;
+    public AnimationClip level2Move;
+    private bool _animationState=false;
+    
     protected virtual void OnEnable()
     {
         ComponentGet();
         DontDestroyOnLoad(this);
-        
+        EventCenter.Subscribe(MyEventType.Level2End,Level2Exit);
     }
-    
+
+    protected void OnDisable()
+    {
+        EventCenter.Unsubscribe(MyEventType.Level2End,Level2Exit);
+    }
+
     protected virtual void Start()
     {
         PlayerInit();
+        _animator = GetComponent<Animator>();
     }
     
     protected void Update()
     {
+        if (_animationState) return;
         _player.PlayerMove();
         SwitchStates();
         shadowSpriteRenderer.sprite = _playerSpriteRenderer.sprite;
@@ -86,6 +103,25 @@ public class Player_Scene : MonoBehaviour
     public virtual void SetSprite(Sprite playerSprite)
     {
         _playerSpriteRenderer.sprite=playerSprite;
+    }
+
+    private void Level2Exit()
+    {
+        StartCoroutine(level2Exit());
+        _animationState = true;
+        levelExit1.Play();
+        AnimationPlayableUtilities.PlayClip(_animator, level2Move, out _playableGraph);
+    }
+
+    IEnumerator level2Exit()
+    {
+        yield return new WaitForSecondsRealtime(5.5f);
+        Debug.Log(1);
+        SetSprite(playerSprites[0]);
+        yield return new WaitForSecondsRealtime(3f);
+        levelExit2.Play();
+        _playableGraph.Destroy();
+        yield return null;
     }
 }
 

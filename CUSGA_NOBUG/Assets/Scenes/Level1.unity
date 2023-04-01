@@ -1396,7 +1396,7 @@ Animator:
   m_GameObject: {fileID: 495380095}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b0297e0e20aa18e42a63a08de6e4921c, type: 2}
+  m_Controller: {fileID: 9100000, guid: c481c576979250c45b3a7a05f4b3086a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2115,7 +2115,7 @@ Animator:
   m_GameObject: {fileID: 571043223}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4daa26378c19f1b4dbe6ada1f1ecfc53, type: 2}
+  m_Controller: {fileID: 9100000, guid: c481c576979250c45b3a7a05f4b3086a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3260,6 +3260,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 10d8e0c85919ded40a816384da3f8586, type: 3}
+    - target: {fileID: 8408000620386787211, guid: 934fd5b36961c0145b5afe48e0b1172b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8408000620386787211, guid: 934fd5b36961c0145b5afe48e0b1172b, type: 3}
       propertyPath: m_SortingOrder
       value: 4
