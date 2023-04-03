@@ -10,6 +10,7 @@ public enum ObjType
 {
     bridge,
     door,
+    father,
     other,
 }
 
@@ -97,6 +98,13 @@ public class DialogSystem : MonoBehaviour
                 case ObjType.door:
                     Door.Instance.spr.enabled = true;
                     TimelineManager.Instance.doorTimeline.Play();
+                    break;
+                case ObjType.father:
+                    if (Father.Instance.inter.index == 0)
+                    {
+                        Father.Instance.GetNeedObject();
+                        Father.Instance.inter.index++;
+                    }                    
                     break;
                 case ObjType.other:
                     break;

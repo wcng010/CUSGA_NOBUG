@@ -10,10 +10,16 @@ public class Ohters<T> : MonoBehaviour where T : class
     private static T instance;
     public static T Instance => instance;
 
+    [Header("需要使用的字")]
     public string[] needStrings;
 
+    [Header("玩家使用的道具")]
     public GameObject[] useGameObj;
     public Sprite[] useSpriteObj;
+
+    [Header("获取物品")]
+    public Sprite GetObj;
+    public string getString;
 
     private Collider2D coll;
     [HideInInspector]
@@ -22,6 +28,7 @@ public class Ohters<T> : MonoBehaviour where T : class
     public Interaction inter;
 
     protected int succeed;
+    protected bool Reserve = false;
     protected bool close = false;
     protected bool status = true;
     protected List<ObjectData> dataList;
@@ -68,6 +75,7 @@ public class Ohters<T> : MonoBehaviour where T : class
 
             if (succeed >= needStrings.Length)
             {
+                if(!Reserve)
                 for (int i = 0; i < needStrings.Length; i++)
                 {
                     for (int j = 0; j < dataList.Count; j++)
@@ -82,7 +90,6 @@ public class Ohters<T> : MonoBehaviour where T : class
                         }
 
                     }
-
                 }
 
                 inter.index++;
@@ -92,6 +99,20 @@ public class Ohters<T> : MonoBehaviour where T : class
         }
 
         
+    }
+
+    public virtual void GetNeedObject()
+    {
+        dataList = BagManager.Instance.dataListClass.objectList;
+        for (int i = 0; i < dataList.Count; i++)
+        {
+            if (dataList[i] != null && dataList[i].ObjectNames == getString.ToString())
+            {
+                Instantiate(Resources.Load<GameObject>("Prefab/GetObjEff"), transform.position, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = GetObj;
+                dataList[i].ObjectNum++;
+                break;
+            }
+        }
     }
 
     public virtual void ShowObject()
