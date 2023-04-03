@@ -2,15 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class River : Ohters<River>
+public class Mother : Ohters<Mother>
 {
-    public Sprite Flsh;
     void Update()
     {
-        //FindneedObject();
-
         inter.InteractionChat();
     }
-
-
 }
