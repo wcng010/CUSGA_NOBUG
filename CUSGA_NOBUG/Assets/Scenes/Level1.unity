@@ -958,6 +958,7 @@ MonoBehaviour:
   bucketTimeline: {fileID: 0}
   fishingRodTimeline: {fileID: 0}
   leafTimeline: {fileID: 0}
+  TreeTimeline: {fileID: 0}
 --- !u!4 &280559503
 Transform:
   m_ObjectHideFlags: 0
@@ -2550,7 +2551,7 @@ SpriteRenderer:
   m_SortingLayerID: -1221598389
   m_SortingLayer: 3
   m_SortingOrder: 3
-  m_Sprite: {fileID: 377164091, guid: f3b9d3345d313ba4b8146fc18fe8feb2, type: 3}
+  m_Sprite: {fileID: 1331049232, guid: f20331831fcacca49b3bac4f284e444f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -32369,7 +32370,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.39, y: 8.69}
+    oldSize: {x: 1.49, y: 8.76}
     newSize: {x: 1.39, y: 8.69}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -32419,7 +32420,7 @@ SpriteRenderer:
   m_SortingLayerID: -1221598389
   m_SortingLayer: 3
   m_SortingOrder: 4
-  m_Sprite: {fileID: 377164091, guid: f3b9d3345d313ba4b8146fc18fe8feb2, type: 3}
+  m_Sprite: {fileID: 1331049232, guid: f20331831fcacca49b3bac4f284e444f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -32463,7 +32464,8 @@ MonoBehaviour:
   - "\u952E"
   useGameObj:
   - {fileID: 249300514}
-  useSpriteObj: []
+  useSpriteObj:
+  - {fileID: 21300000, guid: 4cf370d2c4e6d4b4f84bd26eea9587f2, type: 3}
   GetObj: {fileID: 0}
   getString: 
   spr: {fileID: 0}
@@ -32471,7 +32473,7 @@ MonoBehaviour:
   stopCar:
   - {fileID: 111549894}
   - {fileID: 2042553510}
-  sprite: {fileID: -1250185292, guid: f3b9d3345d313ba4b8146fc18fe8feb2, type: 3}
+  sprite: {fileID: 866186361, guid: f20331831fcacca49b3bac4f284e444f, type: 3}
 --- !u!114 &1701537722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32501,7 +32503,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.39, y: 8.69}
+    oldSize: {x: 1.49, y: 8.76}
     newSize: {x: 1.39, y: 8.69}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

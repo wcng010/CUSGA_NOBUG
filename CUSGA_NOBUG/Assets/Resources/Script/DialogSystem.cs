@@ -12,6 +12,8 @@ public enum ObjType
     door,
     father,
     other,
+    leaf,
+    river,
 }
 
 public class DialogSystem : MonoBehaviour
@@ -47,9 +49,12 @@ public class DialogSystem : MonoBehaviour
 
     [HideInInspector]
     public ObjType objT = ObjType.other;
+
+    public SpriteRenderer[] level2UseObj; 
     
     private void Awake()
     {
+        objT = ObjType.other;
         instance = this;
         this.gameObject.SetActive(false);
     }
@@ -98,6 +103,16 @@ public class DialogSystem : MonoBehaviour
                 case ObjType.door:
                     Door.Instance.spr.enabled = true;
                     TimelineManager.Instance.doorTimeline.Play();
+                    break;
+                case ObjType.leaf:
+                    level2UseObj[2].enabled = true;
+                    TimelineManager.Instance.leafTimeline.Play();
+                    break;
+                case ObjType.river:
+                    level2UseObj[0].enabled = true;
+                    level2UseObj[1].enabled = true;
+                    TimelineManager.Instance.bucketTimeline.Play();
+                    TimelineManager.Instance.fishingRodTimeline.Play();
                     break;
                 case ObjType.father:
                     if (Father.Instance.inter.index == 0)

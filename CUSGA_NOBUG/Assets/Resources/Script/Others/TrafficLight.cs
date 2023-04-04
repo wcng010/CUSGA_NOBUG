@@ -31,6 +31,8 @@ public class TrafficLight : Ohters<TrafficLight>
             stopCar[1].layer = LayerMask.NameToLayer("Car");
             stopCar[1].GetComponent<Collider2D>().isTrigger = true;
 
+            StartCoroutine(UseObj());
+            inter.index++;
             //结束
         }
     }

@@ -16,8 +16,8 @@ public class TimelineManager :BaseManager<TimelineManager>
    public PlayableDirector TreeTimeline;
    private void Start()
    {
-      bucketTimeline.Play();
-      fishingRodTimeline.Play();
-      leafTimeline.Play();
+      //bucketTimeline.Play();
+      //fishingRodTimeline.Play();
+      //leafTimeline.Play();
    }
 }
