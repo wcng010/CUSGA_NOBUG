@@ -10,6 +10,8 @@ public enum ObjType_Inter
     door,
     father,
     other,
+    leaf,
+    river,
 }
 
 public class Interaction : MonoBehaviour
@@ -113,6 +115,12 @@ public class Interaction : MonoBehaviour
                         break;
                     case ObjType_Inter.father:
                         DialogSystem.Instance.objT = ObjType.father;
+                        break;
+                    case ObjType_Inter.leaf:
+                        DialogSystem.Instance.objT = ObjType.leaf;
+                        break;
+                    case ObjType_Inter.river:
+                        DialogSystem.Instance.objT = ObjType.river;
                         break;
                     case ObjType_Inter.other:
                         DialogSystem.Instance.objT = ObjType.other;

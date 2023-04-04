@@ -12,6 +12,7 @@ public class Tree : Ohters<Tree>
     [SerializeField] [Header("叶子Transform")]
     private Transform leafTrans;
 
+    public GameObject[] Shadow;
     public override void Start()
     {
         base.Start();
@@ -47,6 +48,8 @@ public class Tree : Ohters<Tree>
         yield return new WaitForSecondsRealtime(1f);
         spr.color = new Color(255, 255, 255, 0);
         inter.index++;
+        Shadow[0].SetActive(false);
+        Shadow[1].SetActive(true);
         BagManager.Instance.UsedCount++;
         yield return null;
     }
