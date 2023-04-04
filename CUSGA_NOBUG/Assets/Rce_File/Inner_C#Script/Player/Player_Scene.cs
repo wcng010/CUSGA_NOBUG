@@ -35,7 +35,6 @@ public class Player_Scene : MonoBehaviour
     protected virtual void OnEnable()
     {
         ComponentGet();
-        DontDestroyOnLoad(this);
         EventCenter.Subscribe(MyEventType.Level2End,Level2Exit);
     }
 
@@ -121,7 +120,7 @@ public class Player_Scene : MonoBehaviour
         yield return new WaitForSecondsRealtime(3f);
         levelExit2.Play();
         _playableGraph.Destroy();
-        yield return null;
+        yield return new WaitForSecondsRealtime(0.5f);
     }
 }
 

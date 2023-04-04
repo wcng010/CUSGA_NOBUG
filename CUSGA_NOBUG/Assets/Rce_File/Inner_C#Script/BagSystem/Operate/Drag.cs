@@ -240,6 +240,8 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
                                if (listClass.objectList[i] == null)
                                {
                                    listClass.objectList[i] = listClass.objectList[_currentItemID];
+                                   if(listClass.objectList[_currentItemID].ObjectNames!="竿"&&
+                                      listClass.objectList[_currentItemID].ObjectNames!="桶")
                                    listClass.objectList[_currentItemID].ObjectNum -= 1;
                                    listClass.objectList[_currentItemID] = null;
                                    BagManager.Instance.UsedCount = 0;
@@ -251,6 +253,10 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
                                    return;
                                }
                        }
+
+                       if (listClass.objectList[_currentItemID].ObjectNames == "竿" ||
+                           listClass.objectList[_currentItemID].ObjectNames == "桶")
+                           listClass.objectList[_clickItemID].ObjectNum+= 1;
                        listClass.objectList[_currentItemID] = null;
                        BagManager.Instance.RefreshObject();
                    }

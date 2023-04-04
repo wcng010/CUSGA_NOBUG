@@ -42,6 +42,7 @@ public class Tree : Ohters<Tree>
             || TimelineManager.Instance.leafTimeline.state != PlayState.Playing ||
             string.Compare(objectBag, "叶", StringComparison.Ordinal) != 0)
             yield break;
+        BagManager.Instance.UsedCount++;
         TimelineManager.Instance.leafTimeline.Stop();
         leafTrans.gameObject.SetActive(false);
         TimelineManager.Instance.TreeTimeline.Play();
@@ -50,7 +51,6 @@ public class Tree : Ohters<Tree>
         inter.index++;
         Shadow[0].SetActive(false);
         Shadow[1].SetActive(true);
-        BagManager.Instance.UsedCount++;
         yield return null;
     }
 }

@@ -49,7 +49,7 @@ public class River : Ohters<River>
             || TimelineManager.Instance.bucketTimeline.state != PlayState.Playing ||
             string.Compare(objectBag, "桶", StringComparison.Ordinal) != 0) return;
         TimelineManager.Instance.bucketTimeline.Stop();
-        bucket.gameObject.SetActive(false);//水桶失活，要做水桶进入背包就不用失活
+        bucket.gameObject.SetActive(false);//水桶失活
         index_flsh_water++;
         Instantiate(Resources.Load<GameObject>("Prefab/GetObjEff"), 
             Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,10)), Quaternion.identity).GetComponent<SpriteRenderer>().sprite = water;
@@ -61,7 +61,6 @@ public class River : Ohters<River>
         if (string.Compare(objectName, "FishingRod", StringComparison.Ordinal) != 0
             || TimelineManager.Instance.fishingRodTimeline.state != PlayState.Playing ||
             string.Compare(objectBag, "竿", StringComparison.Ordinal) != 0) return;
-        Debug.Log(1);
         TimelineManager.Instance.fishingRodTimeline.Stop();
         fishingRod.gameObject.SetActive(false);//水桶失活，要做水桶进入背包就不用失活
         index_flsh_water++;
@@ -69,4 +68,9 @@ public class River : Ohters<River>
             Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)), Quaternion.identity).GetComponent<SpriteRenderer>().sprite = Flsh;
         BagManager.Instance.UsedCount++;
     }
+
+  
+
+
+
 }
