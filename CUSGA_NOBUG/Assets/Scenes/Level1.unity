@@ -955,6 +955,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bridgeTimeline: {fileID: 2046774441}
   doorTimeline: {fileID: 564631019}
+  bucketTimeline: {fileID: 0}
+  fishingRodTimeline: {fileID: 0}
+  leafTimeline: {fileID: 0}
 --- !u!4 &280559503
 Transform:
   m_ObjectHideFlags: 0
@@ -34431,6 +34434,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5604040260094944644, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
   m_PrefabInstance: {fileID: 919523199926635566}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2016239131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8845735052754113104, guid: a31d3e689ca6cff4193402e025860716, type: 3}
+  m_PrefabInstance: {fileID: 1812657337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2016239138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016239131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1207091057fe64b9de00e518a44344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2042553510
 GameObject:
   m_ObjectHideFlags: 0

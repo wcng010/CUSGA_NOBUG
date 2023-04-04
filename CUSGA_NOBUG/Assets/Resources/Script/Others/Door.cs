@@ -17,6 +17,12 @@ public class Door : Ohters<Door>
         BagManager.Instance.UseObject += useObject;
     }
 
+
+    public void OnDisable()
+    {
+        BagManager.Instance.UseObject -= useObject;
+    }
+
     void Update()
     {
         //FindneedObject();
@@ -34,7 +40,7 @@ public class Door : Ohters<Door>
 
     protected override void useObject(string objectBag, string objectName)
     {
-        if (string.Compare(objectName, this.gameObject.name, StringComparison.Ordinal) != 0
+        if (string.Compare(objectName, gameObject.name, StringComparison.Ordinal) != 0
             || TimelineManager.Instance.doorTimeline.state != PlayState.Playing ||
             string.Compare(objectBag, "门", StringComparison.Ordinal) != 0)
             return;

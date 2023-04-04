@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectNames: "\u53F6"
   ObjectUI_Bag: {fileID: 21300000, guid: b417244a37e7359449b3bc6221ddc4eb, type: 3}
-  ObjectUI_Scenes: {fileID: 0}
+  ObjectUI_Scenes: {fileID: 21300000, guid: 046e174a0b1f5394d929fac0e20fc55c, type: 3}
   Brush_composition: "\u7AD6\u6A2A\u6298\u6A2A\u6A2A\u7AD6"
   ObjectNum: 1
   Decomposition:
@@ -23,4 +23,4 @@ MonoBehaviour:
   - "\u6A2A"
   - "\u6A2A"
   - "\u7AD6"
-  CanUse: 0
+  CanUse: 1

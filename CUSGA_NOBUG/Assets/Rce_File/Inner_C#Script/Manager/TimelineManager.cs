@@ -10,5 +10,14 @@ public class TimelineManager :BaseManager<TimelineManager>
 { 
    public PlayableDirector bridgeTimeline; 
    public PlayableDirector doorTimeline;
-   
+   public PlayableDirector bucketTimeline;
+   public PlayableDirector fishingRodTimeline;
+   public PlayableDirector leafTimeline;
+   public PlayableDirector TreeTimeline;
+   private void Start()
+   {
+      bucketTimeline.Play();
+      fishingRodTimeline.Play();
+      leafTimeline.Play();
+   }
 }

@@ -17,6 +17,5 @@ public class BaseManager<T> : MonoBehaviour where T : BaseManager<T>
         if (instance != null)
             Destroy(gameObject);
         else instance = (T)this;
-        DontDestroyOnLoad(this);
     }
 }

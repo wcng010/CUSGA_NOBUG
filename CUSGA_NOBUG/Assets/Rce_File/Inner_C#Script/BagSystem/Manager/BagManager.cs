@@ -671,7 +671,8 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
 
         private void OnEnable()
         {
-            SceneManager.activeSceneChanged += ChangeScene;
+            DontDestroyOnLoad(this);
+            SceneManager.activeSceneChanged += ChangeScene;//转场调用
         }
     }
 }

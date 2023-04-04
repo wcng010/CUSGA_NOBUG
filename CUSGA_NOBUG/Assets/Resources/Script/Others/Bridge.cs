@@ -16,6 +16,12 @@ public class Bridge : Ohters<Bridge>
         BagManager.Instance.UseObject += useObject;
     }
 
+    public void OnDisable()
+    {
+        BagManager.Instance.UseObject -= useObject;
+    }
+
+
     void Update()
     {
         //FindneedObject();
