@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Pixeye.Unity;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -77,7 +78,8 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         private int _sceneNumNow;
         [Header("前一个场景号")]
         private int _sceneNumPast;
-
+        [Header("书")] [SerializeField] 
+        private Button bookImage;
         #region RefreshFunction
         public void RefreshBrush()
         {
@@ -188,6 +190,10 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         /// </summary>
         public void Decompose()
         {
+            if (String.CompareOrdinal(dataListClass.objectList[boundaryInventory].ObjectNames, "书") == 0)
+            {
+                bookImage.gameObject.SetActive(true);
+            }
             if (objectList[boundaryInventory].GetComponent<Object_UI>().IsActive)
             {
                 var index = 0;
