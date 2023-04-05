@@ -73,9 +73,10 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         [NonSerialized]
         public int UsedCount=0;
 
-        private int _sceneNum;
-
-        public Transform playerTrans;
+        [Header("当前场景号")] 
+        private int _sceneNumNow;
+        [Header("前一个场景号")]
+        private int _sceneNumPast;
 
         #region RefreshFunction
         public void RefreshBrush()
@@ -101,8 +102,6 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                 }
             }
         }
-    
-
         public void RefreshObject()
         {
             BagClear();
@@ -124,6 +123,32 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                 {
                     objectList[i].transform.SetParent(inventoryGrid);
                 }
+            }
+        }
+        private void BagClear()
+        {
+            for (int i = 0; i < syntheticGrid.childCount; i++)
+            {
+                Destroy(syntheticGrid.GetChild(i).gameObject);
+            }
+            for (int i = 0; i < decomposeGrid.childCount; i++)
+            {
+                Destroy(decomposeGrid.GetChild(i).gameObject);
+            }
+
+            for (int i = 0; i < plaidGrid.transform.childCount; i++) //遍历所有格子
+            {
+                Destroy(plaidGrid.transform.GetChild(i).gameObject);
+            }
+        
+            for (int i = 0; i < exchangeGrid.childCount; i++) //遍历所有格子
+            {
+                Destroy(exchangeGrid.GetChild(i).gameObject);
+            }
+
+            for (int i = 0; i < inventoryGrid.childCount; i++)
+            {
+                Destroy(inventoryGrid.GetChild(i).gameObject);
             }
         }
         #endregion
@@ -358,100 +383,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
 
         #endregion
 
-        private void BagClear()
-        {
-            for (int i = 0; i < syntheticGrid.childCount; i++)
-            {
-                Destroy(syntheticGrid.GetChild(i).gameObject);
-            }
-            for (int i = 0; i < decomposeGrid.childCount; i++)
-            {
-                Destroy(decomposeGrid.GetChild(i).gameObject);
-            }
-
-            for (int i = 0; i < plaidGrid.transform.childCount; i++) //遍历所有格子
-            {
-                Destroy(plaidGrid.transform.GetChild(i).gameObject);
-            }
-        
-            for (int i = 0; i < exchangeGrid.childCount; i++) //遍历所有格子
-            {
-                Destroy(exchangeGrid.GetChild(i).gameObject);
-            }
-
-            for (int i = 0; i < inventoryGrid.childCount; i++)
-            {
-                Destroy(inventoryGrid.GetChild(i).gameObject);
-            }
-        }
-        
-        
-        
-        private int FindSameBrush(int firstIndex,int endIndex,string findName)
-        {
-            for (int i=firstIndex;i<endIndex;i++)
-            {
-                if (dataListClass.brushList[i]&&
-                    string.Compare(dataListClass.brushList[i]._brushName,findName,StringComparison.Ordinal)==0)
-                {
-                    return i;
-                }
-            }
-            return 0;
-        }
-        
-        //删除从FirstIndex到EndIndex与MyID相同的元素
-        public void DeleteSameObject(int myID,int firstIndex,int endIndex)
-        {
-            for (int i = firstIndex; i < endIndex; i++)
-            {
-                if (dataListClass.objectList[i] != null &&
-                    dataListClass.objectList[i].ObjectNames == dataListClass.objectList[myID].ObjectNames&&i!=myID)
-                {
-                    dataListClass.objectList[i].ObjectNum++;
-                    dataListClass.objectList[i] = null;
-                }
-            }
-        }
-
-        //开局删除所有笔画和物品
-        private void EnterScenes(int levelNum)
-        {
-            foreach (var brush in dataListClass.brushList)
-            {
-                if (brush != null)
-                    brush._brushNum = 0;
-            }
-            foreach (var item in dataListClass.objectList)
-            {
-                if (item != null)
-                    item.ObjectNum = 0;
-            }
-
-            switch (levelNum)
-            {
-                case 1:AddBrushOnBegin(beginBrushs1); break;
-                case 2:AddBrushOnBegin(beginBrushs2); break;
-                case 3:AddBrushOnBegin(beginBrushs3); break;
-            }
-            EnterScenesAndClearBrush();
-            EnterScenesAndClearObject();
-        }
-
-        private void AddBrushOnBegin(string[] beginBrushs)
-        {
-            foreach (var t in beginBrushs)
-            foreach (var t1 in dataListClass.brushList)
-            {
-                if (t == null) return;
-                if (t1 != null &&
-                    String.Compare(t1._brushName, t, StringComparison.Ordinal) == 0)
-                {
-                    t1._brushNum++;
-                }
-            }
-        }
-
+        #region BagSort
         /// <summary>
         /// 对所有笔画格子进行排序，
         /// 将空格子移到后方
@@ -480,9 +412,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                     }
                 }
             }
-
         }
-
         private bool FindOtherBrush(int firstIndex,int endIndex)
         {
             for (int i = firstIndex+1; i < endIndex; i++)
@@ -508,25 +438,10 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
             }
             return false;
         }
-        public void DeleteSameBrush()
-        {
-            for (int i = 0; i <= boundaryWorkbag; i++)
-            {
-                if(!dataListClass.brushList[i])
-                    continue;
-                for (int j = 0; j <= boundaryWorkbag; j++)
-                {
-                    if (!dataListClass.brushList[j])
-                        continue;
-                    if (dataListClass.brushList[i]&&dataListClass.brushList[j]&&
-                        String.Compare(dataListClass.brushList[i]._brushName, dataListClass.brushList[j]._brushName, StringComparison.Ordinal) == 0
-                        &&i!=j)
-                    {
-                        dataListClass.brushList[j] = null;
-                    }
-                }
-            }
-        }
+        
+        /// <summary>
+        /// 对所有物品格子进行排序
+        /// </summary>
         private void EnterScenesAndClearObject()
         {
             for (int i = 0; i <dataListClass.objectList.Count ; i++)
@@ -552,6 +467,35 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
             }
         }
 
+        private bool FindOtherObject(int firstIndex,int endIndex)
+        {
+            for (int i = firstIndex+1; i <=endIndex; i++)
+            {
+                if (dataListClass.objectList[i] != null)
+                {
+                    dataListClass.objectList[firstIndex] = dataListClass.objectList[i];
+                    dataListClass.objectList[i] = null;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
+        private bool FindFullObject(int firstIndex,int endIndex)
+        {
+            for (int i = firstIndex+1; i <=endIndex; i++)
+            {
+                if (dataListClass.objectList[i]!=null&&dataListClass.objectList[i].ObjectNum>0)
+                {
+                    (dataListClass.objectList[firstIndex], dataListClass.objectList[i]) = (dataListClass.objectList[i], dataListClass.objectList[firstIndex]);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
         /// <summary>
         /// 由于物品栏不能做排序
         /// </summary>
@@ -580,48 +524,41 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
             }
 
         }
+        #endregion
         
-        private bool FindOtherObject(int firstIndex,int endIndex)
+        #region ChangeSceneFunction
+        /// <summary>
+        /// 转场景时调用，换上新的字，初始化笔画。
+        /// </summary>
+        /// <param name="currentScene"></param>
+        /// <param name="nextScene"></param>
+        private void ChangeScene(Scene currentScene,Scene nextScene)
         {
-            for (int i = firstIndex+1; i <=endIndex; i++)
-            {
-                if (dataListClass.objectList[i] != null)
-                {
-                    dataListClass.objectList[firstIndex] = dataListClass.objectList[i];
-                    dataListClass.objectList[i] = null;
-                    return true;
-                }
+            _sceneNumPast = _sceneNumNow;
+            _sceneNumNow = SceneManager.GetActiveScene().buildIndex;
+            ClearObjectData(dataListClass.objectList);
+            if(_sceneNumPast==3&&_sceneNumNow==4//第二关进入第三关
+               ||_sceneNumNow==4&&_sceneNumPast==4)//第三关内按Restart
+            {   
+                LoadObjectData(dataListClass.objectListBuffer3); 
+                EnterScenes(4);
+                return;
             }
-
-            return false;
-        }
-        private bool FindFullObject(int firstIndex,int endIndex)
-        {
-            for (int i = firstIndex+1; i <=endIndex; i++)
+            switch (_sceneNumNow)
             {
-                if (dataListClass.objectList[i]!=null&&dataListClass.objectList[i].ObjectNum>0)
-                {
-                    (dataListClass.objectList[firstIndex], dataListClass.objectList[i]) = (dataListClass.objectList[i], dataListClass.objectList[firstIndex]);
-                    return true;
-                }
+                case 0 : Destroy(this.gameObject); break;
+                case 1: Destroy(this.gameObject); break;
+                case 6: Destroy(this.gameObject); break;
+                case 2: LoadObjectData(dataListClass.objectListBuffer1);EnterScenes(2);break;
+                case 3: LoadObjectData(dataListClass.objectListBuffer2);EnterScenes(3);break;
             }
-
-            return false;
         }
 
-        public void ToBrushTarget()
-        {
-            syntheticGrid.GetComponent<Image>().raycastTarget = true;
-            decomposeGrid.GetComponent<Image>().raycastTarget = false;
-        }
-        public void ToObjectTarget()
-        {
-            syntheticGrid.GetComponent<Image>().raycastTarget = false;
-            decomposeGrid.GetComponent<Image>().raycastTarget = true;
-        }
-
-        
-        private void LoadObjectData(List<ObjectData> objectListBuffer)
+        /// <summary>
+        /// 将缓冲区data加载到List
+        /// </summary>
+        /// <param name="objectListBuffer"></param>
+        public void LoadObjectData(List<ObjectData> objectListBuffer)
         {
             for (int i = 0; i < objectListBuffer.Count; i++)
             {
@@ -636,6 +573,10 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
             }
         }
 
+        /// <summary>
+        /// 清空物品背包，全为null
+        /// </summary>
+        /// <param name="objectDataList"></param>
         private void ClearObjectData(List<ObjectData> objectDataList)
         {
             for (int i = 0; i < objectDataList.Count; i++)
@@ -648,31 +589,127 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
 
         }
         
-        /// <summary>
-        /// 转场景时调用，换上新的字，初始化笔画。
-        /// </summary>
-        /// <param name="currentScene"></param>
-        /// <param name="nextScene"></param>
-        private void ChangeScene(Scene currentScene,Scene nextScene)
+        //开局删除所有笔画和物品
+        public void EnterScenes(int levelNum)
         {
-            _sceneNum++;
-            ClearObjectData(dataListClass.objectList);
-            string scenesName = SceneManager.GetActiveScene().name;
-            switch (scenesName)
+            foreach (var brush in dataListClass.brushList)
             {
-                case"Level1" : LoadObjectData(dataListClass.objectListBuffer1);EnterScenes(1);break;
-                case"Level2" : LoadObjectData(dataListClass.objectListBuffer2);EnterScenes(2);break;
-                case"Level3" : LoadObjectData(dataListClass.objectListBuffer3);EnterScenes(3);break;
-                default:Debug.LogError("Error");
-                    break;
+                if (brush != null)
+                    brush._brushNum = 0;
             }
+            foreach (var item in dataListClass.objectList)
+            {
+                if (item != null)
+                    item.ObjectNum = 0;
+            }
+
+            switch (levelNum)
+            {
+                case 2:AddBrushOnBegin(beginBrushs1); break;
+                case 3:AddBrushOnBegin(beginBrushs2); break;
+                case 4:AddBrushOnBegin(beginBrushs3); break;
+            }
+            EnterScenesAndClearBrush();
+            EnterScenesAndClearObject();
             RefreshObject();
         }
-
+        /// <summary>
+        /// 开局添加笔画
+        /// </summary>
+        /// <param name="beginBrushs"></param>
+        private void AddBrushOnBegin(string[] beginBrushs)
+        {
+            foreach (var t in beginBrushs)
+            foreach (var t1 in dataListClass.brushList)
+            {
+                if (t == null) return;
+                if (t1 != null &&
+                    String.Compare(t1._brushName, t, StringComparison.Ordinal) == 0)
+                {
+                    t1._brushNum++;
+                }
+            }
+        }
+        
+        #endregion
+        /// <summary>
+        /// 查找firstIndex到endIndex范围内名字相同的笔画
+        /// </summary>
+        /// <param name="firstIndex"></param>
+        /// <param name="endIndex"></param>
+        /// <param name="findName"></param>
+        /// <returns></returns>
+        private int FindSameBrush(int firstIndex,int endIndex,string findName)
+        {
+            for (int i=firstIndex;i<endIndex;i++)
+            {
+                if (dataListClass.brushList[i]&&
+                    string.Compare(dataListClass.brushList[i]._brushName,findName,StringComparison.Ordinal)==0)
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
+        
+        //删除从FirstIndex到EndIndex与MyID相同的物品
+        public void DeleteSameObject(int myID,int firstIndex,int endIndex)
+        {
+            for (int i = firstIndex; i < endIndex; i++)
+            {
+                if (dataListClass.objectList[i] != null &&
+                    dataListClass.objectList[i].ObjectNames == dataListClass.objectList[myID].ObjectNames&&i!=myID)
+                {
+                    dataListClass.objectList[i].ObjectNum++;
+                    dataListClass.objectList[i] = null;
+                }
+            }
+        }
+        
+        /// <summary>
+        /// 删除背包内相同的笔画
+        /// </summary>
+        public void DeleteSameBrush()
+        {
+            for (int i = 0; i <= boundaryWorkbag; i++)
+            {
+                if(!dataListClass.brushList[i])
+                    continue;
+                for (int j = 0; j <= boundaryWorkbag; j++)
+                {
+                    if (!dataListClass.brushList[j])
+                        continue;
+                    if (dataListClass.brushList[i]&&dataListClass.brushList[j]&&
+                        String.Compare(dataListClass.brushList[i]._brushName, dataListClass.brushList[j]._brushName, StringComparison.Ordinal) == 0
+                        &&i!=j)
+                    {
+                        dataListClass.brushList[j] = null;
+                    }
+                }
+            }
+        }
+        public void ToBrushTarget()
+        {
+            syntheticGrid.GetComponent<Image>().raycastTarget = true;
+            decomposeGrid.GetComponent<Image>().raycastTarget = false;
+        }
+        public void ToObjectTarget()
+        {
+            syntheticGrid.GetComponent<Image>().raycastTarget = false;
+            decomposeGrid.GetComponent<Image>().raycastTarget = true;
+        }
+        
+        
+        
         private void OnEnable()
         {
             DontDestroyOnLoad(this);
             SceneManager.activeSceneChanged += ChangeScene;//转场调用
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.activeSceneChanged -= ChangeScene;
         }
     }
 }
