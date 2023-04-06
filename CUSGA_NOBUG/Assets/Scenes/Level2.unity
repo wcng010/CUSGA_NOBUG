@@ -21444,6 +21444,8 @@ MonoBehaviour:
   fishingRodTimeline: {fileID: 355093761}
   leafTimeline: {fileID: 1777643847}
   TreeTimeline: {fileID: 876957909}
+  Level2Exit1: {fileID: 1695985626}
+  Level2Exit2: {fileID: 158435590}
 --- !u!4 &1131224045
 Transform:
   m_ObjectHideFlags: 0
@@ -58440,8 +58442,6 @@ MonoBehaviour:
   playerBack: {fileID: 6940604310346043321}
   playerRight: {fileID: 6940604309391844521}
   playerLeft: {fileID: 6940604309904646771}
-  levelExit1: {fileID: 1695985626}
-  levelExit2: {fileID: 158435590}
   playerSprites:
   - {fileID: 21300000, guid: a53132f33017c5a47abb5f79e62083ca, type: 3}
   - {fileID: 21300000, guid: bb1652f8b1f653d488a36173faa6d4a3, type: 3}

@@ -20,9 +20,7 @@ public class Player_Scene : MonoBehaviour
     public PlayableDirector playerBack;
     public PlayableDirector playerRight;
     public PlayableDirector playerLeft;
-    public PlayableDirector levelExit1;
-    public PlayableDirector levelExit2;
-    
+
     [FormerlySerializedAs("PlayerSprites")] [Header("角色贴图")]
     public Sprite[] playerSprites = new Sprite[4];
     [Header("玩家速度")]
@@ -108,17 +106,15 @@ public class Player_Scene : MonoBehaviour
     {
         StartCoroutine(level2Exit());
         _animationState = true;
-        levelExit1.Play();
+        TimelineManager.Instance.Level2Exit1.Play();
         AnimationPlayableUtilities.PlayClip(_animator, level2Move, out _playableGraph);
     }
 
     IEnumerator level2Exit()
     {
         yield return new WaitForSecondsRealtime(5.5f);
-        Debug.Log(1);
         SetSprite(playerSprites[0]);
         yield return new WaitForSecondsRealtime(3f);
-        levelExit2.Play();
         _playableGraph.Destroy();
         yield return new WaitForSecondsRealtime(0.5f);
     }
