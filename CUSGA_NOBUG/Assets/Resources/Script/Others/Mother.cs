@@ -9,7 +9,15 @@ public class Mother : Ohters<Mother>
     private Transform endTransform;
     void Update()
     {
+        FindneedObject();
+
         inter.InteractionChat();
+
+        if(inter.index == 1)
+        {
+
+        }
+
     }
     private void OnEnable()
     {

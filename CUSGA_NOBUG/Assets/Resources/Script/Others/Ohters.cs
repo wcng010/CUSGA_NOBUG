@@ -18,7 +18,9 @@ public class Ohters<T> : MonoBehaviour where T : class
     public Sprite[] useSpriteObj;
 
     [Header("获取物品")]
-    public Sprite GetObj;
+    public Sprite[] GetObj;
+    [HideInInspector]
+    public int GetObjIndex = 0;
     public string getString;
 
     private Collider2D coll;
@@ -101,14 +103,14 @@ public class Ohters<T> : MonoBehaviour where T : class
         
     }
 
-    public virtual void GetNeedObject()
+    public virtual void GetNeedObject(Vector3 pos)
     {
         dataList = BagManager.Instance.dataListClass.objectList;
         for (int i = 0; i < dataList.Count; i++)
         {
-            if (dataList[i] != null && dataList[i].ObjectNames == getString.ToString())
+            if (dataList[i] != null && dataList[i].ObjectNames == getString.ToString() && GetObjIndex < GetObj.Length)
             {
-                Instantiate(Resources.Load<GameObject>("Prefab/GetObjEff"), transform.position, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = GetObj;
+                Instantiate(Resources.Load<GameObject>("Prefab/GetObjEff"), pos, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = GetObj[GetObjIndex];
                 dataList[i].ObjectNum++;
                 break;
             }

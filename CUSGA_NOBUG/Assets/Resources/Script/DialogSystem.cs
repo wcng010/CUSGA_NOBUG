@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Rce_File.Inner_C_Script.EventCenter;
 
 public delegate void GaussianBlurEvent();
 
@@ -109,15 +110,21 @@ public class DialogSystem : MonoBehaviour
                     TimelineManager.Instance.leafTimeline.Play();
                     break;
                 case ObjType.river:
-                    level2UseObj[0].enabled = true;
-                    level2UseObj[1].enabled = true;
-                    TimelineManager.Instance.bucketTimeline.Play();
-                    TimelineManager.Instance.fishingRodTimeline.Play();
+                    if(River.Instance.inter.index == 0)
+                    {
+                        level2UseObj[0].enabled = true;
+                        TimelineManager.Instance.fishingRodTimeline.Play();
+                    }
+                    else if(River.Instance.inter.index == 1)
+                    {
+                        level2UseObj[1].enabled = true;
+                        TimelineManager.Instance.bucketTimeline.Play();
+                    }                   
                     break;
                 case ObjType.father:
-                    if (Father.Instance.inter.index == 0)
+                    if (Father.Instance.inter.index == 1)
                     {
-                        Father.Instance.GetNeedObject();
+                        Father.Instance.GetNeedObject(Father.Instance.transform.position);
                         Father.Instance.inter.index++;
                     }                    
                     break;

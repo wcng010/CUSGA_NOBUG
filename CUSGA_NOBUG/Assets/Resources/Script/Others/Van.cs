@@ -17,7 +17,7 @@ public class Van : Ohters<Van>
 
         if(inter.index == 1)
         {
-            GetNeedObject();
+            GetNeedObject(transform.position);
             inter.index++;
         }
     }
