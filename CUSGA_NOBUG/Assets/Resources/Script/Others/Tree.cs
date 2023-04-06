@@ -49,6 +49,10 @@ public class Tree : Ohters<Tree>
         yield return new WaitForSecondsRealtime(1f);
         spr.color = new Color(255, 255, 255, 0);
         inter.index++;
+
+        if (Father.Instance.inter.index == 0)
+        Father.Instance.inter.index++;
+
         Shadow[0].SetActive(false);
         Shadow[1].SetActive(true);
         yield return null;

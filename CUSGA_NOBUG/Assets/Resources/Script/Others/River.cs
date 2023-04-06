@@ -8,14 +8,10 @@ using UnityEngine.Serialization;
 
 public class River : Ohters<River>
 {
-    public Sprite Flsh;
-    public Sprite water;
     [Header("桶Transform")] [SerializeField]
     private Transform bucket;
     [Header("竿Transform")] [SerializeField] 
     private Transform fishingRod;
-
-    int index_flsh_water = 0;
 
     public override void Start()
     {
@@ -32,15 +28,7 @@ public class River : Ohters<River>
 
     void Update()
     {
-        //FindneedObject();
-
         inter.InteractionChat();
-
-        if(index_flsh_water == 2)
-        {
-            index_flsh_water++;
-            inter.index++;
-        }
     }
 
     private void UseBucket(string objectBag, string objectName)
@@ -50,9 +38,8 @@ public class River : Ohters<River>
             string.Compare(objectBag, "桶", StringComparison.Ordinal) != 0) return;
         TimelineManager.Instance.bucketTimeline.Stop();
         bucket.gameObject.SetActive(false);//水桶失活
-        index_flsh_water++;
-        Instantiate(Resources.Load<GameObject>("Prefab/GetObjEff"), 
-            Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,10)), Quaternion.identity).GetComponent<SpriteRenderer>().sprite = water;
+        inter.index++;
+        GetNeedObject(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)));
         BagManager.Instance.UsedCount++;
     }
 
@@ -63,9 +50,10 @@ public class River : Ohters<River>
             string.Compare(objectBag, "竿", StringComparison.Ordinal) != 0) return;
         TimelineManager.Instance.fishingRodTimeline.Stop();
         fishingRod.gameObject.SetActive(false);//水桶失活，要做水桶进入背包就不用失活
-        index_flsh_water++;
-        Instantiate(Resources.Load<GameObject>("Prefab/GetObjEff"), 
-            Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)), Quaternion.identity).GetComponent<SpriteRenderer>().sprite = Flsh;
+        inter.index++;
+        GetNeedObject(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)));
+        GetObjIndex++;
+        getString = "水";//后面是桶 水+1
         BagManager.Instance.UsedCount++;
     }
 

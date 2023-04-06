@@ -9,7 +9,16 @@ public class Mother : Ohters<Mother>
     private Transform endTransform;
     void Update()
     {
+        FindneedObject();
+
         inter.InteractionChat();
+
+        if(inter.index == 1)
+        {
+            inter.index++;
+            Level2_Finish.Instance.gameObject.SetActive(true);
+        }
+
     }
     private void OnEnable()
     {

@@ -93,6 +93,13 @@ public class DialogSystem : MonoBehaviour
                 gameManage.Instance.index++;
                 gaussianBlur.Invoke();
             }
+            if(SceneManager.GetActiveScene().name == "Level2")
+            {
+                if(Level2_Finish.Instance.gameObject.activeInHierarchy == true)
+                {
+                    Level2_Finish.Instance.ChatStatu = true;
+                }
+            }
 
             switch (objT)
             {
@@ -109,15 +116,21 @@ public class DialogSystem : MonoBehaviour
                     TimelineManager.Instance.leafTimeline.Play();
                     break;
                 case ObjType.river:
-                    level2UseObj[0].enabled = true;
-                    level2UseObj[1].enabled = true;
-                    TimelineManager.Instance.bucketTimeline.Play();
-                    TimelineManager.Instance.fishingRodTimeline.Play();
+                    if(River.Instance.inter.index == 0)
+                    {
+                        level2UseObj[0].enabled = true;
+                        TimelineManager.Instance.fishingRodTimeline.Play();
+                    }
+                    else if(River.Instance.inter.index == 1)
+                    {
+                        level2UseObj[1].enabled = true;
+                        TimelineManager.Instance.bucketTimeline.Play();
+                    }                   
                     break;
                 case ObjType.father:
-                    if (Father.Instance.inter.index == 0)
+                    if (Father.Instance.inter.index == 1)
                     {
-                        Father.Instance.GetNeedObject();
+                        Father.Instance.GetNeedObject(Father.Instance.transform.position);
                         Father.Instance.inter.index++;
                     }                    
                     break;
@@ -165,6 +178,21 @@ public class DialogSystem : MonoBehaviour
             case "B":
                 faceImage.sprite = playerFace;
                 textName.text = playerName;
+                index++;
+                break;
+            case "2F":
+                faceImage.sprite = Level2_Finish.Instance.otherFace[0];
+                textName.text = Level2_Finish.Instance.otherName[0];
+                index++;
+                break;
+            case "2M":
+                faceImage.sprite = Level2_Finish.Instance.otherFace[1];
+                textName.text = Level2_Finish.Instance.otherName[1];
+                index++;
+                break;
+            case "2S":
+                faceImage.sprite = Level2_Finish.Instance.otherFace[2];
+                textName.text = Level2_Finish.Instance.otherName[2];
                 index++;
                 break;
             default:

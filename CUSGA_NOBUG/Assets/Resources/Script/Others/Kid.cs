@@ -22,6 +22,7 @@ public class Kid : Ohters<Kid>
             StartCoroutine(UseObj());
             inter.index++;
             showObj.SetActive(true);
+            Level2_Finish.Instance.ChatIndex++;
         }
     }
     private void OnEnable()
