@@ -31,7 +31,7 @@ public class ShowGetObj : MonoBehaviour
         Tex = GetComponent<SpriteRenderer>().sprite;
 
         ScaleStart = Vector3.one * 100f / Tex.texture.width;
-        ScaleEnd = Vector3.one * 500f / Tex.texture.width;
+        ScaleEnd = Vector3.one * 400f / Tex.texture.width;
 
         transform.localScale = ScaleStart;
         startPos = transform.position;
