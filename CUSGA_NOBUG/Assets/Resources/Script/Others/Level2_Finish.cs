@@ -44,6 +44,7 @@ public class Level2_Finish : MonoBehaviour
 
     IEnumerator levelEnd()
     {
+        yield return new WaitForSeconds(1.2f);
         EventCenter.Publish(MyEventType.Level2End);
         yield return new WaitForSeconds(5.5f);
         DialogSystem.Instance.GetTextFromFile(textFile[ChatIndex]);
