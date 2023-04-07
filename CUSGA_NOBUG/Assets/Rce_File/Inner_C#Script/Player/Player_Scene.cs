@@ -28,7 +28,7 @@ public class Player_Scene : MonoBehaviour
     private Animator _animator;
     private PlayableGraph _playableGraph;
     public AnimationClip level2Move;
-    private bool _animationState=false;
+    public bool _animationState=false;
     
     protected virtual void OnEnable()
     {
