@@ -97,6 +97,10 @@ public class Ohters<T> : MonoBehaviour where T : class
                 inter.index++;
                 close = true;
             }
+            else
+            {
+                succeed = 0;
+            }
 
         }
 
