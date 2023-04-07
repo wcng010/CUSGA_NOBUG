@@ -16,6 +16,7 @@ public class Mother : Ohters<Mother>
         if(inter.index == 1)
         {
             inter.index++;
+            StartCoroutine(UseObj());
             Level2_Finish.Instance.gameObject.SetActive(true);
         }
 
