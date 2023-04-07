@@ -568,14 +568,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         {
             for (int i = 0; i < objectListBuffer.Count; i++)
             {
-                if (objectListBuffer[i])
-                {
-                    dataListClass.objectList[i] = objectListBuffer[i];
-                }
-                else
-                {
-                    Debug.LogError("Error");
-                }
+                dataListClass.objectList[i] = objectListBuffer[i];
             }
         }
 

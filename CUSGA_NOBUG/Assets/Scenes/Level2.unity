@@ -21484,8 +21484,8 @@ MonoBehaviour:
   fishingRodTimeline: {fileID: 355093761}
   leafTimeline: {fileID: 1777643847}
   TreeTimeline: {fileID: 876957909}
-  Level2Exit1: {fileID: 0}
-  Level2Exit2: {fileID: 0}
+  Level2Exit1: {fileID: 1695985626}
+  Level2Exit2: {fileID: 158435590}
 --- !u!4 &1131224045
 Transform:
   m_ObjectHideFlags: 0
@@ -25152,6 +25152,14 @@ PrefabInstance:
     - target: {fileID: 5268066935794594509, guid: a31d3e689ca6cff4193402e025860716, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268066935794594510, guid: a31d3e689ca6cff4193402e025860716, type: 3}
+      propertyPath: beginBrushs2.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268066935794594510, guid: a31d3e689ca6cff4193402e025860716, type: 3}
+      propertyPath: beginBrushs2.Array.data[4]
+      value: "\u70B9"
       objectReference: {fileID: 0}
     - target: {fileID: 8845735052754113104, guid: a31d3e689ca6cff4193402e025860716, type: 3}
       propertyPath: m_Name
@@ -58649,6 +58657,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fac3f3b46814d4944aee0851444be76e, type: 3}
   playerSpeed: 6
   level2Move: {fileID: 7400000, guid: c8d71ca521c944e4cb3994c3f57e0a13, type: 2}
+  _animationState: 0
 --- !u!95 &6940604308653737756
 Animator:
   serializedVersion: 4

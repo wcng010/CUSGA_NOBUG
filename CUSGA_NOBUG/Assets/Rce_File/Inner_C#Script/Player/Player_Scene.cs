@@ -5,6 +5,7 @@ using Mono.CompilerServices.SymbolWriter;
 using Pixeye.Unity;
 using Rce_File.Inner_C_Script.EventCenter;
 using Rce_File.Inner_C_Script.Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
@@ -28,7 +29,7 @@ public class Player_Scene : MonoBehaviour
     private Animator _animator;
     private PlayableGraph _playableGraph;
     public AnimationClip level2Move;
-    private bool _animationState=false;
+    public bool _animationState=false;
     
     protected virtual void OnEnable()
     {
@@ -39,6 +40,8 @@ public class Player_Scene : MonoBehaviour
     protected void OnDisable()
     {
         EventCenter.Unsubscribe(MyEventType.Level2End,Level2Exit);
+        if(_playableGraph.IsValid())
+            _playableGraph.Destroy();
     }
 
     protected virtual void Start()
@@ -118,5 +121,6 @@ public class Player_Scene : MonoBehaviour
         _playableGraph.Destroy();
         yield return new WaitForSecondsRealtime(0.5f);
     }
+    
 }
 
