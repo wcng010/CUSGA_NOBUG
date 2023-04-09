@@ -959,6 +959,8 @@ MonoBehaviour:
   fishingRodTimeline: {fileID: 0}
   leafTimeline: {fileID: 0}
   TreeTimeline: {fileID: 0}
+  Level2Exit1: {fileID: 0}
+  Level2Exit2: {fileID: 0}
 --- !u!4 &280559503
 Transform:
   m_ObjectHideFlags: 0
@@ -1297,7 +1299,9 @@ MonoBehaviour:
   - "\u95E8"
   useGameObj: []
   useSpriteObj: []
-  GetObj: {fileID: 0}
+  GetObj:
+  - {fileID: 0}
+  GetObjIndex: 0
   getString: 
   spr: {fileID: 0}
   inter: {fileID: 0}
@@ -1429,7 +1433,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420034}
-  - component: {fileID: 519420035}
   - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
@@ -1537,19 +1540,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &519420035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ddda2dbdcb1cc84c94b2058b2fbcbe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerTransform: {fileID: 0}
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2113,7 +2103,9 @@ MonoBehaviour:
   - "\u6865"
   useGameObj: []
   useSpriteObj: []
-  GetObj: {fileID: 0}
+  GetObj:
+  - {fileID: 0}
+  GetObjIndex: 0
   getString: 
   spr: {fileID: 0}
   inter: {fileID: 0}
@@ -3862,7 +3854,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7, y: 10}
+    oldSize: {x: 7, y: 10.011172}
     newSize: {x: 7, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3900,7 +3892,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7, y: 10}
+    oldSize: {x: 7, y: 10.011172}
     newSize: {x: 7, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3978,7 +3970,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7, y: 10}
+    oldSize: {x: 7, y: 10.011172}
     newSize: {x: 7, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -26808,7 +26800,9 @@ MonoBehaviour:
   useSpriteObj:
   - {fileID: 21300000, guid: a123fa5ae12941543824fc477389504d, type: 3}
   - {fileID: 21300000, guid: be37f330cffe8904fb19caf503c167d0, type: 3}
-  GetObj: {fileID: 0}
+  GetObj:
+  - {fileID: 0}
+  GetObjIndex: 0
   getString: 
   spr: {fileID: 0}
   inter: {fileID: 0}
@@ -32486,7 +32480,9 @@ MonoBehaviour:
   - {fileID: 249300514}
   useSpriteObj:
   - {fileID: 21300000, guid: 4cf370d2c4e6d4b4f84bd26eea9587f2, type: 3}
-  GetObj: {fileID: 0}
+  GetObj:
+  - {fileID: 0}
+  GetObjIndex: 0
   getString: 
   spr: {fileID: 0}
   inter: {fileID: 0}
@@ -34200,7 +34196,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7, y: 10}
+    oldSize: {x: 7, y: 10.011172}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
