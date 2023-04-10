@@ -14,6 +14,7 @@ public enum ObjType
     other,
     leaf,
     river,
+    mother_3,
 }
 
 public class DialogSystem : MonoBehaviour
@@ -133,6 +134,13 @@ public class DialogSystem : MonoBehaviour
                         Father.Instance.GetNeedObject(Father.Instance.transform.position);
                         Father.Instance.inter.index++;
                     }                    
+                    break;
+                case ObjType.mother_3:
+                    if (Mother_3.Instance.inter.index == 1)
+                    {
+                        //跳场景动画
+                        //跳场景
+                    }
                     break;
                 case ObjType.other:
                     break;
