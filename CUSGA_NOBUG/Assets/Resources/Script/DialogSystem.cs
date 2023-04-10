@@ -51,8 +51,7 @@ public class DialogSystem : MonoBehaviour
     [HideInInspector]
     public ObjType objT = ObjType.other;
 
-    public SpriteRenderer[] level2UseObj; 
-    
+    public SpriteRenderer[] level2UseObj;
     private void Awake()
     {
         objT = ObjType.other;
@@ -62,10 +61,13 @@ public class DialogSystem : MonoBehaviour
 
     private void OnEnable()
     {
+        if (faceImage.color == new Color(1, 1, 1, 0))
+            faceImage.color = new Color(1, 1, 1, 1);
+
         Face();
         Co = StartCoroutine(SetTextUI());
 
-        if (SceneManager.GetActiveScene().name == "Prelude")
+        if (SceneManager.GetActiveScene().name == "Prelude" || SceneManager.GetActiveScene().name == "EndingScene")
             gaussianBlur +=GameObject.FindWithTag("MainCamera").GetComponent<GaussianBlur>().gaussianFunction;
     }
 
@@ -94,7 +96,13 @@ public class DialogSystem : MonoBehaviour
                 gameManage.Instance.index++;
                 gaussianBlur.Invoke();
             }
-            if(SceneManager.GetActiveScene().name == "Level2")
+            if (SceneManager.GetActiveScene().name == "EndingScene")
+            {
+                gameManage.Instance.changeBG = true;
+                gameManage.Instance.index++;
+                gaussianBlur.Invoke();
+            }
+            if (SceneManager.GetActiveScene().name == "Level2")
             {
                 if(Level2_Finish.Instance.gameObject.activeInHierarchy == true)
                 {
@@ -151,6 +159,7 @@ public class DialogSystem : MonoBehaviour
             objT = ObjType.other;
             this.gameObject.SetActive(false);
 
+           
             return;
         }
     }
@@ -179,13 +188,23 @@ public class DialogSystem : MonoBehaviour
         switch (textList[index].Trim().ToString())
         {
             case "A":
-                faceImage.sprite = otherFace;
-                textName.text = otherName;
+                if(faceImage != null)
+                    faceImage.sprite = otherFace;
+                if(faceImage != null)
+                    textName.text = otherName;
                 index++;
                 break;
             case "B":
+                if (faceImage != null)
+                    faceImage.sprite = playerFace;
+                if (faceImage != null)
+                    textName.text = playerName;
+                index++;
+                break;
+            case "N":
                 faceImage.sprite = playerFace;
-                textName.text = playerName;
+                faceImage.color = new Color(1, 1, 1, 0);
+                textName.text = "";
                 index++;
                 break;
             case "2F":
