@@ -15,7 +15,16 @@ MonoBehaviour:
   ObjectNames: "\u836F"
   ObjectUI_Bag: {fileID: 21300000, guid: 931fcdf14c7a664478a46f57d08c0098, type: 3}
   ObjectUI_Scenes: {fileID: 0}
-  Brush_composition: 
+  Brush_composition: "\u6A2A\u7AD6\u7AD6\u6487\u6298\u6487\u6298\u63D0\u6487\u6A2A\u6298\u94A9\u70B9"
   ObjectNum: 0
-  Decomposition: []
+  Decomposition:
+  - "\u6A2A"
+  - "\u7AD6"
+  - "\u7AD6"
+  - "\u6487\u6298"
+  - "\u6487\u6298"
+  - "\u63D0"
+  - "\u6487"
+  - "\u6A2A\u6298\u94A9"
+  - "\u70B9"
   CanUse: 0

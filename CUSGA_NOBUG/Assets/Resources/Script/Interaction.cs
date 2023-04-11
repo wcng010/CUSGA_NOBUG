@@ -13,6 +13,8 @@ public enum ObjType_Inter
     leaf,
     river,
     mother_3,
+    student,
+    drugstore,
 }
 
 public class Interaction : MonoBehaviour
@@ -128,6 +130,12 @@ public class Interaction : MonoBehaviour
                         break;
                     case ObjType_Inter.other:
                         DialogSystem.Instance.objT = ObjType.other;
+                        break;
+                    case ObjType_Inter.student:
+                        DialogSystem.Instance.objT = ObjType.student;
+                        break;
+                    case ObjType_Inter.drugstore:
+                        DialogSystem.Instance.objT = ObjType.drugstore;
                         break;
                     default:
                         break;
