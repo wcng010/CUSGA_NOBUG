@@ -15,6 +15,8 @@ public enum ObjType
     leaf,
     river,
     mother_3,
+    student,
+    drugstore,
 }
 
 public class DialogSystem : MonoBehaviour
@@ -143,11 +145,26 @@ public class DialogSystem : MonoBehaviour
                         Father.Instance.inter.index++;
                     }                    
                     break;
+                case ObjType.student:
+                    if (Student.Instance.inter.index == 0)
+                    {
+                        Student.Instance.GetNeedObject(Student.Instance.transform.position);
+                        Student.Instance.inter.index++;
+                    }
+                    break;
+                case ObjType.drugstore:
+                    if (Drugstore.Instance.inter.index == 2)
+                    {
+                        Drugstore.Instance.GetNeedObject(Drugstore.Instance.transform.position);
+                        Drugstore.Instance.inter.index++;
+                    }
+                    break;
                 case ObjType.mother_3:
                     if (Mother_3.Instance.inter.index == 1)
                     {
                         //跳场景动画
                         //跳场景
+                        SceneManager.LoadScene("EndingScene");
                     }
                     break;
                 case ObjType.other:
