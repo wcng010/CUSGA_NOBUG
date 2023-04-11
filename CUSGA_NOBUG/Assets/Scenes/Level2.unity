@@ -58708,7 +58708,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c917f8e2cc3d33f47bb16322116053af, type: 2}
+  - {fileID: 2100000, guid: 9ec886e6bcef82c47b6c39934dfdc07c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -58748,8 +58748,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6940604309175013579}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0.1, y: -3.29, z: 0.1}
-  m_LocalScale: {x: 1, y: 0.45, z: 1}
+  m_LocalPosition: {x: 0.83, y: -3.57, z: 0.1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6940604308653737757}
@@ -58765,6 +58765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6940604309175013573}
   - component: {fileID: 6940604309175013572}
+  - component: {fileID: 6940604309175013580}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
@@ -58772,6 +58773,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6940604309175013580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6940604309175013579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6dca6bf7d5925459fa9feca957d18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldHeighthalf: 33.8
+  worldWeighthalf: 54
+  worldCentre: {x: 30, y: 7.4}
 --- !u!4 &6940604309285001992
 Transform:
   m_ObjectHideFlags: 0
