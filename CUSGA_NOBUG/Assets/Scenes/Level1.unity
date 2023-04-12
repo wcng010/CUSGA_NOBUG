@@ -35186,6 +35186,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919523198697990237, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919523198960584837, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919523199393343765, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118351405312210724, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
+      propertyPath: m_Text
+      value: "\n\n     \u6865:\u31D0\u31D1\u31D3\u31D4\u31D3\u31D0\u31D3\u31CF\u31D3\u31D1\n    
+        \u95E8:\u31D4\u31D1\u31C6\n    \u955C:\u31D3\u31D0\u31D0\u31D0\u31D9\u31D4\u31D0\u31D4\u31D3\u31D0\u31D1\u31D5\n   
+        \u31D0\u31D0\u31D3\u31DF\n\u952E:\u31D3\u31D0\u31D0\u31D0\u31D9\u31D5\u31D0\u31D0\u31D0\u31D0\u31D1\u31CB\u31CF\n\u62D0\uFF1A\u31D0\u31DA\u31D2\u31D1\u31D5\u31D0\u31C6\u31D3\n\u706F\uFF1A\u31D4\u31D3\u31D3\u31D4\u31D0\u31DA\n\u67B6\uFF1A\u31C6\u31D3\u31D1\u31D5\u31D0\u31D0\u31D1\u31D3\u31CF\n\u724C\uFF1A\u31D3\u31D1\u31D0\u31D5\u31D3\u31D1\u31D5\u31D0\u31D0\u31D3\u31D0\u31D1\n\u7403\uFF1A\u31D0\u31D0\u31D1\u31D2\u31D0\u31DA\u31D4\u31D2\u31D3\u31CF\u31D4\n\u4EAD\uFF1A\u31D4\u31D0\u31D1\u31D5\u31D0\u31D4\u31D6\u31D0\u31DA\n\u6905\uFF1A\u31D0\u31D1\u31D3\u31D4\u31D0\u31D3\u31D4\u31D0\u31D1\u31D5\u31D0\u31DA\n\n\n<color=red>
+        <size=28>\u6E29\u99A8\u63D0\u793A\uFF1A\u975E\u6545\u4E8B\u8981\n    \u5B57,\u65E0\u6CD5\u5408\u6210</size></color>"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
 --- !u!212 &1239742967347527128

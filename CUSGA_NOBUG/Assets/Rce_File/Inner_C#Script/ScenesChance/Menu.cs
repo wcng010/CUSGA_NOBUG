@@ -23,6 +23,11 @@ public class Menu : MonoBehaviour
     IEnumerator MenuToBeginAtor()
     {
         yield return new WaitForSecondsRealtime(2f);
+
+        PlayerPrefs.SetInt("pen", 0);
+        PlayerPrefs.SetInt("box", 0);
+        PlayerPrefs.SetInt("book", 0);
+
         SceneManager.LoadSceneAsync("Prelude");
     }
 
@@ -97,7 +102,14 @@ public class Menu : MonoBehaviour
             BagManager.Instance.EnterScenes(4);
             yield break;
         }
+
+        PlayerPrefs.SetInt("pen", 0);
+        PlayerPrefs.SetInt("box", 0);
+        PlayerPrefs.SetInt("book", 0);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+       
     }
 
 
