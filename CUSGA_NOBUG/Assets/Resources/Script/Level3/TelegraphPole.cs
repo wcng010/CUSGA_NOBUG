@@ -10,6 +10,9 @@ public class TelegraphPole : Ohters<TelegraphPole>
 {
     [SerializeField]
     private Sprite fullPoleSpr;
+
+    public GameObject shadow;
+    public GameObject shadow1;
     private void OnEnable()
     {
         BagManager.Instance.UseObject += useObject;
@@ -35,6 +38,9 @@ public class TelegraphPole : Ohters<TelegraphPole>
         spr.color = new Color(255, 255, 255, 1f);
         transform.localScale = new Vector3(1, 1, 1);
         inter.index++;
+        shadow.SetActive(false);
+        shadow1.SetActive(true);
+        Drugstore.Instance.inter.index++;
         BagManager.Instance.UsedCount++;
         TimelineManager.Instance.PoleTimeline.Stop();
     }
