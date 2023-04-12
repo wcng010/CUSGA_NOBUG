@@ -15,6 +15,7 @@ public enum ObjType_Inter
     mother_3,
     student,
     drugstore,
+    telegraphPole,
 }
 
 public class Interaction : MonoBehaviour
@@ -29,6 +30,9 @@ public class Interaction : MonoBehaviour
     [Header("获取的物品字")]
     public string ObjName;
     public bool IsObj;
+
+    [Header("重新加载场景不保留物品")]
+    public bool IsScene;
 
     [Header("聊天内容")]
     public TextAsset[] textFile;
@@ -76,6 +80,9 @@ public class Interaction : MonoBehaviour
                         dataList[i].ObjectNum++;
                         if (transform.parent != null)
                         {
+                            if (IsScene)
+                                transform.parent.gameObject.GetComponent<SceneObj>().Get();
+
                             Destroy(transform.parent.gameObject);
                             Instantiate(Resources.Load<GameObject>("Prefab/GetObjEff"),transform.position,Quaternion.identity).GetComponent<SpriteRenderer>().sprite = thisFace;
                         }
@@ -112,6 +119,9 @@ public class Interaction : MonoBehaviour
                 {
                     case ObjType_Inter.bridge:
                         DialogSystem.Instance.objT = ObjType.bridge;
+                        break;
+                    case ObjType_Inter.telegraphPole:
+                        DialogSystem.Instance.objT = ObjType.telegraphPole;
                         break;
                     case ObjType_Inter.door:
                         DialogSystem.Instance.objT = ObjType.door;

@@ -95,17 +95,18 @@ public class Menu : MonoBehaviour
     {
         menuEffect.Play();
         yield return new WaitForSecondsRealtime(2);
+
+        PlayerPrefs.SetInt("pen", 0);
+        PlayerPrefs.SetInt("box", 0);
+        PlayerPrefs.SetInt("book", 0);
+
         if (SceneManager.GetActiveScene().name=="Level4")//第四关ReStart进入第三关
         {
             SceneManager.LoadScene("Level3");
             BagManager.Instance.LoadObjectData(BagManager.Instance.dataListClass.objectListBuffer3);
             BagManager.Instance.EnterScenes(4);
             yield break;
-        }
-
-        PlayerPrefs.SetInt("pen", 0);
-        PlayerPrefs.SetInt("box", 0);
-        PlayerPrefs.SetInt("book", 0);
+        }     
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 

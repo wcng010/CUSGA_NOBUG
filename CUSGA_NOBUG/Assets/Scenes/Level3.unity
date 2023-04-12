@@ -651,6 +651,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}
+      propertyPath: IsScene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}
       propertyPath: ObjName
       value: "\u76D2"
       objectReference: {fileID: 0}
@@ -779,6 +783,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}
       propertyPath: IsObj
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}
+      propertyPath: IsScene
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}
@@ -2923,6 +2931,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}
       propertyPath: IsObj
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}
+      propertyPath: IsScene
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}

@@ -17,6 +17,7 @@ public enum ObjType
     mother_3,
     student,
     drugstore,
+    telegraphPole,
 }
 
 public class DialogSystem : MonoBehaviour
@@ -117,6 +118,9 @@ public class DialogSystem : MonoBehaviour
                 case ObjType.bridge:
                     Bridge.Instance.spr.enabled = true;
                     TimelineManager.Instance.bridgeTimeline.Play();
+                    break;
+                case ObjType.telegraphPole:
+                    TimelineManager.Instance.PoleTimeline.Play();
                     break;
                 case ObjType.door:
                     Door.Instance.spr.enabled = true;
