@@ -34,7 +34,7 @@ public class SceneObj : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    public void Get()
     {
         switch (obj)
         {
