@@ -16,10 +16,5 @@ public class TimelineManager :BaseManager<TimelineManager>
    public PlayableDirector TreeTimeline;
    public PlayableDirector Level2Exit1;
    public PlayableDirector Level2Exit2;
-   private void Start()
-   {
-      //bucketTimeline.Play();
-      //fishingRodTimeline.Play();
-      //leafTimeline.Play();
-   }
+   public PlayableDirector PoleTimeline;
 }

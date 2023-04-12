@@ -221,7 +221,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Operate
                    Collider2D coll = Physics2D.OverlapCircle(screenPos, 2f, (1 << 9));
                    if (coll)
                    {
-                       //Debug.Log(coll.name);
+                       Debug.Log(coll.name);
                        BagManager.Instance.UseObject.Invoke(listClass.objectList[_currentItemID].ObjectNames,coll.name);
                        if (BagManager.Instance.UsedCount == 0)//没有接触到物品
                        {
