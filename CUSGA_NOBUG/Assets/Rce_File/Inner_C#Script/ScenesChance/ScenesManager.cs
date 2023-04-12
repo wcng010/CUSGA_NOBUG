@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ScenesManager :BaseManager<ScenesManager>
 {
     // Start is called before the first frame update
-    private int sceneNum=3;
+    private int sceneNum=0;
     //TODO:NeedToDelete
     private void Update()
     {
@@ -20,6 +20,11 @@ public class ScenesManager :BaseManager<ScenesManager>
         {
             SceneManager.LoadScene("Level3");
         }
+    }
+
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
     }
 
     public void MainMenu()

@@ -17,4 +17,5 @@ public class TimelineManager :BaseManager<TimelineManager>
    public PlayableDirector Level2Exit1;
    public PlayableDirector Level2Exit2;
    public PlayableDirector PoleTimeline;
+   public PlayableDirector PassTimeline;
 }
