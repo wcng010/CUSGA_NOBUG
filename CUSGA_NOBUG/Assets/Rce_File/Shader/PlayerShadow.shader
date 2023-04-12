@@ -4,7 +4,10 @@ Shader "Unity Shaders/MyShader/PlayerShadow"
         {
             // No culling or depth
             Cull Off ZWrite Off ZTest Always
+            //ZWrite Off 
+            //Blend SrcFactor DstFactor
             Blend SrcAlpha OneMinusSrcAlpha
+            //Blend SrcFactor DstFactor
             Tags { "Queue"="Transparent" "RenderType"="Opaque" }
             Pass
             {
