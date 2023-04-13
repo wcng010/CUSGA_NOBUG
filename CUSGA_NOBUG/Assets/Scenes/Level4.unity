@@ -11406,6 +11406,7 @@ MonoBehaviour:
   Level2Exit1: {fileID: 0}
   Level2Exit2: {fileID: 0}
   PoleTimeline: {fileID: 813348347}
+  PassTimeline: {fileID: 0}
 --- !u!4 &697809389
 Transform:
   m_ObjectHideFlags: 0

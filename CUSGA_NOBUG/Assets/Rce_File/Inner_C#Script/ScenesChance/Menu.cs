@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Rce_File.Inner_C_Script.BagSystem.Manager;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,8 @@ public class Menu : MonoBehaviour
     private GameObject settingEffect;
     [SerializeField]
     private PlayableDirector menuEffect;
+
+    [SerializeField] private GameObject settingEffect1;
     public void MenuToLevel1()
     {
         StartCoroutine(MenuToBeginAtor());
@@ -22,12 +25,16 @@ public class Menu : MonoBehaviour
 
     IEnumerator MenuToBeginAtor()
     {
+        settingEffect1.SetActive(true);    
         yield return new WaitForSecondsRealtime(2f);
-
+        settingEffect1.SetActive(false);
+        settingPanel.SetActive(false);
+        settingEffect.SetActive(true);
+        TimelineManager.Instance.PassTimeline.Play();
+        yield return new WaitForSecondsRealtime(5f);
         PlayerPrefs.SetInt("pen", 0);
         PlayerPrefs.SetInt("box", 0);
         PlayerPrefs.SetInt("book", 0);
-
         SceneManager.LoadSceneAsync("Prelude");
     }
 

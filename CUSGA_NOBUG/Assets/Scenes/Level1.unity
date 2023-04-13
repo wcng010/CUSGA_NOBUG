@@ -32687,6 +32687,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1080
       objectReference: {fileID: 0}
+    - target: {fileID: 7847291704487526464, guid: dc389a40ff9bb59429f45a2016373632, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7847291704487526466, guid: dc389a40ff9bb59429f45a2016373632, type: 3}
       propertyPath: m_Name
       value: EndPass
@@ -32778,6 +32782,14 @@ PrefabInstance:
     - target: {fileID: 7847291704487526470, guid: dc389a40ff9bb59429f45a2016373632, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7847291704487526471, guid: dc389a40ff9bb59429f45a2016373632, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7847291704487526471, guid: dc389a40ff9bb59429f45a2016373632, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc389a40ff9bb59429f45a2016373632, type: 3}
@@ -35368,7 +35380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919523198011755427, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919523198011755454, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
       propertyPath: m_Camera
@@ -35469,6 +35481,14 @@ PrefabInstance:
     - target: {fileID: 919523199393343765, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919523199671585357, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312288062807649519, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
+      propertyPath: passTime
+      value: 2.75
       objectReference: {fileID: 0}
     - target: {fileID: 9118351405312210724, guid: ddfa50c02caf9764799bd4841ed4d726, type: 3}
       propertyPath: m_Text
