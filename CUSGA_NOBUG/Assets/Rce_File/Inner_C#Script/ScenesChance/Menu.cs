@@ -7,11 +7,14 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField]
     private GameObject settingPanel;
+    [SerializeField]
+    private Button startBut;
     [SerializeField]
     private GameObject settingEffect;
     [SerializeField]
@@ -27,11 +30,13 @@ public class Menu : MonoBehaviour
     {
         settingEffect1.SetActive(true);    
         yield return new WaitForSecondsRealtime(2f);
+        startBut.interactable = false;
         settingEffect1.SetActive(false);
         settingPanel.SetActive(false);
         settingEffect.SetActive(true);
         TimelineManager.Instance.PassTimeline.Play();
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(4.5f);
+        startBut.interactable = true;
         PlayerPrefs.SetInt("pen", 0);
         PlayerPrefs.SetInt("box", 0);
         PlayerPrefs.SetInt("book", 0);

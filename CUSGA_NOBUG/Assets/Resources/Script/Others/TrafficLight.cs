@@ -8,6 +8,9 @@ public class TrafficLight : Ohters<TrafficLight>
 
     public Sprite sprite;
 
+    [HideInInspector]
+    public bool IsOk = false;
+
     private SpriteRenderer sprRen;
 
     public override void Start()
@@ -18,22 +21,25 @@ public class TrafficLight : Ohters<TrafficLight>
 
     void Update()
     {
-        FindneedObject();
-
-        inter.InteractionChat();
-
-        if(inter.index == 1 && Input.GetKeyDown(KeyCode.F))
+        if(IsOk)
         {
-            sprRen.sprite = sprite;
-            stopCar[0].layer = LayerMask.NameToLayer("Car");
-            stopCar[0].GetComponent<Collider2D>().isTrigger = true;
+            FindneedObject();
 
-            stopCar[1].layer = LayerMask.NameToLayer("Car");
-            stopCar[1].GetComponent<Collider2D>().isTrigger = true;
+            inter.InteractionChat();
 
-            StartCoroutine(UseObj());
-            inter.index++;
-            //结束
-        }
+            if (inter.index == 1 && Input.GetKeyDown(KeyCode.F))
+            {
+                sprRen.sprite = sprite;
+                stopCar[0].layer = LayerMask.NameToLayer("Car");
+                stopCar[0].GetComponent<Collider2D>().isTrigger = true;
+
+                stopCar[1].layer = LayerMask.NameToLayer("Car");
+                stopCar[1].GetComponent<Collider2D>().isTrigger = true;
+
+                StartCoroutine(UseObj());
+                inter.index++;
+                //结束
+            }
+        }       
     }
 }

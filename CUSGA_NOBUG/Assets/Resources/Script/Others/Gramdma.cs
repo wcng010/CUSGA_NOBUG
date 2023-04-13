@@ -23,6 +23,7 @@ public class Gramdma : Ohters<Gramdma>
         if ( inter.index == 1 && !inter.chatFrame.activeInHierarchy)
         {
             inter.index++;
+            TrafficLight.Instance.IsOk = true;
         }
 
         FindneedObject();
