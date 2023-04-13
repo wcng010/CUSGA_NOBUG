@@ -16,7 +16,14 @@ public class ChangeBK : MonoBehaviour
 
    public void loadScene()
    {
-       StartCoroutine(RceChangeEffect());
+       if (SceneManager.GetActiveScene().name == "Level4")
+           SceneManager.LoadScene("Level3");
+       else if(SceneManager.GetActiveScene().name != "EndingScene")
+           SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+       else
+       {
+           SceneManager.LoadScene(0);
+       }
    }
    
    IEnumerator RceChangeEffect()
@@ -32,4 +39,11 @@ public class ChangeBK : MonoBehaviour
            SceneManager.LoadScene(0);
        }
    }
+
+   public void loadSceneNew()
+   {
+       StartCoroutine(RceChangeEffect());
+   }
+
+
 }
