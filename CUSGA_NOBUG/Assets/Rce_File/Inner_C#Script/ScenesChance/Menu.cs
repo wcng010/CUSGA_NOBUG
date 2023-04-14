@@ -64,7 +64,13 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("pen", 0);
         PlayerPrefs.SetInt("box", 0);
         PlayerPrefs.SetInt("book", 0);
+        PlayerPrefs.SetInt("flower", 0);
+        PlayerPrefs.SetInt("uncle", 0);
+        PlayerPrefs.SetInt("aunt", 0);
+        PlayerPrefs.SetInt("student", 0);
         PlayerPrefs.SetInt("Drugstore", 0);
+        PlayerPrefs.SetInt("TelegraphPole", 0);
+        PlayerPrefs.SetString("TelegraphPole", "false");
         SceneManager.LoadSceneAsync("Prelude");
     }
 
@@ -169,7 +175,13 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("pen", 0);
         PlayerPrefs.SetInt("box", 0);
         PlayerPrefs.SetInt("book", 0);
+        PlayerPrefs.SetInt("flower", 0);
+        PlayerPrefs.SetInt("uncle", 0);
+        PlayerPrefs.SetInt("aunt", 0);
+        PlayerPrefs.SetInt("student", 0);
         PlayerPrefs.SetInt("Drugstore", 0);
+        PlayerPrefs.SetInt("TelegraphPole", 0);
+        PlayerPrefs.SetString("TelegraphPole", "false");
 
         if (SceneManager.GetActiveScene().name=="Level4")//第四关ReStart进入第三关
         {

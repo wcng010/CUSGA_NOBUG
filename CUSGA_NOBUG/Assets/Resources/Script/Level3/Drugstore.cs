@@ -13,8 +13,6 @@ public class Drugstore : Ohters<Drugstore>
 
     void Update()
     {
-        if (PlayerPrefs.GetInt("Drugstore", 0) != inter.index)
-            PlayerPrefs.SetInt("Drugstore", inter.index);
 
         if(inter.index == 1)
         FindneedObject();

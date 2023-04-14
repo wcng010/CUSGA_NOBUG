@@ -121,6 +121,7 @@ public class DialogSystem : MonoBehaviour
                     break;
                 case ObjType.telegraphPole:
                     TimelineManager.Instance.PoleTimeline.Play();
+                    PlayerPrefs.SetString("TelegraphPole", "true");
                     break;
                 case ObjType.door:
                     Door.Instance.spr.enabled = true;
@@ -154,6 +155,7 @@ public class DialogSystem : MonoBehaviour
                     {
                         Student.Instance.GetNeedObject(Student.Instance.transform.position);
                         Student.Instance.inter.index++;
+                        PlayerPrefs.SetInt("student", 1);
                     }
                     break;
                 case ObjType.drugstore:
@@ -161,6 +163,7 @@ public class DialogSystem : MonoBehaviour
                     {
                         Drugstore.Instance.GetNeedObject(Drugstore.Instance.transform.position);
                         Drugstore.Instance.inter.index++;
+                        PlayerPrefs.SetInt("Drugstore", 3);
                     }
                     break;
                 case ObjType.mother_3:

@@ -7,6 +7,7 @@ public enum Obj
     pen,
     box,
     book,
+    flower,
 }
 
 public class SceneObj : MonoBehaviour
@@ -29,6 +30,10 @@ public class SceneObj : MonoBehaviour
                 if (PlayerPrefs.GetInt("book", 0) == 1)
                     Destroy(gameObject);
                 break;
+            case Obj.flower:
+                if (PlayerPrefs.GetInt("flower", 0) == 1)
+                    Destroy(gameObject);
+                break;
             default:
                 break;
         }
@@ -46,6 +51,9 @@ public class SceneObj : MonoBehaviour
                 break;
             case Obj.book:
                 PlayerPrefs.SetInt("book", 1);
+                break;
+            case Obj.flower:
+                PlayerPrefs.SetInt("flower", 1);
                 break;
             default:
                 break;

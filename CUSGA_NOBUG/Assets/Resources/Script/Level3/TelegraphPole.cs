@@ -27,13 +27,14 @@ public class TelegraphPole : Ohters<TelegraphPole>
     {
         base.Start();
 
-        if(PlayerPrefs.GetInt("TelegraphPole",0) == 1)
+        if(PlayerPrefs.GetString("TelegraphPole") == "true")
         {
             TimelineManager.Instance.PoleTimeline.Play();
-            inter.index = 1;
         }
-        else if(PlayerPrefs.GetInt("TelegraphPole", 0) == 2)
+
+        if(PlayerPrefs.GetInt("TelegraphPole", 0) == 1)
         {
+            inter.index = 1;
             spr.sprite = fullPoleSpr;
             spr.color = new Color(255, 255, 255, 1f);
             transform.localScale = new Vector3(1, 1, 1);
@@ -63,6 +64,7 @@ public class TelegraphPole : Ohters<TelegraphPole>
         shadow.SetActive(false);
         shadow1.SetActive(true);
         Drugstore.Instance.inter.index++;
+        PlayerPrefs.SetInt("Drugstore", 1);
         BagManager.Instance.UsedCount++;
         TimelineManager.Instance.PoleTimeline.Stop();
     }
