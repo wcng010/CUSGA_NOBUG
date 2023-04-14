@@ -8,6 +8,8 @@ public class TrafficLight : Ohters<TrafficLight>
 
     public Sprite sprite;
 
+    public Collider2D IsOkShow;
+
     [HideInInspector]
     public bool IsOk = false;
 
@@ -17,6 +19,7 @@ public class TrafficLight : Ohters<TrafficLight>
     {
         base.Start();
         sprRen = GetComponent<SpriteRenderer>();
+        IsOkShow.enabled = false;
     }
 
     void Update()
