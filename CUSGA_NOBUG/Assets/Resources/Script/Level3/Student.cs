@@ -11,6 +11,11 @@ public class Student : Ohters<Student>
     {
         base.Start();
         gameObject.SetActive(false);
+
+        if(PlayerPrefs.GetInt("student",0) == 1)
+        {
+            inter.index = 1;
+        }
     }
 
     void Update()

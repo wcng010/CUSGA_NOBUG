@@ -16,7 +16,7 @@ public class BgmControl : MonoBehaviour
     public Slider Source_slider;
 
     private void Awake()
-    {
+    {    
         instance = this;
     }
 

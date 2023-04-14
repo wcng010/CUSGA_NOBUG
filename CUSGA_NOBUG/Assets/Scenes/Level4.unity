@@ -29097,6 +29097,7 @@ GameObject:
   - component: {fileID: 1660024939}
   - component: {fileID: 1660024937}
   - component: {fileID: 1660024936}
+  - component: {fileID: 1660024940}
   m_Layer: 0
   m_Name: flower_Inter
   m_TagString: Untagged
@@ -29211,6 +29212,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1660024940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660024934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45171e66504699439f9fdfcd35708d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: 3
 --- !u!1 &1683899630
 GameObject:
   m_ObjectHideFlags: 0
@@ -29640,6 +29654,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}
       propertyPath: IsObj
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}
+      propertyPath: IsScene
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7739619720038754258, guid: aa05d27956c1ff84aa3fcfd917d99b9b, type: 3}
