@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: DataList
   m_EditorClassIdentifier: 
   brushList:
-  - {fileID: 11400000, guid: fcf56eac68f74bf45aae9b3f631ff737, type: 2}
-  - {fileID: 11400000, guid: d16f5e2ae19e994448d3386c267d9611, type: 2}
-  - {fileID: 11400000, guid: 9e5d66f8b8404d644a8dd2dcc8953e3d, type: 2}
   - {fileID: 11400000, guid: cc8cdd9cde3605a4cac73c67235d6ba5, type: 2}
-  - {fileID: 11400000, guid: b83a00ec7617bfd40adda653431ade10, type: 2}
-  - {fileID: 11400000, guid: 94344eabffd13434a9f717c37b968faf, type: 2}
-  - {fileID: 11400000, guid: 310d9ac90ee9b6d42a5ea2204d0a2e63, type: 2}
-  - {fileID: 11400000, guid: a30f9bfc9e48aab4284815517ce01fab, type: 2}
-  - {fileID: 11400000, guid: de616993492aa974c840d69309a8ac78, type: 2}
-  - {fileID: 11400000, guid: 5d31e1550e9212b4abfe070f92ba91b7, type: 2}
-  - {fileID: 11400000, guid: 9417c99b6a52e624ca442487feb5f9c6, type: 2}
+  - {fileID: 11400000, guid: fcf56eac68f74bf45aae9b3f631ff737, type: 2}
+  - {fileID: 11400000, guid: 9e5d66f8b8404d644a8dd2dcc8953e3d, type: 2}
+  - {fileID: 11400000, guid: d16f5e2ae19e994448d3386c267d9611, type: 2}
   - {fileID: 11400000, guid: a2db82b82549d9c4db0931f0c54e62b3, type: 2}
   - {fileID: 11400000, guid: b4659c31c46f9344eba1cd5003a05e46, type: 2}
-  - {fileID: 11400000, guid: 3ab91f10bf205f243a6f5021203eb5dd, type: 2}
+  - {fileID: 11400000, guid: 5d31e1550e9212b4abfe070f92ba91b7, type: 2}
+  - {fileID: 11400000, guid: 94344eabffd13434a9f717c37b968faf, type: 2}
+  - {fileID: 11400000, guid: a30f9bfc9e48aab4284815517ce01fab, type: 2}
   - {fileID: 11400000, guid: 1902e6aaabdc9ce4089f4931886a6292, type: 2}
+  - {fileID: 11400000, guid: 9417c99b6a52e624ca442487feb5f9c6, type: 2}
+  - {fileID: 11400000, guid: de616993492aa974c840d69309a8ac78, type: 2}
+  - {fileID: 11400000, guid: 3ab91f10bf205f243a6f5021203eb5dd, type: 2}
+  - {fileID: 11400000, guid: 310d9ac90ee9b6d42a5ea2204d0a2e63, type: 2}
+  - {fileID: 11400000, guid: b83a00ec7617bfd40adda653431ade10, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -115,3 +115,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  brushListBuffer:
+  - {fileID: 11400000, guid: cc8cdd9cde3605a4cac73c67235d6ba5, type: 2}
+  - {fileID: 11400000, guid: b83a00ec7617bfd40adda653431ade10, type: 2}
+  - {fileID: 11400000, guid: 3ab91f10bf205f243a6f5021203eb5dd, type: 2}
+  - {fileID: 11400000, guid: 310d9ac90ee9b6d42a5ea2204d0a2e63, type: 2}
+  - {fileID: 11400000, guid: fcf56eac68f74bf45aae9b3f631ff737, type: 2}
+  - {fileID: 11400000, guid: b4659c31c46f9344eba1cd5003a05e46, type: 2}
+  - {fileID: 11400000, guid: 5d31e1550e9212b4abfe070f92ba91b7, type: 2}
+  - {fileID: 11400000, guid: 94344eabffd13434a9f717c37b968faf, type: 2}
+  - {fileID: 11400000, guid: a30f9bfc9e48aab4284815517ce01fab, type: 2}
+  - {fileID: 11400000, guid: 1902e6aaabdc9ce4089f4931886a6292, type: 2}
+  - {fileID: 11400000, guid: 9417c99b6a52e624ca442487feb5f9c6, type: 2}
+  - {fileID: 11400000, guid: de616993492aa974c840d69309a8ac78, type: 2}
+  - {fileID: 11400000, guid: 9e5d66f8b8404d644a8dd2dcc8953e3d, type: 2}
+  - {fileID: 11400000, guid: d16f5e2ae19e994448d3386c267d9611, type: 2}
+  - {fileID: 11400000, guid: a2db82b82549d9c4db0931f0c54e62b3, type: 2}

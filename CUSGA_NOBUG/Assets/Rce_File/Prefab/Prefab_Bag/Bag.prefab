@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.57337356, g: 0.6132076, b: 0.11801351, a: 1}
+  m_Color: {r: 1, g: 0.45254064, b: 0.08018869, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2287,9 +2287,8 @@ MonoBehaviour:
   - "\u70B9"
   - "\u70B9"
   beginBrushs3:
-  - "\u637A"
-  - "\u7AD6\u63D0"
-  - "\u6A2A\u6298\u94A9"
+  - "\u7AD6\u6298\u6298\u94A9"
+  - "\u6A2A\u6298\u6298\u6487"
   endTransform: {fileID: 8845735052618700697}
   bookImage: {fileID: 1747981846}
 --- !u!1 &8845735052944435399

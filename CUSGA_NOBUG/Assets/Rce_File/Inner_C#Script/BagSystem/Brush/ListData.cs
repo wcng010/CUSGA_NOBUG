@@ -19,6 +19,7 @@ public class ListData : ScriptableObject
     public List<ObjectData> objectListBuffer1 = new List<ObjectData>();
     public List<ObjectData> objectListBuffer2 = new List<ObjectData>();
     public List<ObjectData> objectListBuffer3 = new List<ObjectData>();
+    public List<BrushData> brushListBuffer = new List<BrushData>();
     public void Start()
     {
         Debug.Log(1);

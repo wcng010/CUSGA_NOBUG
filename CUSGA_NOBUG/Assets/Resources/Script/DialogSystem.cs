@@ -168,7 +168,8 @@ public class DialogSystem : MonoBehaviour
                     {
                         //跳场景动画
                         //跳场景
-                        SceneManager.LoadScene("EndingScene");
+                        TimelineManager.Instance.PassTimeline.Play();
+                        Invoke("EndLevelLoad", 2.75f);
                     }
                     break;
                 case ObjType.other:
@@ -184,6 +185,12 @@ public class DialogSystem : MonoBehaviour
             return;
         }
     }
+    private void EndLevelLoad()
+    {
+        SceneManager.LoadScene("EndingScene");
+    }
+
+
 
     public void GetTextFromFile(TextAsset file)
     {
