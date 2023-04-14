@@ -35,6 +35,8 @@ public class Ohters<T> : MonoBehaviour where T : class
     protected bool status = true;
     protected List<ObjectData> dataList;
 
+    private AudioSource getAudio_;
+
     protected virtual void Awake()
     {
         instance = this as T;
@@ -42,6 +44,8 @@ public class Ohters<T> : MonoBehaviour where T : class
 
     public virtual void Start()
     {
+        getAudio_ = GameObject.FindGameObjectWithTag("GetAudio").GetComponent<AudioSource>();
+
         succeed = 0;
         inter = GetComponentInChildren<Interaction>();
         if(transform.parent != null)
@@ -114,6 +118,7 @@ public class Ohters<T> : MonoBehaviour where T : class
         {
             if (dataList[i] != null && dataList[i].ObjectNames == getString.ToString() && GetObjIndex < GetObj.Length)
             {
+                getAudio_.Play();
                 Instantiate(Resources.Load<GameObject>("Prefab/GetObjEff"), pos, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = GetObj[GetObjIndex];
                 dataList[i].ObjectNum++;
                 break;

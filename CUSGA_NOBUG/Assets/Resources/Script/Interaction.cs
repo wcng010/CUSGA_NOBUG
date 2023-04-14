@@ -44,12 +44,14 @@ public class Interaction : MonoBehaviour
 
     public ObjType_Inter type_Inter = ObjType_Inter.other;
 
+    private AudioSource getAudio;
    // private Transform player;
    // private bool getObjbool;
     void Start()
     {
         index = 0;
         sprite = GetComponent<SpriteRenderer>();
+        getAudio = GameObject.FindGameObjectWithTag("GetAudio").GetComponent<AudioSource>();
         //player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -84,6 +86,7 @@ public class Interaction : MonoBehaviour
                                 transform.parent.gameObject.GetComponent<SceneObj>().Get();
 
                             Destroy(transform.parent.gameObject);
+                            getAudio.Play();
                             Instantiate(Resources.Load<GameObject>("Prefab/GetObjEff"),transform.position,Quaternion.identity).GetComponent<SpriteRenderer>().sprite = thisFace;
                         }
                            

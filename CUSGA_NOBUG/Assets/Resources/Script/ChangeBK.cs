@@ -28,16 +28,16 @@ public class ChangeBK : MonoBehaviour
    
    IEnumerator RceChangeEffect()
    {
-       TimelineManager.Instance.PassTimeline.Play();
+        if (SceneManager.GetActiveScene().name == "EndingScene")
+            SceneManager.LoadScene(0);
+        else
+            TimelineManager.Instance.PassTimeline.Play();
+
        yield return new WaitForSecondsRealtime(passTime);
        if (SceneManager.GetActiveScene().name == "Level4")
            SceneManager.LoadScene("Level3");
        else if(SceneManager.GetActiveScene().name != "EndingScene")
            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-       else
-       {
-           SceneManager.LoadScene(0);
-       }
    }
 
    public void loadSceneNew()
