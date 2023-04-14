@@ -545,7 +545,7 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
             ClearObjectData(dataListClass.objectList);
             if(_sceneNumPast==3&&_sceneNumNow==4//第二关进入第三关
                ||_sceneNumNow==4&&_sceneNumPast==4)//第三关内按Restart
-            {   
+            {   LoadBrushData(dataListClass.brushListBuffer);
                 LoadObjectData(dataListClass.objectListBuffer3); 
                 EnterScenes(4);
                 return;
@@ -555,8 +555,8 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
                 case 0 : Destroy(this.gameObject); break;
                 case 1: Destroy(this.gameObject); break;
                 case 6: Destroy(this.gameObject); break;
-                case 2: LoadObjectData(dataListClass.objectListBuffer1);EnterScenes(2);break;
-                case 3: LoadObjectData(dataListClass.objectListBuffer2);EnterScenes(3);break;
+                case 2: LoadBrushData(dataListClass.brushListBuffer); LoadObjectData(dataListClass.objectListBuffer1);EnterScenes(2);break;
+                case 3: LoadBrushData(dataListClass.brushListBuffer); LoadObjectData(dataListClass.objectListBuffer2);EnterScenes(3);break;
             }
         }
 
@@ -566,11 +566,31 @@ namespace Rce_File.Inner_C_Script.BagSystem.Manager
         /// <param name="objectListBuffer"></param>
         public void LoadObjectData(List<ObjectData> objectListBuffer)
         {
-            for (int i = 0; i < objectListBuffer.Count; i++)
+            int count = objectListBuffer.Count;
+            int maxcount = dataListClass.objectList.Count;
+            for (int i = 0; i < maxcount; i++)
             {
-                dataListClass.objectList[i] = objectListBuffer[i];
+                if (i < count && objectListBuffer[i])
+                    dataListClass.objectList[i] = objectListBuffer[i];
+                else
+                    dataListClass.objectList[i] = null;
+
+
             }
         }
+        public void LoadBrushData(List<BrushData> brushListBuffer)
+        {
+            int count = brushListBuffer.Count;
+            int maxcount = dataListClass.brushList.Count;
+            for (int i = 0; i < maxcount; i++)
+            {
+                if (i<count&&brushListBuffer[i])
+                    dataListClass.brushList[i] = brushListBuffer[i];
+                else
+                    dataListClass.brushList[i] = null;
+            }
+        }
+
 
         /// <summary>
         /// 清空物品背包，全为null
