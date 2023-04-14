@@ -64,6 +64,7 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("pen", 0);
         PlayerPrefs.SetInt("box", 0);
         PlayerPrefs.SetInt("book", 0);
+        PlayerPrefs.SetInt("Drugstore", 0);
         SceneManager.LoadSceneAsync("Prelude");
     }
 
@@ -168,6 +169,7 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("pen", 0);
         PlayerPrefs.SetInt("box", 0);
         PlayerPrefs.SetInt("book", 0);
+        PlayerPrefs.SetInt("Drugstore", 0);
 
         if (SceneManager.GetActiveScene().name=="Level4")//第四关ReStart进入第三关
         {
