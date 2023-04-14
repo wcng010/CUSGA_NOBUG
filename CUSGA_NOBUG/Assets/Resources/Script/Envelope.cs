@@ -8,6 +8,7 @@ public class Envelope : MonoBehaviour
     Animator animator;
     public Button butSwitch;
 
+    public AudioSource Audio;
     public GameObject EnveOpen;
     void Start()
     {
@@ -27,6 +28,7 @@ public class Envelope : MonoBehaviour
     public void butSwitchDown()
     {
         animator.enabled = true;
+        Audio.Play();
         butSwitch.enabled = false;
     }
 
