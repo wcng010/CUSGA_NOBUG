@@ -219,18 +219,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5268066935794594510, guid: a31d3e689ca6cff4193402e025860716, type: 3}
-      propertyPath: beginBrushs3.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268066935794594510, guid: a31d3e689ca6cff4193402e025860716, type: 3}
-      propertyPath: beginBrushs3.Array.data[0]
-      value: "\u7AD6\u6298\u6298\u94A9"
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268066935794594510, guid: a31d3e689ca6cff4193402e025860716, type: 3}
-      propertyPath: beginBrushs3.Array.data[1]
-      value: "\u6A2A\u6298\u6298\u6487"
-      objectReference: {fileID: 0}
     - target: {fileID: 8845735052754113104, guid: a31d3e689ca6cff4193402e025860716, type: 3}
       propertyPath: m_Name
       value: Bag
@@ -4088,8 +4076,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5707873433781243874, guid: dc389a40ff9bb59429f45a2016373632, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707873433781243874, guid: dc389a40ff9bb59429f45a2016373632, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7847291704487526464, guid: dc389a40ff9bb59429f45a2016373632, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7847291704487526466, guid: dc389a40ff9bb59429f45a2016373632, type: 3}
       propertyPath: m_Name
